@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import {
 	chakra,
 	HStack,
@@ -13,8 +14,6 @@ import {
 	VStack,
 	Button,
 	useColorMode,
-	SimpleGrid,
-	Stack,
 	Icon,
 } from '@chakra-ui/react';
 import { useViewportScroll } from 'framer-motion';
@@ -153,6 +152,16 @@ export default function Header(props) {
 										width={40}
 										height={40}
 									/>
+									<chakra.span
+										fontSize='xl'
+										fontWeight='bold'
+										color={useColorModeValue(
+											'gray.900',
+											'white'
+										)}
+									>
+										Herald
+									</chakra.span>
 								</HStack>
 							</Link>
 						</Flex>
@@ -189,13 +198,16 @@ export default function Header(props) {
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
 								/>
-								<Button
-									colorScheme='brand'
-									variant='solid'
-									size='sm'
-								>
-									Get Started
-								</Button>
+								<NextLink href='/docs' passHref={true}>
+									<Button
+										as='a'
+										colorScheme='brand'
+										variant='solid'
+										size='sm'
+									>
+										Get Started
+									</Button>
+								</NextLink>
 							</HStack>
 							<IconButton
 								display={{ base: 'flex', md: 'none' }}

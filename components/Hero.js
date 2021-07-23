@@ -1,4 +1,4 @@
-import React from 'react';
+import NextLink from 'next/link';
 import {
 	chakra,
 	Box,
@@ -34,18 +34,21 @@ const Hero = () => {
 					adoption, user satisfaction and grow revenue faster.
 				</chakra.p>
 				<HStack spacing={4}>
-					<Button
-						as='a'
-						w={{ base: 'full', sm: 'auto' }}
-						variant='solid'
-						colorScheme='brand'
-						size='lg'
-						mb={{ base: 2, sm: 0 }}
-						p={8}
-						fontSize='xl'
-					>
-						Get Started
-					</Button>
+					<NextLink href='/docs' passHref={true}>
+						<Button
+							as='a'
+							w={{ base: 'full', sm: 'auto' }}
+							variant='solid'
+							colorScheme='brand'
+							size='lg'
+							mb={{ base: 2, sm: 0 }}
+							p={8}
+							fontSize='xl'
+							cursor='pointer'
+						>
+							Get Started
+						</Button>
+					</NextLink>
 					<Button
 						as='a'
 						bg={useColorModeValue('gray.500', 'gray.600')}
@@ -55,6 +58,9 @@ const Hero = () => {
 						size='lg'
 						fontSize='xl'
 						leftIcon={<AiFillGithub />}
+						target='__blank'
+						cursor='pointer'
+						href='https://github.com/ilangorajagopal/herald'
 					>
 						GitHub
 					</Button>
