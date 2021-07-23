@@ -1,5 +1,5 @@
 import { chakra } from '@chakra-ui/react';
-import { Container } from '../components/Container';
+import Container from '../components/Container';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import C2g from '../components/Features';
