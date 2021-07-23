@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
 	chakra,
 	Box,
@@ -6,7 +6,7 @@ import {
 	Flex,
 	Button,
 	HStack,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 const Hero = () => {
 	return (
@@ -21,7 +21,12 @@ const Hero = () => {
 				>
 					Simple, open-source platform to announce product updates
 				</chakra.h1>
-				<chakra.p mb={5} color='gray.500' fontSize={{ md: 'lg' }} lineHeight='tall'>
+				<chakra.p
+					mb={5}
+					color='gray.500'
+					fontSize={{ md: 'lg' }}
+					lineHeight='tall'
+				>
 					Today every company needs apps to engage their customers and
 					run their businesses. Claas is a changelog-as-a-service
 					application to announce product updates to increase feature
@@ -29,21 +34,20 @@ const Hero = () => {
 				</chakra.p>
 				<HStack>
 					<Button
-						as="a"
-						w={{ base: "full", sm: "auto" }}
-						variant="solid"
-						colorScheme="brand"
-						size="lg"
+						as='a'
+						w={{ base: 'full', sm: 'auto' }}
+						variant='solid'
+						colorScheme='brand'
+						size='lg'
 						mb={{ base: 2, sm: 0 }}
 					>
 						Get Started
 					</Button>
 					<Button
-						as="a"
-						w={{ base: "full", sm: "auto" }}
-
+						as='a'
+						w={{ base: 'full', sm: 'auto' }}
 						mb={{ base: 2, sm: 0 }}
-						size="lg"
+						size='lg'
 					>
 						Docs
 					</Button>

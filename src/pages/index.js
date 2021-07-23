@@ -1,7 +1,7 @@
 import { Container } from '../components/Container';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import C2g from "../components/Features";
+import C2g from '../components/Features';
 
 const Index = () => (
 	<Container height='100vh'>
