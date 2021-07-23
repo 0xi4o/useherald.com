@@ -39,13 +39,14 @@ function MyApp({ Component, pageProps }) {
 								w='5'
 								h='5'
 								_hover={{ color: 'gray.600' }}
+								cursor='pointer'
 							/>
 						</Link>,
 						<ColorModeSwitch key={1} />,
 					]}
 					headerLogo={
 						<Link href='/'>
-							<HStack>
+							<HStack cursor='pointer'>
 								<Image src='/logo.png' width={40} height={40} />
 								<chakra.span fontSize='xl' fontWeight='bold'>
 									Herald
