@@ -15,6 +15,12 @@ const colors = {
 		900: '#080819',
 	},
 };
-const theme = extendTheme({ colors });
+
+const fonts = {
+	body: 'Inter, sans-serif',
+	heading: 'Inter, sans-serif',
+};
+
+const theme = extendTheme({ colors, fonts });
 
 export default theme;
