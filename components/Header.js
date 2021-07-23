@@ -5,7 +5,6 @@ import {
 	chakra,
 	HStack,
 	Link,
-	Box,
 	Flex,
 	IconButton,
 	useColorModeValue,
@@ -96,7 +95,7 @@ export default function Header() {
 				borderBottomWidth={2}
 				borderBottomColor={useColorModeValue('gray.200', 'gray.900')}
 			>
-				<chakra.div h='4.5rem' mx='auto' maxW='container.xl'>
+				<chakra.div h='6rem' mx='auto' maxW='container.xl'>
 					<Flex
 						w='full'
 						h='full'
