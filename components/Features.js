@@ -98,9 +98,10 @@ export default function Wfl() {
 							textAlign={{ base: 'center', sm: 'left' }}
 							color={useColorModeValue('gray.600', 'gray.500')}
 						>
-							Lorem ipsum dolor sit amet consect adipisicing elit.
-							Possimus magnam voluptatum cupiditate veritatis in
-							accusamus quisquam.
+							Herald is an open source software written in Next.js
+							and with a Firebase backend. You can also use your
+							own database and host it anywhere you like. All you
+							need is an environment that can run Node.js.
 						</chakra.p>
 					</Box>
 					<GridItem colSpan={2}>
@@ -111,38 +112,34 @@ export default function Wfl() {
 							gridColumnGap={{ md: 8 }}
 							gridRowGap={{ md: 10 }}
 						>
-							<Feature title='Invite team members'>
-								Improve your conversion rates by monitoring
-								exactly what’s going on while your customers are
-								in trial.{' '}
+							<Feature title='Embeddable Widget'>
+								Show the updates to your product in your web
+								application using a lightweight embeddable
+								widget.
 							</Feature>
-							<Feature title='Unify your payments stack'>
-								Manage all your online and offline sales in one
-								place with a single integration, simplifying
-								reporting and reconciliation.
+							<Feature title='Dedicated Feed'>
+								Keep a record of all the changes made to your
+								application in a beautifully rendered timeline
+								view.
 							</Feature>
-							<Feature title='Own your in-store experience'>
-								{' '}
-								Provide a seamless customer experience across
-								channels, like reserving online and picking up
-								in store.
+							<Feature title='Custom Domain'>
+								Host the Herald dashboard complete with
+								authentication, REST API and widget hosted on
+								your domain.
 							</Feature>
-							<Feature title='Grow your platform’s revenue'>
-								{' '}
-								Add in-person payments to your platform or
-								marketplace. Using Terminal with Connect.{' '}
+							<Feature title='Custom Branding'>
+								The widget and feed won't seem out of place in
+								your application because you can customize them
+								to suit your brand.
 							</Feature>
-							<Feature title='Clear overview for efficient tracking'>
-								{' '}
-								Handle your subscriptions and transactions
-								efficiently with the clear overview in
-								Dashboard. Fea
+							<Feature title='Firebase Authentication'>
+								Firebase authentication out-of-the-box to manage
+								access to your Herald dashboard.
 							</Feature>
-							<Feature title='Decide how you integrate Payments'>
-								{' '}
-								Love to code? Decide how you integrate Payments
-								and build advanced and reliable products
-								yourself from scratch.{' '}
+							<Feature title='Markdown Editor'>
+								Easily format your updates with a full-fledged
+								Markdown editor along with multimedia and emoji
+								support.
 							</Feature>
 						</Stack>
 					</GridItem>
