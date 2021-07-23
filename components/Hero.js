@@ -7,6 +7,7 @@ import {
 	Button,
 	HStack,
 } from '@chakra-ui/react';
+import { AiFillGithub } from 'react-icons/ai';
 
 const Hero = () => {
 	return (
@@ -32,7 +33,7 @@ const Hero = () => {
 					application to announce product updates to increase feature
 					adoption, user satisfaction and grow revenue faster.
 				</chakra.p>
-				<HStack>
+				<HStack spacing={4}>
 					<Button
 						as='a'
 						w={{ base: 'full', sm: 'auto' }}
@@ -40,16 +41,22 @@ const Hero = () => {
 						colorScheme='brand'
 						size='lg'
 						mb={{ base: 2, sm: 0 }}
+						p={8}
+						fontSize='xl'
 					>
 						Get Started
 					</Button>
 					<Button
 						as='a'
+						bg={useColorModeValue('gray.500', 'gray.600')}
 						w={{ base: 'full', sm: 'auto' }}
 						mb={{ base: 2, sm: 0 }}
+						p={8}
 						size='lg'
+						fontSize='xl'
+						leftIcon={<AiFillGithub />}
 					>
-						Docs
+						GitHub
 					</Button>
 				</HStack>
 			</Box>

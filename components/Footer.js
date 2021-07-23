@@ -56,9 +56,6 @@ const Footer = () => {
 					<SocialButton label={'YouTube'} href={'#'}>
 						<FaYoutube />
 					</SocialButton>
-					<SocialButton label={'Instagram'} href={'#'}>
-						<FaInstagram />
-					</SocialButton>
 				</Stack>
 			</Container>
 		</chakra.footer>

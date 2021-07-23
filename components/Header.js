@@ -168,7 +168,7 @@ export default function Header(props) {
 								<Link
 									isExternal
 									aria-label='Go to Choc UI GitHub page'
-									href='https://github.com/anubra266/choc-ui'
+									href='https://github.com/ilangorajagopal/herald'
 								>
 									<Icon
 										as={AiFillGithub}
@@ -194,7 +194,7 @@ export default function Header(props) {
 									variant='solid'
 									size='sm'
 								>
-									Sign In
+									Get Started
 								</Button>
 							</HStack>
 							<IconButton
