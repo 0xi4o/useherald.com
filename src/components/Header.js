@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import {
 	chakra,
 	HStack,
@@ -25,7 +26,6 @@ import {
 } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { Logo } from '@choc-ui/logo';
 
 export default function Header(props) {
 	const { toggleColorMode: toggleMode } = useColorMode();
@@ -148,7 +148,11 @@ export default function Header(props) {
 						<Flex align='flex-start'>
 							<Link href='/'>
 								<HStack>
-									<Logo />
+									<Image
+										src='/logo.png'
+										width={40}
+										height={40}
+									/>
 								</HStack>
 							</Link>
 						</Flex>

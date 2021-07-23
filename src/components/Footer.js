@@ -1,14 +1,13 @@
+import Image from 'next/image';
 import {
 	chakra,
 	Container,
-	Link,
 	Stack,
 	Text,
 	useColorModeValue,
 	VisuallyHidden,
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { Logo } from '@choc-ui/logo';
 
 const SocialButton = ({ children, label, href }) => {
 	return (
@@ -48,8 +47,8 @@ const Footer = () => {
 				justify={{ base: 'center', md: 'space-between' }}
 				align={{ base: 'center', md: 'center' }}
 			>
-				<Logo />
-				<Text>© 2020 Chakra Templates. All rights reserved</Text>
+				<Image src='/logo.png' width={40} height={40} />
+				<Text>© 2020 Ilango Rajagopal. All rights reserved</Text>
 				<Stack direction={'row'} spacing={6}>
 					<SocialButton label={'Twitter'} href={'#'}>
 						<FaTwitter />
