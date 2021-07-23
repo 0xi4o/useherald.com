@@ -128,9 +128,9 @@ export default function Wfl() {
 								your domain.
 							</Feature>
 							<Feature title='Custom Branding'>
-								The widget and feed won&apos;t seem out of place in
-								your application because you can customize them
-								to suit your brand.
+								The widget and feed won&apos;t seem out of place
+								in your application because you can customize
+								them to suit your brand.
 							</Feature>
 							<Feature title='Firebase Authentication'>
 								Firebase authentication out-of-the-box to manage
