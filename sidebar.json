@@ -1,45 +1,45 @@
 {
-    "path": "pages",
-    "name": "pages",
-    "children": [
-        {
-            "path": "pages/docs",
-            "name": "docs",
-            "children": [
-                {
-                    "path": "pages/docs/getting-started",
-                    "name": "getting-started",
-                    "children": [
-                        {
-                            "path": "pages/docs/getting-started/configuration.mdx",
-                            "name": "configuration.mdx",
-                            "meta": {},
-                            "title": "Configuration",
-                            "url": "/docs/getting-started/configuration"
-                        },
-                        {
-                            "path": "pages/docs/getting-started/installation.mdx",
-                            "name": "installation.mdx",
-                            "meta": {},
-                            "title": "Installation",
-                            "url": "/docs/getting-started/installation"
-                        }
-                    ],
-                    "size": null,
-                    "type": "directory"
-                },
-                {
-                    "path": "pages/docs/index.mdx",
-                    "name": "index.mdx",
-                    "meta": {},
-                    "title": "Introduction",
-                    "url": "/docs/"
-                }
-            ],
-            "size": null,
-            "type": "directory"
-        }
-    ],
-    "size": null,
-    "type": "directory"
+	"path": "pages",
+	"name": "pages",
+	"children": [
+		{
+			"path": "pages/docs",
+			"name": "docs",
+			"children": [
+				{
+					"path": "pages/docs/getting-started",
+					"name": "getting-started",
+					"children": [
+						{
+							"path": "pages/docs/getting-started/configuration.mdx",
+							"name": "configuration.mdx",
+							"meta": {},
+							"title": "Configuration",
+							"url": "/docs/getting-started/configuration"
+						},
+						{
+							"path": "pages/docs/getting-started/installation.mdx",
+							"name": "installation.mdx",
+							"meta": {},
+							"title": "Installation",
+							"url": "/docs/getting-started/installation"
+						}
+					],
+					"size": null,
+					"type": "directory"
+				},
+				{
+					"path": "pages/docs/index.mdx",
+					"name": "index.mdx",
+					"meta": {},
+					"title": "Introduction",
+					"url": "/docs/"
+				}
+			],
+			"size": null,
+			"type": "directory"
+		}
+	],
+	"size": null,
+	"type": "directory"
 }

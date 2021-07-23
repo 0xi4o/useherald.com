@@ -15,7 +15,6 @@ import {
 	useColorMode,
 	Icon,
 } from '@chakra-ui/react';
-import { useViewportScroll } from 'framer-motion';
 import {
 	AiFillGithub,
 	AiFillHome,
@@ -31,15 +30,7 @@ export default function Header() {
 	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 	const bg = useColorModeValue('white', 'gray.800');
 	const ref = React.useRef();
-	const [y, setY] = React.useState(0);
-	const { height = 0 } = ref.current
-		? ref.current.getBoundingClientRect()
-		: {};
 
-	const { scrollY } = useViewportScroll();
-	React.useEffect(() => {
-		return scrollY.onChange(() => setY(scrollY.get()));
-	}, [scrollY]);
 	const mobileNav = useDisclosure();
 
 	const MobileNavContent = (
@@ -86,16 +77,22 @@ export default function Header() {
 	return (
 		<React.Fragment>
 			<chakra.header
+				d='flex'
 				ref={ref}
-				shadow={y > height ? 'sm' : undefined}
 				transition='box-shadow 0.2s'
 				bg={bg}
 				w='full'
+				h='6rem'
 				overflowY='hidden'
-				borderBottomWidth={2}
-				borderBottomColor={useColorModeValue('gray.200', 'gray.900')}
+				flexDirection='column'
 			>
-				<chakra.div h='6rem' mx='auto' maxW='container.xl'>
+				<chakra.div
+					d='flex'
+					w='full'
+					h='6rem'
+					mx='auto'
+					maxW='container.xl'
+				>
 					<Flex
 						w='full'
 						h='full'

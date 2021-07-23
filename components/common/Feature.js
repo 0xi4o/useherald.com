@@ -10,8 +10,8 @@ import {
 	GridItem,
 } from '@chakra-ui/react';
 
-export default function Wfl() {
-	const Feature = (props) => {
+const Feature = () => {
+	const FeatureItem = (props) => {
 		return (
 			<Flex>
 				<Flex shrink={0}>
@@ -49,9 +49,10 @@ export default function Wfl() {
 			</Flex>
 		);
 	};
+
 	return (
 		<Flex
-			bg={useColorModeValue('#F9FAFB', 'gray.600')}
+			py={16}
 			w='auto'
 			maxW='container.xl'
 			justifyContent='center'
@@ -112,39 +113,41 @@ export default function Wfl() {
 							gridColumnGap={{ md: 8 }}
 							gridRowGap={{ md: 10 }}
 						>
-							<Feature title='Embeddable Widget'>
+							<FeatureItem title='Embeddable Widget'>
 								Show the updates to your product in your web
 								application using a lightweight embeddable
 								widget.
-							</Feature>
-							<Feature title='Dedicated Feed'>
+							</FeatureItem>
+							<FeatureItem title='Dedicated Feed'>
 								Keep a record of all the changes made to your
 								application in a beautifully rendered timeline
 								view.
-							</Feature>
-							<Feature title='Custom Domain'>
+							</FeatureItem>
+							<FeatureItem title='Custom Domain'>
 								Host the Herald dashboard complete with
 								authentication, REST API and widget hosted on
 								your domain.
-							</Feature>
-							<Feature title='Custom Branding'>
+							</FeatureItem>
+							<FeatureItem title='Custom Branding'>
 								The widget and feed won&apos;t seem out of place
 								in your application because you can customize
 								them to suit your brand.
-							</Feature>
-							<Feature title='Firebase Authentication'>
+							</FeatureItem>
+							<FeatureItem title='Firebase Authentication'>
 								Firebase authentication out-of-the-box to manage
 								access to your Herald dashboard.
-							</Feature>
-							<Feature title='Markdown Editor'>
+							</FeatureItem>
+							<FeatureItem title='Markdown Editor'>
 								Easily format your updates with a full-fledged
 								Markdown editor along with multimedia and emoji
 								support.
-							</Feature>
+							</FeatureItem>
 						</Stack>
 					</GridItem>
 				</SimpleGrid>
 			</Box>
 		</Flex>
 	);
-}
+};
+
+export default Feature;
