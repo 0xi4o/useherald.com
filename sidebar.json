@@ -3,6 +3,13 @@
     "name": "pages",
     "children": [
         {
+            "path": "pages/dashboard",
+            "name": "dashboard",
+            "children": [],
+            "size": 0,
+            "type": "directory"
+        },
+        {
             "path": "pages/docs",
             "name": "docs",
             "children": [
