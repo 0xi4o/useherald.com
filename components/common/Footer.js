@@ -146,7 +146,18 @@ const Footer = () => {
 				justify={{ base: 'center', md: 'space-between' }}
 				align={{ base: 'center', md: 'center' }}
 			>
-				<Text>© 2020 Ilango Rajagopal. All rights reserved</Text>
+				<Text>
+					© 2021{' '}
+					<chakra.a
+						color='brand.200'
+						href='https://opencatalysts.tech'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						Open Catalysts
+					</chakra.a>
+					. All rights reserved
+				</Text>
 				<Stack direction={'row'} spacing={6}>
 					<SocialButton
 						label={'Twitter'}

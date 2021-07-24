@@ -99,10 +99,27 @@ const Feature = () => {
 							textAlign={{ base: 'center', sm: 'left' }}
 							color={useColorModeValue('gray.600', 'gray.500')}
 						>
-							Herald is an open-source software written in Next.js
-							and powered by a Firebase backend. You can also use
-							your own database and host it anywhere you like. All
-							you need is an environment that can run Node.js.
+							Herald is an open-source software written in{' '}
+							<chakra.a
+								color='brand.200'
+								href='https://nextjs.org'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								Next.js
+							</chakra.a>{' '}
+							and powered by a{' '}
+							<chakra.a
+								color='brand.200'
+								href='https://supabase.io'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								Supabase
+							</chakra.a>{' '}
+							backend. You can also use your own database and host
+							it anywhere you like. All you need is an environment
+							that can run Node.js.
 						</chakra.p>
 					</Box>
 					<GridItem colSpan={2}>

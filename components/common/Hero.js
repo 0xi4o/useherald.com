@@ -28,10 +28,9 @@ const Hero = () => {
 					fontSize={{ md: 'lg' }}
 					lineHeight='tall'
 				>
-					Today every company needs apps to engage their customers and
-					run their businesses. Claas is a changelog-as-a-service
-					application to announce product updates to increase feature
-					adoption, user satisfaction and grow revenue faster.
+					Herald is a changelog-as-a-service application to announce
+					product updates to increase feature adoption, user
+					satisfaction and grow revenue faster.
 				</chakra.p>
 				<HStack spacing={4}>
 					<NextLink href='/docs' passHref={true}>
