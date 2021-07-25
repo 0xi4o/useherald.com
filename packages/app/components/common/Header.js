@@ -10,10 +10,9 @@ import {
 	useColorModeValue,
 	Button,
 	useColorMode,
-	Icon,
 } from '@chakra-ui/react';
-import { AiFillGithub } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import config from '../../herald.config';
 
 const Header = () => {
 	const { toggleColorMode: toggleMode } = useColorMode();
@@ -52,7 +51,7 @@ const Header = () => {
 							<Link href='/'>
 								<HStack>
 									<Image
-										src='/logo.png'
+										src={config.logoIcon}
 										width={40}
 										height={40}
 									/>
@@ -64,7 +63,7 @@ const Header = () => {
 											'white'
 										)}
 									>
-										Herald
+										{config.name}
 									</chakra.span>
 								</HStack>
 							</Link>
@@ -78,20 +77,6 @@ const Header = () => {
 								spacing='5'
 								display={{ base: 'none', md: 'flex' }}
 							>
-								<Link
-									isExternal
-									aria-label='Go to Choc UI GitHub page'
-									href='https://github.com/ilangorajagopal/herald'
-								>
-									<Icon
-										as={AiFillGithub}
-										display='block'
-										transition='color 0.2s'
-										w='5'
-										h='5'
-										_hover={{ color: 'gray.600' }}
-									/>
-								</Link>
 								<IconButton
 									size='md'
 									fontSize='lg'
@@ -104,12 +89,11 @@ const Header = () => {
 								/>
 								<NextLink href='/docs' passHref={true}>
 									<Button
-										as='a'
 										colorScheme='brand'
 										variant='solid'
 										size='sm'
 									>
-										Get Started
+										Sign In
 									</Button>
 								</NextLink>
 							</HStack>
