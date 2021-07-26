@@ -136,13 +136,13 @@ const Footer = () => {
 				<Stack direction={'row'} spacing={6}>
 					<SocialButton
 						label={'Twitter'}
-						href={'https://twitter.com/_ilango'}
+						href={'https://twitter.com/OpenCatalysts'}
 					>
 						<FaTwitter />
 					</SocialButton>
 					<SocialButton
 						label={'GitHub'}
-						href={'https://github.com/ilangorajagopal'}
+						href={'https://github.com/opencatalysts'}
 					>
 						<FaGithub />
 					</SocialButton>
