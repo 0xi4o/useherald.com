@@ -1,7 +1,7 @@
 {
 	"name": "herald",
 	"version": "0.1.0",
-	"homepage": "https://github.com/ilangorajagopal/herald",
+	"homepage": "https://github.com/opencatalysts/herald",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",

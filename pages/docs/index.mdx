@@ -2,20 +2,24 @@
 name: Introduction
 ---
 
-import { Button, Image, Box, useColorMode } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
+import SubscriptionForm from '../../components/common/SubscriptionForm';
 
 <NextSeo
 	title='Introduction to Herald'
 	description='Generate documentation sites from markdown content with Next.js and MDX'
 />
 
-export const Logo = (props) => {
+export const Logo = () => {
 	return <Image my='40px' mx='auto' src='/logo.png' width='300px' />;
 };
 
 <Logo />
 
-# Introduction
+# Hello, there!
 
-# Features
+We're still a work in progress. Please check back later for documentation.
+To get updates on releases or product launches, follow us on [Twitter](https://twitter.com/OpenCatalysts) or subscribe to our newsletter.
+
+<SubscriptionForm />

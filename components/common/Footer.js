@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import {
 	chakra,
-	Box,
-	Button,
 	Container,
-	Input,
 	Link,
 	SimpleGrid,
 	Stack,
@@ -14,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 import React from 'react';
+import SubscriptionForm from './SubscriptionForm';
 
 const ListHeader = ({ children }) => {
 	return (
@@ -63,7 +61,7 @@ const Footer = () => {
 			>
 				<SimpleGrid
 					w='full'
-					templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr 3fr' }}
+					templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr 2fr' }}
 					spacing={8}
 				>
 					<Stack
@@ -89,51 +87,28 @@ const Footer = () => {
 					</Stack>
 					<Stack align={'flex-start'}>
 						<ListHeader>Resources</ListHeader>
-						<Link href={'#'}>Docs</Link>
-						<Link href={'#'}>Demo</Link>
+						<Link href='/docs'>Docs</Link>
 					</Stack>
 					<Stack align={'flex-start'}>
 						<ListHeader>Community</ListHeader>
-						<Link href={'#'}>Forum</Link>
-						<Link href={'#'}>Issues</Link>
+						<Link
+							target='_blank'
+							rel='noopener noreferrer'
+							href='https://github.com/opencatalysts/herald/projects/1#column-15286418'
+						>
+							Feature Requests
+						</Link>
+						<Link
+							target='_blank'
+							rel='noopener noreferrer'
+							href='https://github.com/opencatalysts/herald/issues'
+						>
+							Issues
+						</Link>
 					</Stack>
-					<Stack align={'flex-end'}>
-						<Box>
-							<ListHeader>Subscribe to our newsletter</ListHeader>
-							<Text mb={4}>
-								The latest updates, articles, and resources,
-								sent to your inbox.
-							</Text>
-							<Stack direction={'row'}>
-								<Input
-									placeholder={'Your email address'}
-									bg={useColorModeValue(
-										'blackAlpha.100',
-										'whiteAlpha.100'
-									)}
-									border={0}
-									_focus={{
-										bg: 'whiteAlpha.300',
-									}}
-									h={12}
-								/>
-								<Button
-									colorScheme='brand'
-									color={useColorModeValue(
-										'white',
-										'gray.800'
-									)}
-									_hover={{
-										bg: 'green.600',
-									}}
-									aria-label='Subscribe'
-									px={8}
-									h={12}
-								>
-									Subscribe
-								</Button>
-							</Stack>
-						</Box>
+					<Stack align={'flex-start'}>
+						<ListHeader>Subscribe to our newsletter</ListHeader>
+						<SubscriptionForm />
 					</Stack>
 				</SimpleGrid>
 			</Container>

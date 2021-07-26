@@ -150,9 +150,9 @@ const Feature = () => {
 								in your application because you can customize
 								them to suit your brand.
 							</FeatureItem>
-							<FeatureItem title='Firebase Authentication'>
-								Firebase authentication out-of-the-box to manage
-								access to your Herald dashboard.
+							<FeatureItem title='Built-in Authentication'>
+								Authentication out-of-the-box to manage access
+								to your Herald dashboard.
 							</FeatureItem>
 							<FeatureItem title='Markdown Editor'>
 								Easily format your updates with a full-fledged

@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 							key={0}
 							isExternal
 							aria-label='Go to Choc UI GitHub page'
-							href='https://github.com/ilangorajagopal/herald'
+							href='https://github.com/opencatalysts/herald'
 						>
 							<Icon
 								as={AiFillGithub}
@@ -57,10 +57,7 @@ function MyApp({ Component, pageProps }) {
 					sidebarOrdering={{
 						docs: {
 							introduction: true,
-							'getting-started': {
-								installation: true,
-								configuration: true,
-							},
+							'getting-started': false,
 						},
 					}}
 				>

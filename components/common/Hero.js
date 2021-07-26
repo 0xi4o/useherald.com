@@ -59,7 +59,7 @@ const Hero = () => {
 						leftIcon={<AiFillGithub />}
 						target='__blank'
 						cursor='pointer'
-						href='https://github.com/ilangorajagopal/herald'
+						href='https://github.com/opencatalysts/herald'
 					>
 						GitHub
 					</Button>
