@@ -3,23 +3,37 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import {
 	chakra,
-	HStack,
-	Link,
-	Flex,
-	IconButton,
-	useColorModeValue,
+	Avatar,
 	Button,
+	Flex,
+	HStack,
+	IconButton,
+	Link,
+	Menu,
+	MenuButton,
+	MenuDivider,
+	MenuItem,
+	MenuList,
 	useColorMode,
+	useColorModeValue,
 } from '@chakra-ui/react';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { supabase } from '../../lib/supabaseClient';
 import config from '../../herald.config';
 
 const Header = () => {
+	const user = supabase.auth.user();
 	const { toggleColorMode: toggleMode } = useColorMode();
 	const text = useColorModeValue('dark', 'light');
 	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 	const bg = useColorModeValue('white', 'gray.800');
 	const ref = React.useRef();
+
+	console.log(user);
+
+	async function handleSignOut() {
+		await supabase.auth.signOut();
+	}
 
 	return (
 		<React.Fragment>
@@ -88,13 +102,35 @@ const Header = () => {
 									icon={<SwitchIcon />}
 								/>
 								<NextLink href='/docs' passHref={true}>
-									<Button
-										colorScheme='brand'
-										variant='solid'
-										size='sm'
-									>
-										Sign In
-									</Button>
+									{user ? (
+										<Menu placement='bottom-end'>
+											<MenuButton p={0} bg='transparent'>
+												<Avatar
+													size='md'
+													name='Ilango Rajagopal'
+													src='https://bit.ly/tioluwani-kolawole'
+												/>
+											</MenuButton>
+											<MenuList>
+												<MenuItem>My Account</MenuItem>
+												<MenuItem>Payments</MenuItem>
+												<MenuDivider />
+												<MenuItem
+													onClick={handleSignOut}
+												>
+													Logout
+												</MenuItem>
+											</MenuList>
+										</Menu>
+									) : (
+										<Button
+											colorScheme='brand'
+											size='sm'
+											variant='solid'
+										>
+											Sign In
+										</Button>
+									)}
 								</NextLink>
 							</HStack>
 						</Flex>

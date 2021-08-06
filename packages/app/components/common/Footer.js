@@ -5,7 +5,6 @@ import {
 	Container,
 	Link,
 	Stack,
-	Text,
 	useColorModeValue,
 	VisuallyHidden,
 	HStack,
@@ -86,7 +85,7 @@ const Footer = () => {
 					justify={{ base: 'center', md: 'space-between' }}
 					align={{ base: 'center', md: 'center' }}
 				>
-					<Text
+					<Box
 						d='flex'
 						alignItems='center'
 						justifyContent='center'
@@ -108,7 +107,7 @@ const Footer = () => {
 								height={16}
 							/>
 						</chakra.a>
-					</Text>
+					</Box>
 					<Stack direction={'row'} spacing={6}>
 						<SocialButton
 							label={'Twitter'}
