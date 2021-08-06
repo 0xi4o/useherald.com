@@ -161,7 +161,7 @@ export default function Header() {
 										variant='solid'
 										size='sm'
 									>
-										Get Started
+										Sign In
 									</Button>
 								</NextLink>
 							</HStack>
