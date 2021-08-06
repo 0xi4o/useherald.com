@@ -44,7 +44,8 @@ const Footer = () => {
 		<chakra.footer bg={bg} overflowY='hidden' w='full' flexShrink={0}>
 			<Container
 				as={Stack}
-				maxW='container.xl'
+				maxW='container.lg'
+				px={0}
 				py={8}
 				spacing={4}
 				justify={'center'}
@@ -78,7 +79,8 @@ const Footer = () => {
 			>
 				<Container
 					as={Stack}
-					maxW='container.xl'
+					maxW='container.lg'
+					px={0}
 					py={4}
 					direction={{ base: 'column', md: 'row' }}
 					spacing={4}

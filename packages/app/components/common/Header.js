@@ -52,12 +52,12 @@ const Header = () => {
 					w='full'
 					h='6rem'
 					mx='auto'
-					maxW='container.xl'
+					maxW='container.lg'
 				>
 					<Flex
 						w='full'
 						h='full'
-						px='6'
+						p={0}
 						alignItems='center'
 						justifyContent='space-between'
 					>

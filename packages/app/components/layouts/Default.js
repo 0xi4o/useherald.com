@@ -6,6 +6,7 @@ const DefaultLayout = (props) => (
 		<Header />
 		<chakra.div
 			w='full'
+			maxW='container.lg'
 			h='auto'
 			d='flex'
 			flexDirection='column'
