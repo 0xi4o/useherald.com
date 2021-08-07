@@ -8,7 +8,7 @@ const AuthLayout = (props) => (
 	<Container height='auto' minH='100vh'>
 		<chakra.div
 			w='full'
-			maxW='container.lg'
+			maxW='container.md'
 			h='auto'
 			d='flex'
 			flexDirection='column'
@@ -19,7 +19,7 @@ const AuthLayout = (props) => (
 			{props.children}
 		</chakra.div>
 		<chakra.footer
-			maxW='container.lg'
+			maxW='container.md'
 			py={4}
 			d='flex'
 			alignItems='center'

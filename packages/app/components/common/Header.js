@@ -52,7 +52,7 @@ const Header = () => {
 					w='full'
 					h='6rem'
 					mx='auto'
-					maxW='container.lg'
+					maxW='container.md'
 				>
 					<Flex
 						w='full'
@@ -104,7 +104,11 @@ const Header = () => {
 								<NextLink href='/docs' passHref={true}>
 									{user ? (
 										<Menu placement='bottom-end'>
-											<MenuButton p={0} bg='transparent'>
+											<MenuButton
+												as={Button}
+												p={0}
+												bg='transparent'
+											>
 												<Avatar
 													size='md'
 													name='Ilango Rajagopal'
@@ -112,8 +116,7 @@ const Header = () => {
 												/>
 											</MenuButton>
 											<MenuList>
-												<MenuItem>My Account</MenuItem>
-												<MenuItem>Payments</MenuItem>
+												<MenuItem>Settings</MenuItem>
 												<MenuDivider />
 												<MenuItem
 													onClick={handleSignOut}

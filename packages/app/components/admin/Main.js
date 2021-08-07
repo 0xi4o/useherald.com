@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import { chakra, Box, Button, Heading, Text, VStack } from '@chakra-ui/react';
 import DefaultLayout from '../layouts/Default';
 
@@ -6,7 +7,9 @@ export default function Main() {
 		<DefaultLayout>
 			<VStack py={16} w='full' spacing={8}>
 				<Box w='full' mb={4}>
-					<Button>Add Update</Button>
+					<NextLink href='/admin/new'>
+						<Button>Add Update</Button>
+					</NextLink>
 				</Box>
 				<VStack w='full' spacing={5}>
 					<Box w='full'>

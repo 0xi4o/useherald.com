@@ -1,12 +1,12 @@
 import { chakra } from '@chakra-ui/react';
-import { Container, Footer, Header } from '../common/';
+import { Container, Header } from '../common/';
 
 const DefaultLayout = (props) => (
 	<Container height='auto' minH='100vh'>
 		<Header />
 		<chakra.div
 			w='full'
-			maxW='container.lg'
+			maxW='container.md'
 			h='auto'
 			d='flex'
 			flexDirection='column'
@@ -16,7 +16,6 @@ const DefaultLayout = (props) => (
 		>
 			{props.children}
 		</chakra.div>
-		<Footer />
 	</Container>
 );
 
