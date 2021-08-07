@@ -65,7 +65,7 @@ function New() {
 	// const router = useRouter();
 	const [changelog, setChangelog] = useState(null);
 	const [title, setTitle] = useState('');
-	const [content, setContent] = useState('<p>Hello, World!</p>');
+	const [content, setContent] = useState('');
 	const editor = useEditor({
 		content,
 		editorProps: {
@@ -83,8 +83,20 @@ function New() {
 	async function saveChangelog() {
 		if (changelog) {
 			// update existing record with latest content
+			const update = { title, content };
+			const { data, error } = await supabase
+				.from('changelogs')
+				.update(update)
+				.match({ id: changelog.id });
+
+			if (data && data.length > 0) {
+				setChangelog(data[0]);
+			} else {
+				// throw error
+				console.log(error);
+			}
 		} else {
-			// insert latest content as a new record
+			// insert latest content as a new draft changelog
 			const user = supabase.auth.user();
 			const record = { title, content, status: 'draft', author: user.id };
 			const { data, error } = await supabase
@@ -103,8 +115,37 @@ function New() {
 	async function publishChangelog() {
 		if (changelog) {
 			// update existing record with latest content
+			const update = { title, content };
+			const { data, error } = await supabase
+				.from('changelogs')
+				.update(update)
+				.match({ id: changelog.id });
+
+			if (data && data.length > 0) {
+				setChangelog(data[0]);
+			} else {
+				// throw error
+				console.log(error);
+			}
 		} else {
-			// insert latest content as a new record
+			// insert latest content as a new published changelog
+			const user = supabase.auth.user();
+			const record = {
+				title,
+				content,
+				status: 'published',
+				author: user.id,
+			};
+			const { data, error } = await supabase
+				.from('changelogs')
+				.insert([record]);
+
+			if (data && data.length > 0) {
+				setChangelog(data[0]);
+			} else {
+				// throw error
+				console.log(error);
+			}
 		}
 	}
 
