@@ -28,23 +28,33 @@ export default function Main() {
 							<Text fontSize='md'>7 minutes ago</Text>
 						</chakra.div>
 						<Text fontSize='lg' lineHeight='tall'>
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Lobortis scelerisque fermentum
-							dui faucibus. Velit egestas dui id ornare arcu odio
-							ut. At auctor urna nunc id cursus metus aliquam.
-							Cursus sit amet dictum sit amet justo. Eros donec ac
-							odio tempor orci. Aenean pharetra magna ac placerat
-							vestibulum lectus mauris ultrices eros. Ultricies
-							integer quis auctor elit sed. Rhoncus mattis rhoncus
-							urna neque viverra justo. Sagittis aliquam malesuada
-							bibendum arcu vitae. Amet venenatis urna cursus
-							eget. Arcu risus quis varius quam. Scelerisque eu
-							ultrices vitae auctor eu augue ut lectus arcu. Neque
-							gravida in fermentum et. Diam vel quam elementum
-							pulvinar etiam non quam lacus suspendisse. Aenean
-							euismod elementum nisi quis eleifend quam
-							adipiscing.
+							<p>
+								Lorem ipsum dolor sit amet, consectetur
+								adipiscing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua.
+								Lobortis scelerisque fermentum dui faucibus.
+								Velit egestas dui id ornare arcu odio ut.
+							</p>
+
+							<p>
+								At auctor urna nunc id cursus metus aliquam.
+								Cursus sit amet dictum sit amet justo. Eros
+								donec ac odio tempor orci. Aenean pharetra magna
+								ac placerat vestibulum lectus mauris ultrices
+								eros. Ultricies integer quis auctor elit sed.
+								Rhoncus mattis rhoncus urna neque viverra justo.
+								Sagittis aliquam malesuada bibendum arcu vitae.
+								Amet venenatis urna cursus eget.
+							</p>
+
+							<p>
+								Arcu risus quis varius quam. Scelerisque eu
+								ultrices vitae auctor eu augue ut lectus arcu.
+								Neque gravida in fermentum et. Diam vel quam
+								elementum pulvinar etiam non quam lacus
+								suspendisse. Aenean euismod elementum nisi quis
+								eleifend quam adipiscing.
+							</p>
 						</Text>
 					</Box>
 				</VStack>
