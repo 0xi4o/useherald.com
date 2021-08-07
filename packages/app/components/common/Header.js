@@ -120,6 +120,9 @@ const Header = () => {
 											as={Button}
 											p={0}
 											bg='transparent'
+											_hover={{ bg: 'transparent' }}
+											_active={{ bg: 'transparent' }}
+											_focus={{ bg: 'transparent' }}
 										>
 											<Avatar
 												size='md'

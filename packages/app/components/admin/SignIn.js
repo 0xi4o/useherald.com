@@ -8,7 +8,6 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
-	Link,
 	Stack,
 	Button,
 	Heading,
@@ -92,7 +91,7 @@ const SignIn = () => {
 							colorScheme='brand'
 							h={12}
 							isLoading={loading}
-							loadingText='Signing In'
+							loadingText='Logging In'
 							onClick={async (e) => {
 								e.preventDefault();
 								await handleLogin(email, password);
@@ -111,9 +110,11 @@ const SignIn = () => {
 				</Box>
 				<chakra.span>
 					New here?{' '}
-					<Link color='brand.200'>
-						<NextLink href='/signup'>Create a new account</NextLink>
-					</Link>
+					<NextLink href='/signup'>
+						<chakra.a color='brand.200'>
+							Create a new account
+						</chakra.a>
+					</NextLink>
 					.
 				</chakra.span>
 			</Stack>
