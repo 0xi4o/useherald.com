@@ -1,33 +1,60 @@
-import {useState} from "react";
-// import { useRouter } from 'next/router';
-import {Box, Button, Divider, HStack, Input, VStack} from '@chakra-ui/react';
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import { FaBold, FaCode, FaFileCode, FaItalic, FaListOl, FaListUl, FaQuoteRight } from "react-icons/fa";
+import { useState } from 'react';
+import NextLink from 'next/link';
+import {
+	chakra,
+	Box,
+	Button,
+	Divider,
+	HStack,
+	Input,
+	useColorModeValue,
+	VStack,
+} from '@chakra-ui/react';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import {
+	FaBold,
+	FaChevronLeft,
+	FaCode,
+	FaFileCode,
+	FaItalic,
+	FaListOl,
+	FaListUl,
+	FaQuoteRight,
+} from 'react-icons/fa';
+import { supabase } from '../../lib/supabaseClient';
 import DefaultLayout from '../../components/layouts/Default';
 
 function EditorToolbar({ editor }) {
 	return (
-		<HStack w='full' spacing={2} mb={8}>
+		<HStack w='full' spacing={2} mb={4}>
 			<Button onClick={() => editor.chain().focus().toggleBold().run()}>
 				<FaBold />
 			</Button>
 			<Button onClick={() => editor.chain().focus().toggleItalic().run()}>
 				<FaItalic />
 			</Button>
-			<Button onClick={() => editor.chain().focus().toggleOrderedList().run()}>
+			<Button
+				onClick={() => editor.chain().focus().toggleOrderedList().run()}
+			>
 				<FaListOl />
 			</Button>
-			<Button onClick={() => editor.chain().focus().toggleBulletList().run()}>
+			<Button
+				onClick={() => editor.chain().focus().toggleBulletList().run()}
+			>
 				<FaListUl />
 			</Button>
-			<Button onClick={() => editor.chain().focus().toggleBlockquote().run()}>
+			<Button
+				onClick={() => editor.chain().focus().toggleBlockquote().run()}
+			>
 				<FaQuoteRight />
 			</Button>
 			<Button onClick={() => editor.chain().focus().toggleCode().run()}>
 				<FaCode />
 			</Button>
-			<Button onClick={() => editor.chain().focus().toggleCodeBlock().run()}>
+			<Button
+				onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+			>
 				<FaFileCode />
 			</Button>
 		</HStack>
@@ -36,30 +63,102 @@ function EditorToolbar({ editor }) {
 
 function New() {
 	// const router = useRouter();
-	const [title, setTitle] = useState('New Update');
+	const [changelog, setChangelog] = useState(null);
+	const [title, setTitle] = useState('');
+	const [content, setContent] = useState('<p>Hello, World!</p>');
 	const editor = useEditor({
-		content: '<p>Hello, World!</p>',
+		content,
 		editorProps: {
 			attributes: {
-				class: ''
-			}
+				class: '',
+			},
 		},
-		extensions: [ StarterKit ]
+		extensions: [StarterKit],
+		onUpdate() {
+			const html = this.getHTML();
+			setContent(html);
+		},
 	});
+
+	async function saveChangelog() {
+		if (changelog) {
+			// update existing record with latest content
+		} else {
+			// insert latest content as a new record
+			const user = supabase.auth.user();
+			const record = { title, content, status: 'draft', author: user.id };
+			const { data, error } = await supabase
+				.from('changelogs')
+				.insert([record]);
+
+			if (data && data.length > 0) {
+				setChangelog(data[0]);
+			} else {
+				// throw error
+				console.log(error);
+			}
+		}
+	}
+
+	async function publishChangelog() {
+		if (changelog) {
+			// update existing record with latest content
+		} else {
+			// insert latest content as a new record
+		}
+	}
 
 	return (
 		<DefaultLayout>
-			<VStack py={16} w='full' spacing={8}>
-				<Input borderRadius='lg' h={16} fontSize='3xl' defaultValue={title} onChange={e => setTitle(e.target.value)} />
-				<Divider />
-				<Box w='full' h='auto' minH='600px'>
-					<EditorToolbar editor={editor} />
-					<EditorContent editor={editor} />
-				</Box>
-				<HStack w='full' d='flex' alignItems='center' justifyContent='flex-end' spacing={4}>
-					<Button>Save</Button>
-					<Button colorScheme='brand'>Publish</Button>
-				</HStack>
+			<VStack
+				py={16}
+				w='full'
+				d='flex'
+				alignItems='start'
+				justifyContent='start'
+				spacing={8}
+			>
+				<chakra.a>
+					<NextLink href='/admin'>
+						<Button
+							variant='outline'
+							borderWidth={1}
+							borderColor={useColorModeValue('gray.400', 'white')}
+							color={useColorModeValue('gray.400', 'white')}
+							w={12}
+							h={12}
+						>
+							<FaChevronLeft />
+						</Button>
+					</NextLink>
+				</chakra.a>
+				<VStack w='full' spacing={8}>
+					<Input
+						borderRadius='lg'
+						h={16}
+						fontSize='2xl'
+						defaultValue={title}
+						onChange={(e) => setTitle(e.target.value)}
+						placeholder='New Update'
+					/>
+					<Divider />
+					<Box w='full' h='auto' minH='600px'>
+						<EditorToolbar editor={editor} />
+						<EditorContent editor={editor} />
+					</Box>
+					<HStack
+						w='full'
+						d='flex'
+						alignItems='center'
+						justifyContent='flex-end'
+						spacing={4}
+					>
+						<Button onClick={saveChangelog}>Save</Button>
+						<Button colorScheme='brand' onClick={publishChangelog}>
+							Publish
+						</Button>
+					</HStack>
+				</VStack>
 			</VStack>
 		</DefaultLayout>
 	);

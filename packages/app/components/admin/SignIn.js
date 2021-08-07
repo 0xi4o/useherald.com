@@ -20,16 +20,16 @@ import AuthLayout from '../../components/layouts/Auth';
 const SignIn = () => {
 	const [alertObject, setAlertObject] = useState(null);
 	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const handleLogin = async (email) => {
+	const handleLogin = async (email, password) => {
 		setLoading(true);
-		const { user, session, error } = await supabase.auth.signIn(
-			{ email },
+		const { error } = await supabase.auth.signIn(
+			{ email, password },
 			{ redirectTo: 'http://localhost:3000/admin' }
 		);
-		console.log(user);
-		console.log(session);
+
 		if (error) {
 			setAlertObject({
 				status: 'error',
@@ -78,6 +78,16 @@ const SignIn = () => {
 								value={email}
 							/>
 						</FormControl>
+						<FormControl id='password'>
+							<FormLabel>Password</FormLabel>
+							<Input
+								h={12}
+								onChange={(e) => setPassword(e.target.value)}
+								placeholder='Super Secret Password'
+								type='password'
+								value={password}
+							/>
+						</FormControl>
 						<Button
 							colorScheme='brand'
 							h={12}
@@ -85,7 +95,7 @@ const SignIn = () => {
 							loadingText='Signing In'
 							onClick={async (e) => {
 								e.preventDefault();
-								await handleLogin(email);
+								await handleLogin(email, password);
 							}}
 						>
 							Login

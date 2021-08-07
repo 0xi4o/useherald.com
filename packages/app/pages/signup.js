@@ -21,17 +21,20 @@ import AuthLayout from '../components/layouts/Auth';
 const SignUp = () => {
 	const [alertObject, setAlertObject] = useState(null);
 	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const handleSignup = async (email) => {
+	const handleSignup = async (email, password) => {
 		setLoading(true);
-		const { user, session, error } = await supabase.auth.signUp(
-			{ email },
+		const { user, error } = await supabase.auth.signUp(
+			{ email, password },
 			{ redirectTo: 'http://localhost:3000/admin' }
 		);
-		console.log(user);
-		console.log(session);
-		if (error) {
+		const { error: profileInsertError } = await supabase
+			.from('profiles')
+			.insert([{ id: user.id, email: user.email }]);
+
+		if (error || profileInsertError) {
 			setAlertObject({
 				status: 'error',
 				message: error?.error_description || error?.message,
@@ -39,7 +42,7 @@ const SignUp = () => {
 		} else {
 			setAlertObject({
 				status: 'success',
-				message: 'Check your email for a login link',
+				message: 'Check your email for a verification link',
 			});
 		}
 		setLoading(false);
@@ -80,17 +83,27 @@ const SignUp = () => {
 								value={email}
 							/>
 						</FormControl>
+						<FormControl id='password'>
+							<FormLabel>Password</FormLabel>
+							<Input
+								h={12}
+								onChange={(e) => setPassword(e.target.value)}
+								placeholder='Super Secret Password'
+								type='password'
+								value={password}
+							/>
+						</FormControl>
 						<Button
 							colorScheme='brand'
 							h={12}
 							isLoading={loading}
-							loadingText='Signing In'
+							loadingText='Signing Up'
 							onClick={async (e) => {
 								e.preventDefault();
-								await handleSignup(email);
+								await handleSignup(email, password);
 							}}
 						>
-							Sign In
+							Sign Up
 						</Button>
 						{alertObject ? (
 							<Alert status={alertObject.status}>

@@ -1,6 +1,6 @@
-import React from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import NextLink from 'next/link';
 import {
 	chakra,
 	Avatar,
@@ -22,21 +22,34 @@ import { supabase } from '../../lib/supabaseClient';
 import config from '../../herald.config';
 
 const Header = () => {
-	const user = supabase.auth.user();
+	const router = useRouter();
+	const [session, setSession] = useState(null);
+	const [user, setUser] = useState(null);
 	const { toggleColorMode: toggleMode } = useColorMode();
 	const text = useColorModeValue('dark', 'light');
 	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 	const bg = useColorModeValue('white', 'gray.800');
-	const ref = React.useRef();
+	const ref = useRef();
 
-	console.log(user);
+	useEffect(() => {
+		setSession(supabase.auth.session());
+		setUser(supabase.auth.user());
+
+		supabase.auth.onAuthStateChange((event, session) => {
+			setSession(session);
+
+			if (!session) {
+				router.replace('/admin').then(() => {});
+			}
+		});
+	}, []);
 
 	async function handleSignOut() {
 		await supabase.auth.signOut();
 	}
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			<chakra.header
 				d='flex'
 				ref={ref}
@@ -101,46 +114,42 @@ const Header = () => {
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
 								/>
-								<NextLink href='/docs' passHref={true}>
-									{user ? (
-										<Menu placement='bottom-end'>
-											<MenuButton
-												as={Button}
-												p={0}
-												bg='transparent'
-											>
-												<Avatar
-													size='md'
-													name='Ilango Rajagopal'
-													src='https://bit.ly/tioluwani-kolawole'
-												/>
-											</MenuButton>
-											<MenuList>
-												<MenuItem>Settings</MenuItem>
-												<MenuDivider />
-												<MenuItem
-													onClick={handleSignOut}
-												>
-													Logout
-												</MenuItem>
-											</MenuList>
-										</Menu>
-									) : (
-										<Button
-											colorScheme='brand'
-											size='sm'
-											variant='solid'
+								{session && user ? (
+									<Menu placement='bottom-end'>
+										<MenuButton
+											as={Button}
+											p={0}
+											bg='transparent'
 										>
-											Sign In
-										</Button>
-									)}
-								</NextLink>
+											<Avatar
+												size='md'
+												name='Ilango Rajagopal'
+												src='https://bit.ly/tioluwani-kolawole'
+											/>
+										</MenuButton>
+										<MenuList>
+											<MenuItem>Settings</MenuItem>
+											<MenuDivider />
+											<MenuItem onClick={handleSignOut}>
+												Logout
+											</MenuItem>
+										</MenuList>
+									</Menu>
+								) : (
+									<Button
+										colorScheme='brand'
+										size='sm'
+										variant='solid'
+									>
+										Sign In
+									</Button>
+								)}
 							</HStack>
 						</Flex>
 					</Flex>
 				</chakra.div>
 			</chakra.header>
-		</React.Fragment>
+		</Fragment>
 	);
 };
 
