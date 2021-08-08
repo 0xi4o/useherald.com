@@ -26,7 +26,8 @@ export default function Main() {
 			const { data, error } = await supabase
 				.from('changelogs')
 				.select()
-				.match({ author: user.id });
+				.match({ author: user.id })
+				.order('updated_at', { ascending: false });
 
 			if (data && data.length > 0) {
 				setChangelogs(data);

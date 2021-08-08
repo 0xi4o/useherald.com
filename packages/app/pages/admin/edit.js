@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import Heading from '@tiptap/extension-heading';
+import Link from '@tiptap/extension-link';
 import { FaChevronLeft } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
 import DefaultLayout from '../../components/layouts/Default';
@@ -31,7 +33,11 @@ function Edit() {
 				class: '',
 			},
 		},
-		extensions: [StarterKit],
+		extensions: [
+			Heading.configure({ levels: [1, 2, 3] }),
+			Link.configure({ openOnClick: false }),
+			StarterKit,
+		],
 		onUpdate() {
 			const html = this.getHTML();
 			setContent(html);
@@ -104,8 +110,9 @@ function Edit() {
 							borderWidth={1}
 							borderColor={useColorModeValue('gray.400', 'white')}
 							color={useColorModeValue('gray.400', 'white')}
-							w={8}
-							h={8}
+							w={10}
+							h={10}
+							p={0}
 						>
 							<FaChevronLeft />
 						</Button>
