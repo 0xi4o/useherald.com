@@ -17,7 +17,35 @@
 	padding: 1rem !important;
 }
 
-pre,
+/* Text styles inside and outside the editor */
+
+.herald > * + * {
+	margin-top: 0.75em;
+}
+
+.herald ul,
+.herald ol,
+.ProseMirror ul,
+.ProseMirror ol {
+	padding: 0 1rem;
+}
+
+.herald h1,
+.herald h2,
+.herald h3,
+.herald h4,
+.herald h5,
+.herald h6,
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+	line-height: 1.1;
+}
+
+.herald pre,
 .ProseMirror pre {
 	background: #0d0d0d;
 	color: #fff;
@@ -26,7 +54,7 @@ pre,
 	border-radius: 0.5rem;
 }
 
-pre code,
+.herald pre code,
 .ProseMirror pre code {
 	color: inherit;
 	padding: 0;
@@ -34,8 +62,14 @@ pre code,
 	font-size: 0.8rem;
 }
 
-blockquote,
+.herald blockquote,
 .ProseMirror blockquote {
 	padding-left: 1rem;
-	border-left: 2px solid rgba(13, 13, 13, 0.1);
+	border-left: 2px solid;
+}
+
+.herald img,
+.ProseMirror img {
+	max-width: 100%;
+	height: auto;
 }

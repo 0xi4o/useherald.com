@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
 	chakra,
@@ -10,6 +10,7 @@ import {
 	VStack,
 } from '@chakra-ui/react';
 import { format, formatDistance } from 'date-fns';
+import capitalize from 'lodash.capitalize';
 import { supabase } from '../../lib/supabaseClient';
 import DefaultLayout from '../layouts/Default';
 
@@ -55,7 +56,7 @@ export default function Main() {
 			<VStack py={16} w='full' spacing={8}>
 				<Box w='full' mb={4}>
 					<NextLink href='/admin/new'>
-						<Button px={8} py={6}>
+						<Button px={8} py={6} colorScheme='brand'>
 							Add Update
 						</Button>
 					</NextLink>
@@ -63,8 +64,8 @@ export default function Main() {
 				<VStack w='full' spacing={5}>
 					{changelogs.map((changelog) => {
 						return (
-							<>
-								<Box w='full' mb={4} key={changelog.id}>
+							<Fragment key={changelog.id}>
+								<Box w='full' mb={4}>
 									<Heading as='h2' mb={4}>
 										{changelog.title}
 									</Heading>
@@ -75,12 +76,18 @@ export default function Main() {
 										mb={8}
 										w='full'
 									>
-										{changelog.status === 'draft' ? (
-											<>
-												<Text fontSize='sm'>Draft</Text>
-												&nbsp;&nbsp;&middot;&nbsp;&nbsp;
-											</>
-										) : null}
+										<Text color='brand.200'>
+											<NextLink
+												href={`/admin/edit?id=${changelog.id}`}
+											>
+												Edit
+											</NextLink>
+										</Text>
+										&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+										<Text fontSize='sm'>
+											{capitalize(changelog.status)}
+										</Text>
+										&nbsp;&nbsp;&middot;&nbsp;&nbsp;
 										<Text fontSize='sm'>
 											{profile?.name}
 										</Text>
@@ -100,6 +107,7 @@ export default function Main() {
 										</Text>
 									</chakra.div>
 									<chakra.div
+										className='herald'
 										fontSize='lg'
 										lineHeight='tall'
 										dangerouslySetInnerHTML={{
@@ -108,7 +116,7 @@ export default function Main() {
 									/>
 								</Box>
 								<Divider mb={4} />
-							</>
+							</Fragment>
 						);
 					})}
 				</VStack>
