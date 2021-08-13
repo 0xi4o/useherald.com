@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import NextLink from 'next/link';
 import Image from 'next/image';
 import {
 	chakra,
@@ -8,7 +9,6 @@ import {
 	Flex,
 	HStack,
 	IconButton,
-	Link,
 	Menu,
 	MenuButton,
 	MenuDivider,
@@ -75,8 +75,13 @@ const Header = () => {
 						justifyContent='space-between'
 					>
 						<Flex align='flex-start'>
-							<Link href='/'>
-								<HStack>
+							<NextLink href='/admin'>
+								<chakra.a
+									d='flex'
+									alignItems='center'
+									justifyContent='center'
+									cursor='pointer'
+								>
 									<Image
 										src={config.logoIcon}
 										width={40}
@@ -89,11 +94,15 @@ const Header = () => {
 											'gray.900',
 											'white'
 										)}
+										ml={2}
+										d='flex'
+										alignItems='center'
+										justifyContent='flex-start'
 									>
 										{config.name}
 									</chakra.span>
-								</HStack>
-							</Link>
+								</chakra.a>
+							</NextLink>
 						</Flex>
 						<Flex
 							justify='flex-end'
@@ -131,7 +140,11 @@ const Header = () => {
 											/>
 										</MenuButton>
 										<MenuList>
-											<MenuItem>Settings</MenuItem>
+											<MenuItem>
+												<NextLink href='/admin/settings/account'>
+													Settings
+												</NextLink>
+											</MenuItem>
 											<MenuDivider />
 											<MenuItem onClick={handleSignOut}>
 												Logout

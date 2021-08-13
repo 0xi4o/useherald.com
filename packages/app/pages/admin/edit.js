@@ -96,7 +96,7 @@ function Edit() {
 	return (
 		<DefaultLayout>
 			<VStack
-				py={16}
+				py={8}
 				w='full'
 				d='flex'
 				alignItems='start'

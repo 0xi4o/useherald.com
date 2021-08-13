@@ -54,7 +54,7 @@ export default function Main() {
 
 	return (
 		<DefaultLayout>
-			<VStack py={16} w='full' spacing={8}>
+			<VStack py={8} w='full' spacing={8}>
 				<Box w='full' mb={4}>
 					<NextLink href='/admin/new'>
 						<Button px={8} py={6} colorScheme='brand'>
