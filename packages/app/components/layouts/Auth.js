@@ -32,11 +32,11 @@ const AuthLayout = (props) => (
 				d='flex'
 				alignItems='center'
 				ml={1}
-				href='https://herald.opencatalysts.tech/'
+				href='https://useherald.com/'
 				target='_blank'
 				rel='noopener noreferrer'
 			>
-				<Image src={config.logoIcon} width={16} height={16} />
+				<Image src={config.logo} width={16} height={16} />
 			</chakra.a>
 		</chakra.footer>
 	</Container>

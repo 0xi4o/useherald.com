@@ -1,11 +1,12 @@
 import { chakra } from '@chakra-ui/react';
-import { Container, Footer, Header } from '../common/';
+import { Container, Footer, PublicPageHeader } from '../common/';
 
 const TimelineLayout = (props) => (
 	<Container height='auto' minH='100vh'>
-		<Header />
+		<PublicPageHeader />
 		<chakra.div
 			w='full'
+			maxW='container.md'
 			h='auto'
 			d='flex'
 			flexDirection='column'

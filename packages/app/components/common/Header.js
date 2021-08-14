@@ -83,7 +83,7 @@ const Header = () => {
 									cursor='pointer'
 								>
 									<Image
-										src={config.logoIcon}
+										src={config.logo}
 										width={40}
 										height={40}
 									/>

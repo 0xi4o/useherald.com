@@ -1,13 +1,9 @@
 module.exports = {
+	author: '71900427-a160-4ed2-b13c-0af51c646878',
 	name: 'Herald',
-	footerLinks: [
-		{ label: 'Home', link: '#' },
-		{ label: 'About', link: '#' },
-		{ label: 'Blog', link: '#' },
-		{ label: 'Contact', link: '#' },
-	],
+	footerLinks: [],
+	logo: '/logo.png',
 	logoIcon: '/logo.png',
-	social: {
-		twitter: '#',
-	},
+	social: {},
+	website: 'https://useherald.com',
 };

@@ -7,7 +7,6 @@ import {
 	useColorModeValue,
 } from '@chakra-ui/react';
 import React from 'react';
-import config from '../../herald.config';
 
 const Footer = () => {
 	const bg = useColorModeValue('white', 'gray.800');
@@ -42,12 +41,12 @@ const Footer = () => {
 							d='flex'
 							alignItems='center'
 							ml={1}
-							href='https://herald.opencatalysts.tech/'
+							href='https://useherald.com/'
 							target='_blank'
 							rel='noopener noreferrer'
 						>
 							<Image
-								src={config.logoIcon}
+								src='https://useherald.com/_next/image?url=%2Flogo.png&w=48&q=75'
 								width={16}
 								height={16}
 							/>
