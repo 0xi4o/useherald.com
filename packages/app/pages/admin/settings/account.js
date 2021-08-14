@@ -20,6 +20,7 @@ function Account() {
 	const [avatarUploading, setAvatarUploading] = useState(false);
 	const [logoUrl, setLogoUrl] = useState(null);
 	const [logoUploading, setLogoUploading] = useState(false);
+	const [profileSaving, setProfileSaving] = useState(false);
 	const avatarUploadInputRef = useRef(null);
 	const logoUploadInputRef = useRef(null);
 	const toast = useToast();
@@ -62,11 +63,9 @@ function Account() {
 			}
 
 			const file = event.target.files[0];
-			const fileExt = file.name.split('.').pop();
-			const fileName = `${Math.random()}.${fileExt}`;
-			const filePath = `public/${user.id}/avatar/${fileName}`;
+			const filePath = `public/${user.id}/avatar/${file.name}`;
 
-			let { data, error } = await supabase.storage
+			let { error } = await supabase.storage
 				.from('assets')
 				.upload(filePath, file);
 
@@ -76,11 +75,10 @@ function Account() {
 
 			const { publicURL } = supabase.storage
 				.from('assets')
-				.getPublicUrl(data.Key);
+				.getPublicUrl(filePath);
 
-			console.log(data.Key);
-			console.log(publicURL);
 			setAvatarUrl(publicURL);
+			await updateProfile({ avatar_url: publicURL });
 		} catch (error) {
 			alert(error.message);
 		} finally {
@@ -97,9 +95,7 @@ function Account() {
 			}
 
 			const file = event.target.files[0];
-			const fileExt = file.name.split('.').pop();
-			const fileName = `${Math.random()}.${fileExt}`;
-			const filePath = `public/${user.id}/logo/${fileName}`;
+			const filePath = `public/${user.id}/logo/${file.name}`;
 
 			let { error } = await supabase.storage
 				.from('assets')
@@ -112,11 +108,33 @@ function Account() {
 			const { publicURL } = supabase.storage
 				.from('assets')
 				.getPublicUrl(filePath);
+
 			setLogoUrl(publicURL);
+			await updateProfile({ company_logo: publicURL });
 		} catch (error) {
 			alert(error.message);
 		} finally {
 			setLogoUploading(false);
+		}
+	}
+
+	async function updateProfile(update) {
+		const { data, error } = await supabase
+			.from('profiles')
+			.update(update)
+			.match({ id: user.id });
+
+		if (data) {
+			toast({
+				title: 'Saved!',
+				status: 'success',
+				duration: 3000,
+				isClosable: true,
+				position: 'top-right',
+			});
+		} else {
+			// throw error
+			console.log(error);
 		}
 	}
 
@@ -132,29 +150,9 @@ function Account() {
 						website: user?.website || '',
 					}}
 					onSubmit={async (values) => {
-						const update = {
-							...values,
-							avatar_url: avatarUrl,
-							company_logo: logoUrl,
-						};
-
-						const { data, error } = await supabase
-							.from('profiles')
-							.update(update)
-							.match({ id: user.id });
-
-						if (data) {
-							toast({
-								title: 'Saved!',
-								status: 'success',
-								duration: 3000,
-								isClosable: true,
-								position: 'top-right',
-							});
-						} else {
-							// throw error
-							console.log(error);
-						}
+						setProfileSaving(true);
+						await updateProfile(values);
+						setProfileSaving(false);
 					}}
 				>
 					{(formik) => (
@@ -293,7 +291,7 @@ function Account() {
 									size='lg'
 									type='submit'
 								>
-									Save
+									{profileSaving ? 'Saving...' : 'Save'}
 								</Button>
 							</FormControl>
 						</form>
