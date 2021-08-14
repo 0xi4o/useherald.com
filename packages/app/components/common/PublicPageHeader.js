@@ -29,7 +29,7 @@ function PublicPageHeader() {
 					justifyContent='space-between'
 				>
 					<Flex align='flex-start'>
-						<NextLink href='/admin'>
+						<NextLink href='/'>
 							<chakra.a
 								d='flex'
 								alignItems='center'
