@@ -1,23 +1,33 @@
 ---
-name: Introduction
+name: About
 ---
 
-import { Image } from '@chakra-ui/react';
+import { Image, Text } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
 import SubscriptionForm from '../../components/common/SubscriptionForm';
 
 <NextSeo
-	title='Introduction to Herald'
-	description='Generate documentation sites from markdown content with Next.js and MDX'
+	title='About Herald'
+	description='Simple, open-source platform to announce product updates'
 />
 
 export const Logo = () => {
-	return <Image my='40px' mx='auto' src='/logo.png' width='300px' />;
+	return <Image my='20px' mx='auto' src='/logo.png' width='160px' />;
 };
 
 <Logo />
 
-# Hello, there!
+<Text fontSize='xl' lineHeight='tall'>
+	Herald is a changelog-as-a-service application to announce product updates
+	to increase feature adoption, user satisfaction and grow revenue faster.
+</Text>
+
+-   **Embeddable Widget**: Show the updates to your product in your web application using a lightweight embeddable widget.
+-   **Dedicated Feed**: Keep a record of all the changes made to your application in a beautifully rendered timeline view.
+-   **Custom Domain**: Host the Herald dashboard complete with authentication, REST API and widget hosted on your domain.
+-   **Custom Branding**: The widget and feed won't seem out of place in your application because you can customize them to suit your brand.
+-   **Built-in Authentication**: Authentication out-of-the-box to manage access to your Herald dashboard.
+-   **Markdown Editor**: Easily format your updates with a full-fledged Markdown editor along with multimedia and emoji support.
 
 We're still a work in progress. Please check back later for documentation.
 To get updates on releases or product launches, follow us on [Twitter](https://twitter.com/OpenCatalysts) or subscribe to our newsletter.

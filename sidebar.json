@@ -7,6 +7,28 @@
             "name": "docs",
             "children": [
                 {
+                    "path": "pages/docs/deployment",
+                    "name": "deployment",
+                    "children": [
+                        {
+                            "path": "pages/docs/deployment/netlify.mdx",
+                            "name": "netlify.mdx",
+                            "meta": {},
+                            "title": "Netlify",
+                            "url": "/docs/deployment/netlify"
+                        },
+                        {
+                            "path": "pages/docs/deployment/vercel.mdx",
+                            "name": "vercel.mdx",
+                            "meta": {},
+                            "title": "Vercel",
+                            "url": "/docs/deployment/vercel"
+                        }
+                    ],
+                    "size": null,
+                    "type": "directory"
+                },
+                {
                     "path": "pages/docs/getting-started",
                     "name": "getting-started",
                     "children": [
@@ -18,11 +40,18 @@
                             "url": "/docs/getting-started/configuration"
                         },
                         {
-                            "path": "pages/docs/getting-started/installation.mdx",
-                            "name": "installation.mdx",
+                            "path": "pages/docs/getting-started/introduction.mdx",
+                            "name": "introduction.mdx",
                             "meta": {},
-                            "title": "Installation",
-                            "url": "/docs/getting-started/installation"
+                            "title": "Introduction",
+                            "url": "/docs/getting-started/introduction"
+                        },
+                        {
+                            "path": "pages/docs/getting-started/supabase.mdx",
+                            "name": "supabase.mdx",
+                            "meta": {},
+                            "title": "Supabase",
+                            "url": "/docs/getting-started/supabase"
                         }
                     ],
                     "size": null,
@@ -32,7 +61,7 @@
                     "path": "pages/docs/index.mdx",
                     "name": "index.mdx",
                     "meta": {},
-                    "title": "Introduction",
+                    "title": "About",
                     "url": "/docs/"
                 }
             ],

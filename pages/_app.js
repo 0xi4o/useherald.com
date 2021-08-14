@@ -56,8 +56,16 @@ function MyApp({ Component, pageProps }) {
 					}
 					sidebarOrdering={{
 						docs: {
-							introduction: true,
-							'getting-started': false,
+							about: true,
+							'getting-started': {
+								introduction: true,
+								configuration: true,
+								supabase: true,
+							},
+							deployment: {
+								vercel: true,
+								netlify: true,
+							},
 						},
 					}}
 				>
