@@ -154,7 +154,7 @@ export default function Header() {
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
 								/>
-								<NextLink href='/docs' passHref={true}>
+								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'
 										colorScheme='brand'

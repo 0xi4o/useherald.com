@@ -13,6 +13,7 @@ import theme from '../theme';
 import Image from 'next/image';
 import React from 'react';
 import { AiFillGithub } from 'react-icons/ai';
+import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
 	const { pathname } = useRouter();

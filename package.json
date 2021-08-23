@@ -15,8 +15,19 @@
 		"@chakra-ui/react": "^1.4.2",
 		"@emotion/react": "^11.0.0",
 		"@emotion/styled": "^11.0.0",
+		"@supabase/supabase-js": "^1.20.0",
+		"@supabase/ui": "^0.32.0",
+		"@tiptap/extension-heading": "^2.0.0-beta.15",
+		"@tiptap/extension-image": "^2.0.0-beta.15",
+		"@tiptap/extension-link": "^2.0.0-beta.19",
+		"@tiptap/react": "^2.0.0-beta.55",
+		"@tiptap/starter-kit": "^2.0.0-beta.89",
+		"date-fns": "^2.23.0",
 		"dokz": "^2.0.7",
+		"formik": "^2.2.9",
 		"framer-motion": "^4.0.3",
+		"herald-widget": "^0.1.0",
+		"lodash.capitalize": "^4.2.1",
 		"next": "latest",
 		"next-seo": "^4.26.0",
 		"react": "^17.0.2",
@@ -30,6 +41,7 @@
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-react": "^7.24.0",
 		"husky": "^7.0.1",
+		"lerna": "^4.0.0",
 		"lint-staged": "^11.1.0",
 		"prettier": "2.3.2"
 	},
@@ -37,5 +49,8 @@
 		"*.js": "eslint --cache --fix",
 		"*.{js,css,md,mdx}": "prettier --write"
 	},
-	"license": "MIT"
+	"license": "MIT",
+	"workspaces": [
+		"packages/*"
+	]
 }
