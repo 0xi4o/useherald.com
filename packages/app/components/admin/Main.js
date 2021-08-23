@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import NextLink from 'next/link';
 import {
 	chakra,
@@ -11,46 +11,10 @@ import {
 } from '@chakra-ui/react';
 import { format, formatDistance } from 'date-fns';
 import capitalize from 'lodash.capitalize';
-import { supabase } from '../../lib/supabaseClient';
 import DefaultLayout from '../layouts/Default';
 
-export default function Main() {
-	const [changelogs, setChangelogs] = useState([]);
-	const [profile, setProfile] = useState(null);
-
-	useEffect(() => {
-		async function fetchChangelogs() {
-			const user = supabase.auth.user();
-
-			// Fetch changelogs where user is the author
-			const { data, error } = await supabase
-				.from('changelogs')
-				.select()
-				.match({ author: user.id })
-				.order('updated_at', { ascending: false });
-
-			if (data && data.length > 0) {
-				setChangelogs(data);
-			} else {
-				console.log(error);
-			}
-
-			// Fetch user's profile
-			const { data: profile, error: profileError } = await supabase
-				.from('profiles')
-				.select()
-				.match({ id: user.id })
-				.single();
-
-			if (profile) {
-				setProfile(profile);
-			} else {
-				console.log(profileError);
-			}
-		}
-
-		fetchChangelogs().then(() => {});
-	}, []);
+export default function Main(props) {
+	const { changelogs, profile } = props;
 
 	return (
 		<DefaultLayout>

@@ -16,12 +16,9 @@ import SettingsLayout from '../../../components/layouts/Settings';
 
 function Account() {
 	const [user, setUser] = useState(null);
-	const [avatarUrl, setAvatarUrl] = useState(null);
-	const [avatarUploading, setAvatarUploading] = useState(false);
 	const [logoUrl, setLogoUrl] = useState(null);
 	const [logoUploading, setLogoUploading] = useState(false);
 	const [profileSaving, setProfileSaving] = useState(false);
-	const avatarUploadInputRef = useRef(null);
 	const logoUploadInputRef = useRef(null);
 	const toast = useToast();
 
@@ -35,7 +32,6 @@ function Account() {
 
 			if (data) {
 				setUser(data);
-				setAvatarUrl(data?.avatar_url);
 				setLogoUrl(data?.company_logo);
 			} else {
 				console.log(error);
@@ -46,44 +42,8 @@ function Account() {
 		fetchUserProfile(user?.id).then(() => {});
 	}, []);
 
-	function toggleAvatarUpload() {
-		avatarUploadInputRef?.current?.click();
-	}
-
 	function toggleLogoUpload() {
 		logoUploadInputRef?.current?.click();
-	}
-
-	async function uploadAvatar(event) {
-		try {
-			setAvatarUploading(true);
-
-			if (!event.target.files || event.target.files.length === 0) {
-				new Error('You must select an image to upload.');
-			}
-
-			const file = event.target.files[0];
-			const filePath = `public/${user.id}/avatar/${file.name}`;
-
-			let { error } = await supabase.storage
-				.from('assets')
-				.upload(filePath, file);
-
-			if (error) {
-				throw error;
-			}
-
-			const { publicURL } = supabase.storage
-				.from('assets')
-				.getPublicUrl(filePath);
-
-			setAvatarUrl(publicURL);
-			await updateProfile({ avatar_url: publicURL });
-		} catch (error) {
-			alert(error.message);
-		} finally {
-			setAvatarUploading(false);
-		}
 	}
 
 	async function uploadLogo(event) {
@@ -143,8 +103,6 @@ function Account() {
 			<Skeleton w='full' isLoaded={user}>
 				<Formik
 					initialValues={{
-						name: user?.name || '',
-						email: user?.email || '',
 						company_name: user?.company_name || '',
 						company_logo: user?.company_logo || '',
 						website: user?.website || '',
@@ -157,70 +115,6 @@ function Account() {
 				>
 					{(formik) => (
 						<form onSubmit={formik.handleSubmit}>
-							<FormControl id='avatar' mb={8}>
-								<FormLabel>Avatar</FormLabel>
-								<Box
-									d='flex'
-									flexDirection='column'
-									alignItems='center'
-									justifyContent='center'
-									w='200px'
-									h='200px'
-									border={1}
-									borderStyle='solid'
-									borderColor='gray.300'
-									borderRadius='lg'
-								>
-									{avatarUrl ? (
-										<Image
-											borderRadius='full'
-											boxSize='96px'
-											src={avatarUrl}
-											alt={user?.name}
-										/>
-									) : (
-										<Avatar size='xl' />
-									)}
-									<Button
-										size='sm'
-										onClick={toggleAvatarUpload}
-										mt={4}
-										colorScheme='brand'
-										className='upload'
-										overflow='hidden'
-									>
-										{avatarUploading
-											? 'Uploading...'
-											: 'Upload'}
-									</Button>
-									<Input
-										onChange={uploadAvatar}
-										ref={avatarUploadInputRef}
-										type='file'
-										hidden={true}
-									/>
-								</Box>
-							</FormControl>
-							<FormControl id='name' mb={8}>
-								<FormLabel>Name</FormLabel>
-								<Input
-									onChange={formik.handleChange}
-									type='name'
-									w='full'
-									h={12}
-									value={formik.values.name}
-								/>
-							</FormControl>
-							<FormControl id='email' mb={8}>
-								<FormLabel>Email address</FormLabel>
-								<Input
-									onChange={formik.handleChange}
-									type='email'
-									w='full'
-									h={12}
-									value={formik.values.email}
-								/>
-							</FormControl>
 							<FormControl id='company_name' mb={8}>
 								<FormLabel>Company Name</FormLabel>
 								<Input

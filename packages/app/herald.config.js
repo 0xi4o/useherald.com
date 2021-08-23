@@ -1,5 +1,6 @@
 module.exports = {
 	author: '71900427-a160-4ed2-b13c-0af51c646878',
+	domain: 'http://localhost:3000',
 	name: 'Herald',
 	footerLinks: [],
 	logo: '/logo.png',

@@ -25,6 +25,11 @@ const SettingsLayout = (props) => (
 			>
 				<List spacing={2}>
 					<ListItem px={4} py={2}>
+						<NextLink href='/admin/settings/profile'>
+							Profile
+						</NextLink>
+					</ListItem>
+					<ListItem px={4} py={2}>
 						<NextLink href='/admin/settings/account'>
 							Account
 						</NextLink>

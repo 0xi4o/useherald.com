@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { supabase } from '../../lib/supabaseClient';
 import AuthLayout from '../../components/layouts/Auth';
+import config from '../../herald.config';
 
 const SignIn = () => {
 	const [alertObject, setAlertObject] = useState(null);
@@ -26,7 +27,7 @@ const SignIn = () => {
 		setLoading(true);
 		const { error } = await supabase.auth.signIn(
 			{ email, password },
-			{ redirectTo: 'http://localhost:3000/admin' }
+			{ redirectTo: `${config.domain}/admin` }
 		);
 
 		if (error) {
