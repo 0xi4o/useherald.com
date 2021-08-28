@@ -1,5 +1,5 @@
 {
-	"name": "herald-widget",
+	"name": "@herald/widget",
 	"version": "0.1.0",
 	"scripts": {
 		"dev": "vite",
@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.4.0",
+		"@rollup/plugin-dynamic-import-vars": "^1.4.0",
 		"packages": "^0.0.8",
 		"preact": "^10.5.13"
 	},

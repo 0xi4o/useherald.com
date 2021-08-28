@@ -15,8 +15,8 @@ import {
 	Text,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import { supabase } from '../../lib/supabaseClient';
-import AuthLayout from '../../components/app/layouts/Auth';
+import { supabase } from '../lib/supabaseClient';
+import AuthLayout from '../components/layouts/Auth';
 
 const SignUp = () => {
 	const [alertObject, setAlertObject] = useState(null);

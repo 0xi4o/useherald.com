@@ -13,9 +13,9 @@ import {
 	Heading,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import { supabase } from '../../../lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient';
 import AuthLayout from '../layouts/Auth';
-import config from '../../../herald.config';
+import config from '../../herald.config';
 
 const SignIn = () => {
 	const [alertObject, setAlertObject] = useState(null);

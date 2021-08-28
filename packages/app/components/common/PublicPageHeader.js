@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import { chakra, Flex, Link, useColorModeValue } from '@chakra-ui/react';
 import { FaExternalLinkSquareAlt } from 'react-icons/fa';
-import config from '../../../herald.config';
+import config from '../../herald.config';
 
 function PublicPageHeader() {
 	return (

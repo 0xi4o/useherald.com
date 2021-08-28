@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { chakra, Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
-import { supabase } from '../packages/app/lib/supabaseClient';
-import config from 'herald-app/herald.config';
-import TimelineLayout from '../packages/app/components/layouts/Timeline';
+import { supabase } from '../lib/supabaseClient';
+import config from '../herald.config';
+import TimelineLayout from '../components/layouts/Timeline';
 import { format, formatDistance } from 'date-fns';
 
 function Home(props) {

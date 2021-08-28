@@ -1,5 +1,5 @@
 import { h, render } from 'preact';
-import Herald from './herald';
+// import Herald from './herald';
 import Widget from './widget';
 import './global.css';
 
@@ -14,6 +14,6 @@ function init(id, wrapper = '#heraldWidget') {
 	render(h(Widget, { id }), renderElement);
 }
 
-export { Herald, init };
+export { init };
 
 window.init = init;

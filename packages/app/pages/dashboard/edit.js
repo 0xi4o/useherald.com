@@ -14,8 +14,8 @@ import Heading from '@tiptap/extension-heading';
 import Link from '@tiptap/extension-link';
 import { FaChevronLeft } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
-import DefaultLayout from '../../components/app/layouts/Default';
-import ChangelogEditor from '../../components/app/admin/ChangelogEditor';
+import DefaultLayout from '../../components/layouts/Default';
+import ChangelogEditor from '../../components/admin/ChangelogEditor';
 import { saveChangelog, publishChangelog } from '../../lib/utils';
 
 function Edit() {

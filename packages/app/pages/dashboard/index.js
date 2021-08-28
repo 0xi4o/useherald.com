@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import Main from '../../components/app/admin/Main';
-import SignIn from '../../components/app/admin/SignIn';
+import Main from '../../components/admin/Main';
+import SignIn from '../../components/admin/SignIn';
 
 const Admin = () => {
 	const [session, setSession] = useState(null);

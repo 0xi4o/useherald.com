@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { supabase } from '../../../lib/supabaseClient';
-import SettingsLayout from '../../../components/app/layouts/Settings';
+import SettingsLayout from '../../../components/layouts/Settings';
 
 function Account() {
 	const [user, setUser] = useState(null);

@@ -17,9 +17,10 @@ import {
 	useColorMode,
 	useColorModeValue,
 } from '@chakra-ui/react';
+// import { Herald } from '@herald/widget';
 import { FaMoon, FaSun } from 'react-icons/fa';
-import { supabase } from '../../../lib/supabaseClient';
-import config from '../../../herald.config';
+import { supabase } from '../../lib/supabaseClient';
+import config from '../../herald.config';
 
 const Header = () => {
 	const router = useRouter();

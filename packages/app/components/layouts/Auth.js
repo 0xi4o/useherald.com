@@ -2,7 +2,7 @@ import { chakra, useColorModeValue } from '@chakra-ui/react';
 import { Container } from '../common';
 import React from 'react';
 import Image from 'next/image';
-import config from '../../../herald.config';
+import config from '../../herald.config';
 
 const AuthLayout = (props) => (
 	<Container height='auto' minH='100vh'>

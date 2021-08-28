@@ -1,3 +1,4 @@
+import { Fragment } from 'preact';
 import { useEffect } from 'preact/hooks';
 
 export default function Widget() {
@@ -10,7 +11,7 @@ export default function Widget() {
 	}, []);
 
 	return (
-		<>
+		<Fragment>
 			<p>Hello Vite + Preact!</p>
 			<p>
 				<a
@@ -22,6 +23,6 @@ export default function Widget() {
 					Learn Preact
 				</a>
 			</p>
-		</>
+		</Fragment>
 	);
 }

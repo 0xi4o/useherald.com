@@ -6,8 +6,8 @@ import StarterKit from '@tiptap/starter-kit';
 import Heading from '@tiptap/extension-heading';
 import Link from '@tiptap/extension-link';
 import { FaChevronLeft } from 'react-icons/fa';
-import DefaultLayout from '../../components/app/layouts/Default';
-import ChangelogEditor from '../../components/app/admin/ChangelogEditor';
+import DefaultLayout from '../../components/layouts/Default';
+import ChangelogEditor from '../../components/admin/ChangelogEditor';
 import { publishChangelog, saveChangelog } from '../../lib/utils';
 
 function New() {
