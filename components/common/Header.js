@@ -15,6 +15,7 @@ import {
 	useColorMode,
 	Icon,
 } from '@chakra-ui/react';
+import { Herald } from '@herald/widget';
 import {
 	AiFillGithub,
 	AiFillHome,
@@ -83,7 +84,6 @@ export default function Header() {
 				bg={bg}
 				w='full'
 				h='6rem'
-				overflowY='hidden'
 				flexDirection='column'
 			>
 				<chakra.div
@@ -154,6 +154,7 @@ export default function Header() {
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
 								/>
+								<Herald />
 								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'
