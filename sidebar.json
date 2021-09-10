@@ -10,21 +10,6 @@
             "type": "directory"
         },
         {
-            "path": "pages/app",
-            "name": "app",
-            "children": [
-                {
-                    "path": "pages/app/settings",
-                    "name": "settings",
-                    "children": [],
-                    "size": 0,
-                    "type": "directory"
-                }
-            ],
-            "size": 0,
-            "type": "directory"
-        },
-        {
             "path": "pages/docs",
             "name": "docs",
             "children": [
