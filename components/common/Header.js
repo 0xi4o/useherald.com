@@ -23,7 +23,7 @@ import {
 	AiOutlineMenu,
 } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaBell, FaMoon, FaSun } from 'react-icons/fa';
 
 export default function Header() {
 	const { toggleColorMode: toggleMode } = useColorMode();
@@ -154,7 +154,7 @@ export default function Header() {
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
 								/>
-								<Herald />
+								<Herald icon={<FaBell />} />
 								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'
