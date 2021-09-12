@@ -138,9 +138,9 @@ export default function Header() {
 									<Icon
 										as={AiFillGithub}
 										display='block'
+										size='md'
+										fontSize='lg'
 										transition='color 0.2s'
-										w='5'
-										h='5'
 										_hover={{ color: 'gray.600' }}
 									/>
 								</Link>
@@ -150,9 +150,10 @@ export default function Header() {
 									aria-label={`Switch to ${text} mode`}
 									variant='ghost'
 									color='current'
-									ml={{ base: '0', md: '3' }}
 									onClick={toggleMode}
 									icon={<SwitchIcon />}
+									transition='color 0.2s'
+									_hover={{ color: 'gray.600' }}
 								/>
 								<Herald icon={<FaBell />} />
 								<NextLink href='/app' passHref={true}>
