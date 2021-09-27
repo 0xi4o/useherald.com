@@ -7,6 +7,7 @@ import {
 	Box,
 	FormControl,
 	FormLabel,
+	Link,
 	Input,
 	Stack,
 	Button,
@@ -111,11 +112,9 @@ const SignIn = () => {
 				</Box>
 				<chakra.span>
 					New here?{' '}
-					<NextLink href='/signup'>
-						<chakra.a color='brand.200'>
-							Create a new account
-						</chakra.a>
-					</NextLink>
+					<Link color='brand.200'>
+						<NextLink href='/signup'>Create a new account</NextLink>
+					</Link>
 					.
 				</chakra.span>
 			</Stack>
