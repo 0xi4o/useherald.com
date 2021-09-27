@@ -1,8 +1,11 @@
 const withPlugins = require('next-compose-plugins');
 const withTm = require('next-transpile-modules')(['@herald/widget']);
-const { withDokz } = require('dokz/dist/plugin');
+const withNextra = require('nextra')({
+	theme: 'nextra-theme-docs',
+	themeConfig: './theme.config.js',
+});
 
-module.exports = withPlugins([withDokz, withTm], {
+module.exports = withPlugins([withNextra, withTm], {
 	images: {
 		domains: ['useherald.com'],
 	},
