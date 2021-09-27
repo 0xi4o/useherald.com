@@ -132,7 +132,7 @@ export default function Header() {
 							>
 								<Link
 									isExternal
-									aria-label='Go to Choc UI GitHub page'
+									aria-label='Go to Herald GitHub page'
 									href='https://github.com/opencatalysts/herald'
 								>
 									<Icon
