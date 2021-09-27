@@ -1,23 +1,23 @@
 {
-	"path": "pages",
-	"name": "pages",
-	"children": [
-		{
-			"path": "pages/dashboard",
-			"name": "dashboard",
-			"children": [
-				{
-					"path": "pages/dashboard/settings",
-					"name": "settings",
-					"children": [],
-					"size": 0,
-					"type": "directory"
-				}
-			],
-			"size": 0,
-			"type": "directory"
-		}
-	],
-	"size": 0,
-	"type": "directory"
+    "path": "pages",
+    "name": "pages",
+    "children": [
+        {
+            "path": "pages/dashboard",
+            "name": "dashboard",
+            "children": [
+                {
+                    "path": "pages/dashboard/settings",
+                    "name": "settings",
+                    "children": [],
+                    "size": 0,
+                    "type": "directory"
+                }
+            ],
+            "size": 0,
+            "type": "directory"
+        }
+    ],
+    "size": 0,
+    "type": "directory"
 }
