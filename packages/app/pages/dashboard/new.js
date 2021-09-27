@@ -51,7 +51,7 @@ function New() {
 				spacing={8}
 			>
 				<chakra.a>
-					<NextLink href='/app'>
+					<NextLink href='/dashboard'>
 						<Button
 							variant='outline'
 							borderWidth={1}

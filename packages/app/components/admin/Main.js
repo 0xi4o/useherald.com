@@ -20,7 +20,7 @@ export default function Main(props) {
 		<DefaultLayout>
 			<VStack py={8} w='full' spacing={8}>
 				<Box w='full' mb={4}>
-					<NextLink href='/app/new'>
+					<NextLink href='/dashboard/new'>
 						<Button px={8} py={6} colorScheme='brand'>
 							Add Update
 						</Button>
@@ -43,7 +43,7 @@ export default function Main(props) {
 									>
 										<Text color='brand.200'>
 											<NextLink
-												href={`/app/edit?id=${changelog.id}`}
+												href={`/dashboard/edit?id=${changelog.id}`}
 											>
 												Edit
 											</NextLink>

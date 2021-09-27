@@ -40,7 +40,7 @@ const Header = () => {
 			setSession(session);
 
 			if (!session) {
-				router.replace('/app').then(() => {});
+				router.replace('/dashboard').then(() => {});
 			}
 		});
 	}, []);
@@ -76,7 +76,7 @@ const Header = () => {
 						justifyContent='space-between'
 					>
 						<Flex align='flex-start'>
-							<NextLink href='/app'>
+							<NextLink href='/dashboard'>
 								<chakra.a
 									d='flex'
 									alignItems='center'
@@ -142,7 +142,7 @@ const Header = () => {
 										</MenuButton>
 										<MenuList>
 											<MenuItem>
-												<NextLink href='/app/settings/profile'>
+												<NextLink href='/dashboard/settings/profile'>
 													Settings
 												</NextLink>
 											</MenuItem>
