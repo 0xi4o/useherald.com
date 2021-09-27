@@ -117,7 +117,7 @@ const SignUp = () => {
 				<chakra.span>
 					Already have an account?{' '}
 					<Link color='brand.200'>
-						<NextLink href='/app'>Sign In</NextLink>
+						<NextLink href='/dashboard'>Sign In</NextLink>
 					</Link>
 					.
 				</chakra.span>
