@@ -26,11 +26,11 @@ export default function Main(props) {
 						</Button>
 					</NextLink>
 				</Box>
-				<VStack w='full' spacing={5}>
+				<VStack w='full' spacing={8}>
 					{changelogs.map((changelog) => {
 						return (
 							<Fragment key={changelog.id}>
-								<Box w='full' mb={4}>
+								<Box w='full'>
 									<Heading as='h2' mb={4}>
 										{changelog.title}
 									</Heading>
@@ -80,7 +80,7 @@ export default function Main(props) {
 										}}
 									/>
 								</Box>
-								<Divider mb={4} />
+								<Divider />
 							</Fragment>
 						);
 					})}
