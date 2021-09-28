@@ -5,7 +5,6 @@ import {
 	AlertDescription,
 	Box,
 	FormControl,
-	FormErrorMessage,
 	FormLabel,
 	Input,
 	Stack,
@@ -13,7 +12,7 @@ import {
 	Heading,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import { supabase } from '../../lib/supabaseClient';
 import AuthLayout from '../layouts/Auth';
 import config from '../../herald.config';
@@ -76,13 +75,10 @@ const Auth = () => {
 								onSubmit={formik.handleSubmit}
 							>
 								<FormControl>
-									<FormLabel htmlFor='email'>
-										Email address
-									</FormLabel>
+									<FormLabel>Email address</FormLabel>
 									<Input
 										onChange={formik.handleChange}
 										h={12}
-										id='email'
 										type='email'
 										value={formik.values.email}
 									/>
