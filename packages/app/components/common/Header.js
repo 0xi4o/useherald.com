@@ -21,11 +21,13 @@ import {
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
 import config from '../../herald.config';
+import { fetchUserProfile } from '../../lib/utils';
 
 const Header = () => {
 	const router = useRouter();
 	const [session, setSession] = useState(null);
 	const [user, setUser] = useState(null);
+	const [avatarUrl, setAvatarUrl] = useState(null);
 	const { toggleColorMode: toggleMode } = useColorMode();
 	const text = useColorModeValue('dark', 'light');
 	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
@@ -33,8 +35,16 @@ const Header = () => {
 	const ref = useRef();
 
 	useEffect(() => {
+		const user = supabase.auth.user();
 		setSession(supabase.auth.session());
-		setUser(supabase.auth.user());
+		setUser(user);
+		fetchUserProfile(user?.id)
+			.then((res) => {
+				setAvatarUrl(res?.data?.avatar_url);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		supabase.auth.onAuthStateChange((event, session) => {
 			setSession(session);
@@ -135,9 +145,9 @@ const Header = () => {
 											_focus={{ bg: 'transparent' }}
 										>
 											<Avatar
-												size='md'
+												size='sm'
 												name='Ilango Rajagopal'
-												src='https://bit.ly/tioluwani-kolawole'
+												src={avatarUrl}
 											/>
 										</MenuButton>
 										<MenuList>

@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 
-async function saveChangelog(title, content, changelog, setChangelog) {
+export async function saveChangelog(title, content, changelog, setChangelog) {
 	if (changelog) {
 		// update existing record with latest content
 		const update = { title, content, status: 'draft' };
@@ -32,7 +32,12 @@ async function saveChangelog(title, content, changelog, setChangelog) {
 	}
 }
 
-async function publishChangelog(title, content, changelog, setChangelog) {
+export async function publishChangelog(
+	title,
+	content,
+	changelog,
+	setChangelog
+) {
 	if (changelog) {
 		// update existing record with latest content
 		const update = { title, content, status: 'live' };
@@ -69,4 +74,6 @@ async function publishChangelog(title, content, changelog, setChangelog) {
 	}
 }
 
-export { saveChangelog, publishChangelog };
+export async function fetchUserProfile(id) {
+	return await supabase.from('profiles').select().match({ id }).single();
+}
