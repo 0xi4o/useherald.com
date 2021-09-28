@@ -19,6 +19,7 @@
 		"@tiptap/extension-link": "^2.0.0-beta.19",
 		"@tiptap/react": "^2.0.0-beta.55",
 		"@tiptap/starter-kit": "^2.0.0-beta.89",
+		"cors": "^2.8.5",
 		"date-fns": "^2.23.0",
 		"formik": "^2.2.9",
 		"framer-motion": "^4",

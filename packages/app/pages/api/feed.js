@@ -1,4 +1,5 @@
 import nc from 'next-connect';
+import Cors from 'cors';
 import { supabase } from '../../lib/supabaseClient';
 
 async function changelogFeed(req, res) {
@@ -17,4 +18,6 @@ async function changelogFeed(req, res) {
 	}
 }
 
-export default nc({ attachParams: true }).get(changelogFeed);
+export default nc({ attachParams: true })
+	.use(Cors({ origin: true }))
+	.get(changelogFeed);
