@@ -155,7 +155,10 @@ export default function Header() {
 									transition='color 0.2s'
 									_hover={{ color: 'gray.600' }}
 								/>
-								<Herald icon={<FaBell />} />
+								<Herald
+									icon={<FaBell />}
+									userId='71900427-a160-4ed2-b13c-0af51c646878'
+								/>
 								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'
