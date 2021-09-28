@@ -17,7 +17,7 @@ import {
 	useColorMode,
 	useColorModeValue,
 } from '@chakra-ui/react';
-// import { Herald } from '@herald/widget';
+// import { Herald } from '@useherald/react-widget';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
 import { fetchUserProfile } from '../../lib/utils';
