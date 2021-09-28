@@ -16,10 +16,12 @@ function Changelog(props) {
 							className='flex items-center p-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
 						>
 							<div className='ml-4'>
-								<p className='text-sm font-medium text-gray-900'>
+								<p className='text-md font-medium text-gray-900 mb-2'>
 									{item.title}
 								</p>
-								<p className='text-sm text-gray-500' dangerouslySetInnerHTML={{ __html: item.content }} />
+								<p className='text-xs text-gray-500'>
+									{item.published_at}
+								</p>
 							</div>
 						</a>
 					)) :
