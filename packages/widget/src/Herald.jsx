@@ -30,7 +30,7 @@ function Changelog(props) {
 }
 
 function Herald(props) {
-	const { feed, isLoading } = useChangelogFeed(props?.userId);
+	const { feed, isLoading } = useChangelogFeed(props?.baseUrl, props?.userId);
 
 	return (
 		<Popover className='relative'>

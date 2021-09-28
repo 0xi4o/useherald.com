@@ -1,9 +1,9 @@
 import useSWR from 'swr';
 import { fetcher } from './utils';
 
-export function useChangelogFeed(userId) {
+export function useChangelogFeed(baseUrl, userId) {
 	const { data, error } = useSWR(
-		`http://localhost:3001/api/feed?userId=${userId}`,
+		`${baseUrl}/api/feed?userId=${userId}`,
 		fetcher
 	);
 
