@@ -115,7 +115,7 @@ function Account() {
 				>
 					{(formik) => (
 						<form onSubmit={formik.handleSubmit}>
-							<FormControl id='company_name' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Company Name</FormLabel>
 								<Input
 									onChange={formik.handleChange}
@@ -125,7 +125,7 @@ function Account() {
 									value={formik.values.company_name}
 								/>
 							</FormControl>
-							<FormControl id='company_logo' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Company Logo</FormLabel>
 								<Box
 									d='flex'
@@ -169,7 +169,7 @@ function Account() {
 									/>
 								</Box>
 							</FormControl>
-							<FormControl id='website' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Company Website</FormLabel>
 								<Input
 									onChange={formik.handleChange}
@@ -179,7 +179,7 @@ function Account() {
 									value={formik.values.website}
 								/>
 							</FormControl>
-							<FormControl id='submit' mb={8}>
+							<FormControl mb={8}>
 								<Button
 									colorScheme='brand'
 									size='lg'
