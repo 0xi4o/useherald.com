@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 import { chakra, Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
 import { supabase } from '../lib/supabaseClient';
-import config from '../herald.config';
 import TimelineLayout from '../components/layouts/Timeline';
 import { format, formatDistance } from 'date-fns';
 
@@ -16,7 +15,7 @@ function Home(props) {
 					rel='icon'
 					type='image/png'
 					sizes='32x32'
-					href={config.logoIcon}
+					href='/logo.png'
 				/>
 			</Head>
 			<TimelineLayout>
@@ -74,7 +73,7 @@ export async function getServerSideProps() {
 	const { data: changelogs, error } = await supabase
 		.from('changelogs')
 		.select()
-		.match({ author: config.author })
+		.match({ author: '71900427-a160-4ed2-b13c-0af51c646878' })
 		.order('updated_at', { ascending: false });
 
 	if (changelogs && changelogs.length > 0) {

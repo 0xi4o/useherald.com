@@ -2,7 +2,6 @@ import { chakra, useColorModeValue } from '@chakra-ui/react';
 import { Container } from '../common';
 import React from 'react';
 import Image from 'next/image';
-import config from '../../herald.config';
 
 const AuthLayout = (props) => (
 	<Container height='auto' minH='100vh'>
@@ -36,7 +35,7 @@ const AuthLayout = (props) => (
 				target='_blank'
 				rel='noopener noreferrer'
 			>
-				<Image src={config.logo} width={16} height={16} />
+				<Image src='/logo.png' width={16} height={16} />
 			</chakra.a>
 		</chakra.footer>
 	</Container>

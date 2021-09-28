@@ -15,7 +15,6 @@ import {
 import { Formik } from 'formik';
 import { supabase } from '../../lib/supabaseClient';
 import AuthLayout from '../layouts/Auth';
-import config from '../../herald.config';
 
 const Auth = () => {
 	const [alertObject, setAlertObject] = useState(null);
@@ -25,7 +24,7 @@ const Auth = () => {
 		setLoading(true);
 		const { error } = await supabase.auth.signIn(
 			{ email },
-			{ redirectTo: `${config.domain}/dashboard` }
+			{ redirectTo: '/dashboard' }
 		);
 
 		if (error) {

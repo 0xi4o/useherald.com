@@ -20,7 +20,6 @@ import {
 // import { Herald } from '@herald/widget';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
-import config from '../../herald.config';
 import { fetchUserProfile } from '../../lib/utils';
 
 const Header = () => {
@@ -94,7 +93,7 @@ const Header = () => {
 									cursor='pointer'
 								>
 									<Image
-										src={config.logo}
+										src='/logo.png'
 										width={40}
 										height={40}
 									/>
@@ -110,7 +109,7 @@ const Header = () => {
 										alignItems='center'
 										justifyContent='flex-start'
 									>
-										{config.name}
+										Herald
 									</chakra.span>
 								</chakra.a>
 							</NextLink>
