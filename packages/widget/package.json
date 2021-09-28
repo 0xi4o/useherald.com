@@ -1,5 +1,5 @@
 {
-	"name": "@herald/react-widget",
+	"name": "@useherald/react-widget",
 	"version": "0.1.0",
 	"scripts": {
 		"dev": "vite",
