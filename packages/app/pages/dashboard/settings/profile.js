@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { supabase } from '../../../lib/supabaseClient';
+import { fetchUserProfile } from '../../../lib/utils';
 import SettingsLayout from '../../../components/layouts/Settings';
 
 function Profile() {
@@ -23,23 +24,15 @@ function Profile() {
 	const toast = useToast();
 
 	useEffect(() => {
-		async function fetchUserProfile(id) {
-			const { data, error } = await supabase
-				.from('profiles')
-				.select()
-				.match({ id })
-				.single();
-
-			if (data) {
+		const user = supabase.auth.user();
+		fetchUserProfile(user?.id)
+			.then((data) => {
 				setUser(data);
 				setAvatarUrl(data?.avatar_url);
-			} else {
+			})
+			.catch((error) => {
 				console.log(error);
-			}
-		}
-
-		const user = supabase.auth.user();
-		fetchUserProfile(user?.id).then(() => {});
+			});
 	}, []);
 
 	function toggleAvatarUpload() {
@@ -114,7 +107,7 @@ function Profile() {
 				>
 					{(formik) => (
 						<form onSubmit={formik.handleSubmit}>
-							<FormControl id='avatar' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Avatar</FormLabel>
 								<Box
 									d='flex'
@@ -158,7 +151,7 @@ function Profile() {
 									/>
 								</Box>
 							</FormControl>
-							<FormControl id='name' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Name</FormLabel>
 								<Input
 									onChange={formik.handleChange}
@@ -168,7 +161,7 @@ function Profile() {
 									value={formik.values.name}
 								/>
 							</FormControl>
-							<FormControl id='email' mb={8}>
+							<FormControl mb={8}>
 								<FormLabel>Email address</FormLabel>
 								<Input
 									onChange={formik.handleChange}
@@ -178,7 +171,7 @@ function Profile() {
 									value={formik.values.email}
 								/>
 							</FormControl>
-							<FormControl id='submit' mb={8}>
+							<FormControl mb={8}>
 								<Button
 									colorScheme='brand'
 									size='lg'

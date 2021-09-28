@@ -90,7 +90,7 @@ function Edit() {
 			isClosable: true,
 			position: 'top-right',
 		});
-		await router.push('/app');
+		await router.push('/dashboard');
 	}
 
 	return (
@@ -104,7 +104,7 @@ function Edit() {
 				spacing={8}
 			>
 				<chakra.a>
-					<NextLink href='/app'>
+					<NextLink href='/dashboard'>
 						<Button
 							variant='outline'
 							borderWidth={1}

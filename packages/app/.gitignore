@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+sidebar.json
 
 # debug
 npm-debug.log*

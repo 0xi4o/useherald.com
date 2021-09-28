@@ -1,26 +1,38 @@
+import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
+import {useChangelogFeed} from "../lib/hooks";
+
+function Changelog(props) {
+	const { feed } = props;
+
+	return (
+		<div className='relative grid gap-0 divide-y divide-gray-100 bg-white p-0'>
+			{
+				feed ?
+					feed.map((item) => (
+						<a
+							key={item.name}
+							href={item.href}
+							className='flex items-center p-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
+						>
+							<div className='ml-4'>
+								<p className='text-md font-medium text-gray-900 mb-2'>
+									{item.title}
+								</p>
+								<p className='text-xs text-gray-500'>
+									{item.published_at}
+								</p>
+							</div>
+						</a>
+					)) :
+					<span>Error!</span>
+			}
+		</div>
+	)
+}
 
 function Herald(props) {
-	const [count, setCount] = useState(0);
-
-	const solutions = [
-		{
-			name: 'Insights',
-			description: 'Measure actions your users take',
-			href: '##'
-		},
-		{
-			name: 'Automations',
-			description: 'Create your own targeted content',
-			href: '##'
-		},
-		{
-			name: 'Reports',
-			description: 'Keep track of your growth',
-			href: '##'
-		},
-	];
+	const { feed, isLoading } = useChangelogFeed(props?.baseUrl, props?.userId);
 
 	return (
 		<Popover className='relative'>
@@ -34,7 +46,6 @@ function Herald(props) {
 						{props.icon || props.text}
 					</Popover.Button>
 					<Transition
-						show={true}
 						as={Fragment}
 						enter='transition ease-out duration-200'
 						enterFrom='opacity-0 translate-y-1'
@@ -43,26 +54,13 @@ function Herald(props) {
 						leaveFrom='opacity-100 translate-y-0'
 						leaveTo='opacity-0 translate-y-1'
 					>
-						<Popover.Panel className='absolute z-10 w-72 px-4 mt-3 transform -translate-x-3/4 left-3/4 sm:px-0'>
+						<Popover.Panel className='absolute z-10 w-80 px-4 mt-3 transform translate-x-0 right-0 sm:px-0'>
 							<div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
-								<div className='relative grid gap-0 divide-y divide-gray-100 bg-white p-0'>
-									{solutions.map((item) => (
-										<a
-											key={item.name}
-											href={item.href}
-											className='flex items-center p-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
-										>
-											<div className='ml-4'>
-												<p className='text-sm font-medium text-gray-900'>
-													{item.name}
-												</p>
-												<p className='text-sm text-gray-500'>
-													{item.description}
-												</p>
-											</div>
-										</a>
-									))}
-								</div>
+								{
+									isLoading && !feed ?
+										<span>Loading...</span> :
+										<Changelog feed={feed} />
+								}
 								<div className='p-0 bg-gray-50'>
 									<a
 										href='https://useherald.com'

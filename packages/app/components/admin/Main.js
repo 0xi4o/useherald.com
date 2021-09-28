@@ -20,17 +20,17 @@ export default function Main(props) {
 		<DefaultLayout>
 			<VStack py={8} w='full' spacing={8}>
 				<Box w='full' mb={4}>
-					<NextLink href='/app/new'>
+					<NextLink href='/dashboard/new'>
 						<Button px={8} py={6} colorScheme='brand'>
 							Add Update
 						</Button>
 					</NextLink>
 				</Box>
-				<VStack w='full' spacing={5}>
+				<VStack w='full' spacing={8}>
 					{changelogs.map((changelog) => {
 						return (
 							<Fragment key={changelog.id}>
-								<Box w='full' mb={4}>
+								<Box w='full'>
 									<Heading as='h2' mb={4}>
 										{changelog.title}
 									</Heading>
@@ -43,7 +43,7 @@ export default function Main(props) {
 									>
 										<Text color='brand.200'>
 											<NextLink
-												href={`/app/edit?id=${changelog.id}`}
+												href={`/dashboard/edit?id=${changelog.id}`}
 											>
 												Edit
 											</NextLink>
@@ -80,7 +80,7 @@ export default function Main(props) {
 										}}
 									/>
 								</Box>
-								<Divider mb={4} />
+								<Divider />
 							</Fragment>
 						);
 					})}

@@ -28,7 +28,7 @@ const Hero = () => {
 					fontSize={{ md: 'lg' }}
 					lineHeight='tall'
 				>
-					Herald is a changelog-as-a-service application to announce
+					Herald is a updates-as-a-service application to announce
 					product updates to increase feature adoption, user
 					satisfaction and grow revenue faster.
 				</chakra.p>

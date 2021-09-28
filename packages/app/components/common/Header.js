@@ -17,15 +17,16 @@ import {
 	useColorMode,
 	useColorModeValue,
 } from '@chakra-ui/react';
-// import { Herald } from '@herald/widget';
+// import { Herald } from '@useherald/react-widget';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { supabase } from '../../lib/supabaseClient';
-import config from '../../herald.config';
+import { fetchUserProfile } from '../../lib/utils';
 
 const Header = () => {
 	const router = useRouter();
 	const [session, setSession] = useState(null);
 	const [user, setUser] = useState(null);
+	const [avatarUrl, setAvatarUrl] = useState(null);
 	const { toggleColorMode: toggleMode } = useColorMode();
 	const text = useColorModeValue('dark', 'light');
 	const SwitchIcon = useColorModeValue(FaMoon, FaSun);
@@ -33,14 +34,22 @@ const Header = () => {
 	const ref = useRef();
 
 	useEffect(() => {
+		const user = supabase.auth.user();
 		setSession(supabase.auth.session());
-		setUser(supabase.auth.user());
+		setUser(user);
+		fetchUserProfile(user?.id)
+			.then((res) => {
+				setAvatarUrl(res?.data?.avatar_url);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		supabase.auth.onAuthStateChange((event, session) => {
 			setSession(session);
 
 			if (!session) {
-				router.replace('/app').then(() => {});
+				router.replace('/dashboard').then(() => {});
 			}
 		});
 	}, []);
@@ -76,7 +85,7 @@ const Header = () => {
 						justifyContent='space-between'
 					>
 						<Flex align='flex-start'>
-							<NextLink href='/app'>
+							<NextLink href='/dashboard'>
 								<chakra.a
 									d='flex'
 									alignItems='center'
@@ -84,7 +93,7 @@ const Header = () => {
 									cursor='pointer'
 								>
 									<Image
-										src={config.logo}
+										src='/logo.png'
 										width={40}
 										height={40}
 									/>
@@ -100,7 +109,7 @@ const Header = () => {
 										alignItems='center'
 										justifyContent='flex-start'
 									>
-										{config.name}
+										Herald
 									</chakra.span>
 								</chakra.a>
 							</NextLink>
@@ -135,14 +144,14 @@ const Header = () => {
 											_focus={{ bg: 'transparent' }}
 										>
 											<Avatar
-												size='md'
+												size='sm'
 												name='Ilango Rajagopal'
-												src='https://bit.ly/tioluwani-kolawole'
+												src={avatarUrl}
 											/>
 										</MenuButton>
 										<MenuList>
 											<MenuItem>
-												<NextLink href='/app/settings/profile'>
+												<NextLink href='/dashboard/settings/profile'>
 													Settings
 												</NextLink>
 											</MenuItem>

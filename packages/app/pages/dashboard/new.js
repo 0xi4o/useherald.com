@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { chakra, Button, useColorModeValue, VStack } from '@chakra-ui/react';
+import {
+	chakra,
+	Button,
+	VStack,
+	useColorModeValue,
+	useToast,
+} from '@chakra-ui/react';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Heading from '@tiptap/extension-heading';
@@ -11,6 +18,7 @@ import ChangelogEditor from '../../components/admin/ChangelogEditor';
 import { publishChangelog, saveChangelog } from '../../lib/utils';
 
 function New() {
+	const router = useRouter();
 	const [changelog, setChangelog] = useState(null);
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
@@ -31,13 +39,29 @@ function New() {
 			setContent(html);
 		},
 	});
+	const toast = useToast();
 
 	async function saveHandler() {
 		await saveChangelog(title, content, changelog, setChangelog);
+		toast({
+			title: 'Saved!',
+			status: 'success',
+			duration: 3000,
+			isClosable: true,
+			position: 'top-right',
+		});
 	}
 
 	async function publishHandler() {
 		await publishChangelog(title, content, changelog, setChangelog);
+		toast({
+			title: 'Published!',
+			status: 'success',
+			duration: 3000,
+			isClosable: true,
+			position: 'top-right',
+		});
+		await router.push('/dashboard');
 	}
 
 	return (
@@ -51,7 +75,7 @@ function New() {
 				spacing={8}
 			>
 				<chakra.a>
-					<NextLink href='/app'>
+					<NextLink href='/dashboard'>
 						<Button
 							variant='outline'
 							borderWidth={1}
