@@ -15,7 +15,7 @@
 		"@chakra-ui/react": "^1.4.2",
 		"@emotion/react": "^11.0.0",
 		"@emotion/styled": "^11.0.0",
-		"@useherald/react-widget": "0.4.0",
+		"@useherald/react-widget": "^0.4.0",
 		"dokz": "^2.0.7",
 		"framer-motion": "^4.0.3",
 		"next": "latest",
