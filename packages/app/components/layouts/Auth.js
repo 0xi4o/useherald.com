@@ -35,7 +35,12 @@ const AuthLayout = (props) => (
 				target='_blank'
 				rel='noopener noreferrer'
 			>
-				<Image src='/logo.png' width={16} height={16} />
+				<Image
+					src='/logo.png'
+					width={16}
+					height={16}
+					alt='Herald Logo'
+				/>
 			</chakra.a>
 		</chakra.footer>
 	</Container>

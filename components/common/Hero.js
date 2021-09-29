@@ -20,7 +20,7 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					Simple, open-source platform to announce product updates
+					The easiest way to show updates and banners
 				</chakra.h1>
 				<chakra.p
 					mb={5}
@@ -29,8 +29,8 @@ const Hero = () => {
 					lineHeight='tall'
 				>
 					Herald is a updates-as-a-service application to announce
-					product updates to increase feature adoption, user
-					satisfaction and grow revenue faster.
+					product updates, feature releases, and banners to increase
+					feature adoption, user satisfaction and grow revenue faster.
 				</chakra.p>
 				<HStack spacing={4}>
 					<NextLink href='/docs' passHref={true}>

@@ -35,7 +35,12 @@ function PublicPageHeader() {
 								justifyContent='center'
 								cursor='pointer'
 							>
-								<Image src='/logo.png' width={40} height={40} />
+								<Image
+									src='/logo.png'
+									width={40}
+									height={40}
+									alt='Logo'
+								/>
 								<chakra.span
 									fontSize='xl'
 									fontWeight='bold'

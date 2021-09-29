@@ -1,0 +1,6 @@
+lib/
+node_modules/
+src/
+postcss.config.js
+tailwind.config.js
+vite.config.js

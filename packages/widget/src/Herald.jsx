@@ -1,30 +1,46 @@
 import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
+import { formatDistance } from "date-fns";
 import {useChangelogFeed} from "../lib/hooks";
+import { getColorForType } from "../lib/utils";
+import {htmlToText} from "html-to-text";
+import truncate from 'lodash.truncate';
 
 function Changelog(props) {
 	const { feed } = props;
 
 	return (
-		<div className='relative grid gap-0 divide-y divide-gray-100 bg-white p-0'>
+		<div className='relative w-full h-auto overflow-hidden overflow-y-auto grid grid-cols-1 gap-0 divide-y divide-gray-100 bg-white p-0'>
 			{
 				feed ?
-					feed.map((item) => (
-						<a
+					feed.map((item) => {
+						const contentText = htmlToText(item.content);
+						return <a
 							key={item.name}
 							href={item.href}
-							className='flex items-center p-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
+							className='w-full h-32 overflow-hidden overflow-ellipsis flex flex-col items-start justify-start p-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
 						>
-							<div className='ml-4'>
-								<p className='text-md font-medium text-gray-900 mb-2'>
-									{item.title}
-								</p>
-								<p className='text-xs text-gray-500'>
-									{item.published_at}
-								</p>
+							<span className='w-full h-auto flex items-center justify-between mb-1'>
+								<span className='w-4/6 h-auto overflow-ellipsis overflow-hidden text-md font-medium text-gray-900'>
+									{
+										truncate(item.title, { length: 40 })
+									}
+								</span>
+								<span className='w-auto h-auto inline-flex items-center justify-center px-2 py-1 rounded-full text-white text-xs' style={{ backgroundColor: getColorForType('Tag') }}>
+									{item.type || 'Tag'}
+								</span>
+							</span>
+							<p className='text-xs text-gray-500'>
+								{formatDistance(new Date(item.published_at), new Date(), {addSuffix: true})}
+							</p>
+							<p className='mt-2 overflow-ellipsis overflow-hidden text-sm text-gray-900'>
+								{truncate(contentText, { length: 80 })}
+							</p>
+							<div className=''>
+
 							</div>
 						</a>
-					)) :
+					}) :
 					<span>Error!</span>
 			}
 		</div>
@@ -54,8 +70,8 @@ function Herald(props) {
 						leaveFrom='opacity-100 translate-y-0'
 						leaveTo='opacity-0 translate-y-1'
 					>
-						<Popover.Panel className='absolute z-10 w-80 px-4 mt-3 transform translate-x-0 right-0 sm:px-0'>
-							<div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
+						<Popover.Panel className='absolute z-10 w-96 p-2 mt-3 transform translate-x-0 right-0'>
+							<div className='w-full overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
 								{
 									isLoading && !feed ?
 										<span>Loading...</span> :

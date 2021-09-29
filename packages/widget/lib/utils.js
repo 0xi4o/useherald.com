@@ -6,3 +6,17 @@ export async function fetcher(url, opts = {}) {
 
 	return await res.json();
 }
+
+export function getColorForType(type) {
+	const typeColorMap = {
+		bug: '',
+		fix: '',
+		feature: '',
+		maintenance: '',
+		release: '',
+		tag: '#10B981',
+		update: '',
+	};
+
+	return typeColorMap[type.toLowerCase()];
+}
