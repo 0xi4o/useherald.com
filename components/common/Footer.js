@@ -74,7 +74,12 @@ const Footer = () => {
 							alignItems='center'
 							justifyContent='start'
 						>
-							<Image src='/logo.png' width={40} height={40} />
+							<Image
+								src='/logo.png'
+								width={40}
+								height={40}
+								alt='Herald Logo'
+							/>
 							<chakra.span
 								fontSize='xl'
 								fontWeight='bold'

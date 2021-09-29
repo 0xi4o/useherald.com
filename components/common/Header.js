@@ -108,6 +108,7 @@ export default function Header() {
 										src='/logo.png'
 										width={40}
 										height={40}
+										alt='Herald Logo'
 									/>
 									<chakra.span
 										fontSize='xl'

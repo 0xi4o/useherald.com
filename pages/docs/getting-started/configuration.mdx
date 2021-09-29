@@ -11,7 +11,15 @@ import { NextSeo } from 'next-seo';
 />
 
 export const Logo = (props) => {
-	return <Image my='40px' mx='auto' src='/logo.png' width='300px' />;
+	return (
+		<Image
+			my='40px'
+			mx='auto'
+			src='/logo.png'
+			width='300px'
+			alt='Herald Logo'
+		/>
+	);
 };
 
 <Logo />

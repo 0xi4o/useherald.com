@@ -49,6 +49,7 @@ const Footer = () => {
 								src='https://useherald.com/_next/image?url=%2Flogo.png&w=48&q=75'
 								width={16}
 								height={16}
+								alt='Herald Logo'
 							/>
 						</chakra.a>
 					</Box>
