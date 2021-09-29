@@ -15,7 +15,7 @@ import {
 	useColorMode,
 	Icon,
 } from '@chakra-ui/react';
-import { Herald } from '@useherald/react-widget';
+// import { Herald } from "@useherald/react-widget";
 import {
 	AiFillGithub,
 	AiFillHome,
@@ -23,8 +23,8 @@ import {
 	AiOutlineMenu,
 } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { FaBell, FaMoon, FaSun } from 'react-icons/fa';
-import '@useherald/react-widget/dist/style.css';
+import { FaMoon, FaSun } from 'react-icons/fa'; // FaBell
+// import '@useherald/react-widget/dist/style.css';
 
 export default function Header() {
 	const { toggleColorMode: toggleMode } = useColorMode();
@@ -156,11 +156,11 @@ export default function Header() {
 									transition='color 0.2s'
 									_hover={{ color: 'gray.600' }}
 								/>
-								<Herald
-									baseUrl='http://localhost:3001'
-									icon={<FaBell />}
-									userId='71900427-a160-4ed2-b13c-0af51c646878'
-								/>
+								{/*<Herald*/}
+								{/*	baseUrl='http://localhost:3001'*/}
+								{/*	icon={<FaBell />}*/}
+								{/*	userId='71900427-a160-4ed2-b13c-0af51c646878'*/}
+								{/*/>*/}
 								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'
