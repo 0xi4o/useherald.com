@@ -5,9 +5,7 @@
         {
             "path": "pages/api",
             "name": "api",
-            "children": [],
-            "size": 0,
-            "type": "directory"
+            "children": []
         },
         {
             "path": "pages/docs",
@@ -31,9 +29,7 @@
                             "title": "Vercel",
                             "url": "/docs/deployment/vercel"
                         }
-                    ],
-                    "size": null,
-                    "type": "directory"
+                    ]
                 },
                 {
                     "path": "pages/docs/getting-started",
@@ -60,9 +56,7 @@
                             "title": "Supabase",
                             "url": "/docs/getting-started/supabase"
                         }
-                    ],
-                    "size": null,
-                    "type": "directory"
+                    ]
                 },
                 {
                     "path": "pages/docs/index.mdx",
@@ -71,11 +65,7 @@
                     "title": "About",
                     "url": "/docs/"
                 }
-            ],
-            "size": null,
-            "type": "directory"
+            ]
         }
-    ],
-    "size": null,
-    "type": "directory"
+    ]
 }
