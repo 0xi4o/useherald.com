@@ -26,9 +26,9 @@ function Profile() {
 	useEffect(() => {
 		const user = supabase.auth.user();
 		fetchUserProfile(user?.id)
-			.then((data) => {
-				setUser(data);
-				setAvatarUrl(data?.avatar_url);
+			.then((res) => {
+				setUser(res?.data);
+				setAvatarUrl(res?.data?.avatar_url);
 			})
 			.catch((error) => {
 				console.log(error);
