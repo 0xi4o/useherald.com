@@ -54,13 +54,19 @@ function Herald(props) {
 		<Popover className='relative'>
 			{({ open }) => (
 				<>
-					<Popover.Button
-						className={`${
-							open ? '' : 'text-opacity-90'
-						} text-white group bg-orange-700 p-3 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
-					>
-						{props.icon || props.text}
-					</Popover.Button>
+					<span className='relative inline-flex'>
+						<Popover.Button
+							className={`${
+								open ? '' : 'text-opacity-90'
+							} text-white group bg-orange-700 p-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+						>
+							{props.icon || props.text}
+						</Popover.Button>
+						<span className="flex absolute h-2 w-2 top-0 right-0">
+							<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+							<span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+						</span>
+					</span>
 					<Transition
 						as={Fragment}
 						enter='transition ease-out duration-200'
@@ -70,11 +76,13 @@ function Herald(props) {
 						leaveFrom='opacity-100 translate-y-0'
 						leaveTo='opacity-0 translate-y-1'
 					>
-						<Popover.Panel className='absolute z-10 w-96 p-2 mt-3 transform translate-x-0 right-0'>
+						<Popover.Panel className='absolute z-10 w-96 p-0 mt-4 transform translate-x-0 right-0'>
 							<div className='w-full overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
 								{
 									isLoading && !feed ?
-										<span>Loading...</span> :
+										<div className='relative w-full h-32 p-4 bg-white flex items-center justify-center'>
+											<div style={{ borderTopColor: 'transparent' }} className="w-8 h-8 border-2 border-green-500 border-solid rounded-full animate-spin" />
+										</div> :
 										<Changelog feed={feed} />
 								}
 								<div className='p-0 bg-gray-50'>
