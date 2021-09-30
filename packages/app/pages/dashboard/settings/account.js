@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
+	chakra,
 	Avatar,
 	Box,
 	Button,
@@ -11,6 +12,7 @@ import {
 	useToast,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
+import { BlockPicker } from 'react-color';
 import { supabase } from '../../../lib/supabaseClient';
 import SettingsLayout from '../../../components/layouts/Settings';
 
@@ -19,6 +21,10 @@ function Account() {
 	const [logoUrl, setLogoUrl] = useState(null);
 	const [logoUploading, setLogoUploading] = useState(false);
 	const [profileSaving, setProfileSaving] = useState(false);
+	const [showBrandColorPicker, setShowBrandColorPicker] = useState(false);
+	const [showAccentColorPicker, setShowAccentColorPicker] = useState(false);
+	const [primaryColor, setPrimaryColor] = useState('#010101');
+	const [accentColor, setAccentColor] = useState('#2cb67d');
 	const logoUploadInputRef = useRef(null);
 	const toast = useToast();
 
@@ -109,7 +115,13 @@ function Account() {
 					}}
 					onSubmit={async (values) => {
 						setProfileSaving(true);
-						await updateProfile(values);
+						await updateProfile({
+							...values,
+							colors: {
+								primary: primaryColor,
+								accent: accentColor,
+							},
+						});
 						setProfileSaving(false);
 					}}
 				>
@@ -178,6 +190,110 @@ function Account() {
 									h={12}
 									value={formik.values.website}
 								/>
+							</FormControl>
+							<FormControl mb={8}>
+								<FormLabel>Primary Color</FormLabel>
+								<Button
+									w='auto'
+									h='auto'
+									p={0}
+									borderRadius='lg'
+									overflow='hidden'
+									onClick={() =>
+										setShowBrandColorPicker(
+											!showBrandColorPicker
+										)
+									}
+								>
+									<chakra.span
+										w={8}
+										h={8}
+										style={{
+											backgroundColor: primaryColor,
+										}}
+									/>
+									<chakra.span px={4}>
+										{primaryColor}
+									</chakra.span>
+								</Button>
+								{showBrandColorPicker ? (
+									<chakra.div
+										position='absolute'
+										top={24}
+										left='-6'
+										shadow='md'
+										zIndex={10}
+									>
+										<chakra.div
+											position='fixed'
+											top={0}
+											bottom={0}
+											left={0}
+											right={0}
+											onClick={() =>
+												setShowBrandColorPicker(false)
+											}
+										/>
+										<BlockPicker
+											color={primaryColor}
+											colors={[]}
+											onChange={(color) =>
+												setPrimaryColor(color.hex)
+											}
+										/>
+									</chakra.div>
+								) : null}
+							</FormControl>
+							<FormControl mb={8}>
+								<FormLabel>Accent Color</FormLabel>
+								<Button
+									w='auto'
+									h='auto'
+									p={0}
+									borderRadius='lg'
+									overflow='hidden'
+									onClick={() =>
+										setShowAccentColorPicker(
+											!showAccentColorPicker
+										)
+									}
+								>
+									<chakra.span
+										w={8}
+										h={8}
+										style={{ backgroundColor: accentColor }}
+									/>
+									<chakra.span px={4}>
+										{accentColor}
+									</chakra.span>
+								</Button>
+								{showAccentColorPicker ? (
+									<chakra.div
+										position='absolute'
+										top={24}
+										left='-6'
+										shadow='md'
+										zIndex={10}
+									>
+										<chakra.div
+											position='fixed'
+											top={0}
+											bottom={0}
+											left={0}
+											right={0}
+											onClick={() =>
+												setShowAccentColorPicker(false)
+											}
+										/>
+										<BlockPicker
+											color={accentColor}
+											colors={[]}
+											onChange={(color) =>
+												setAccentColor(color.hex)
+											}
+										/>
+									</chakra.div>
+								) : null}
 							</FormControl>
 							<FormControl mb={8}>
 								<Button
