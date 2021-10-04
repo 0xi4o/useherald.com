@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
+	chakra,
 	Avatar,
 	Box,
 	Button,
@@ -106,7 +107,7 @@ function Profile() {
 					}}
 				>
 					{(formik) => (
-						<form onSubmit={formik.handleSubmit}>
+						<chakra.form onSubmit={formik.handleSubmit}>
 							<FormControl mb={8}>
 								<FormLabel>Avatar</FormLabel>
 								<Box
@@ -155,7 +156,8 @@ function Profile() {
 								<FormLabel>Name</FormLabel>
 								<Input
 									onChange={formik.handleChange}
-									type='name'
+									name='name'
+									type='text'
 									w='full'
 									h={12}
 									value={formik.values.name}
@@ -165,6 +167,7 @@ function Profile() {
 								<FormLabel>Email address</FormLabel>
 								<Input
 									onChange={formik.handleChange}
+									name='email'
 									type='email'
 									w='full'
 									h={12}
@@ -180,7 +183,7 @@ function Profile() {
 									{profileSaving ? 'Saving...' : 'Save'}
 								</Button>
 							</FormControl>
-						</form>
+						</chakra.form>
 					)}
 				</Formik>
 			</Skeleton>
