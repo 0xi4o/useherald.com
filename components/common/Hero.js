@@ -44,7 +44,7 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					The easiest way to show updates and banners
+					The easiest way to show product updates
 				</chakra.h1>
 				<chakra.p
 					mb={5}
