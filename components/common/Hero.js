@@ -52,9 +52,9 @@ const Hero = () => {
 					fontSize={{ md: 'lg' }}
 					lineHeight='tall'
 				>
-					Herald is a updates-as-a-service application to announce
-					product updates, feature releases, and banners to increase
-					feature adoption, user satisfaction and grow revenue faster.
+					Herald is an updates-as-a-service to announce product
+					updates and releases to increase feature adoption and user
+					satisfaction.
 				</chakra.p>
 				<Formik
 					initialValues={{ email: '' }}
