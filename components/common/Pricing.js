@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	chakra,
 	Badge,
 	Box,
 	Button,
 	Flex,
+	FormControl,
+	FormLabel,
 	Icon,
 	Link,
 	SimpleGrid,
-	useColorModeValue,
 	Text,
 	Stack,
+	Switch,
+	useColorModeValue,
 } from '@chakra-ui/react';
 
 export default function Component() {
+	const [isAnnualBilling, setIsAnnualBilling] = useState(false);
 	const bottomBg = useColorModeValue('white', 'gray.800');
 
 	const Feature = (props) => {
@@ -126,31 +130,76 @@ export default function Component() {
 					bg={useColorModeValue('#F9FAFB', 'gray.900')}
 					borderRightRadius='md'
 				>
+					<FormControl
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
+						mb={4}
+					>
+						<Switch
+							colorScheme='brand'
+							id='email-alerts'
+							mx={2}
+							onChange={(e) =>
+								setIsAnnualBilling(e.target.checked)
+							}
+						/>
+						<FormLabel
+							fontSize='sm'
+							htmlFor='email-alerts'
+							mb='0'
+							mr={0}
+						>
+							Save 20% with yearly billing
+						</FormLabel>
+					</FormControl>
 					<Flex
 						align='center'
 						fontSize='5xl'
 						fontWeight={['bold', 'extrabold']}
 						lineHeight='tight'
 					>
-						<Text
-							mb={2}
-							fontSize='5xl'
-							fontWeight={['bold', 'extrabold']}
-							lineHeight='tight'
-						>
-							$120
-							<chakra.span
-								fontSize='2xl'
-								fontWeight='medium'
-								color={useColorModeValue(
-									'gray.600',
-									'gray.400'
-								)}
+						{isAnnualBilling ? (
+							<Text
+								mb={2}
+								fontSize='5xl'
+								fontWeight={['bold', 'extrabold']}
+								lineHeight='tight'
 							>
-								{' '}
-								per year
-							</chakra.span>
-						</Text>
+								$120
+								<chakra.span
+									fontSize='2xl'
+									fontWeight='medium'
+									color={useColorModeValue(
+										'gray.600',
+										'gray.400'
+									)}
+								>
+									{' '}
+									/ year
+								</chakra.span>
+							</Text>
+						) : (
+							<Text
+								mb={2}
+								fontSize='5xl'
+								fontWeight={['bold', 'extrabold']}
+								lineHeight='tight'
+							>
+								$15
+								<chakra.span
+									fontSize='2xl'
+									fontWeight='medium'
+									color={useColorModeValue(
+										'gray.600',
+										'gray.400'
+									)}
+								>
+									{' '}
+									/ month
+								</chakra.span>
+							</Text>
+						)}
 					</Flex>
 					<Stack spacing={6} textAlign='center'>
 						<Text
