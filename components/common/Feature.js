@@ -129,9 +129,7 @@ const Feature = () => {
 								icon={MdDomainVerification}
 								title='Custom Domain'
 							>
-								Host the Herald dashboard complete with
-								authentication, REST API and widget hosted on
-								your domain.
+								Show the public changelog page on your domain.
 							</FeatureItem>
 							<FeatureItem
 								bg='#7f5af0'
