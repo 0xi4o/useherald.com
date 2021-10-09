@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	chakra,
+	Badge,
 	Box,
 	Button,
 	Flex,
+	FormControl,
+	FormLabel,
 	Icon,
+	Link,
 	SimpleGrid,
-	useColorModeValue,
 	Text,
 	Stack,
+	Switch,
+	useColorModeValue,
 } from '@chakra-ui/react';
 
 export default function Component() {
+	const [isAnnualBilling, setIsAnnualBilling] = useState(false);
 	const bottomBg = useColorModeValue('white', 'gray.800');
 
 	const Feature = (props) => {
@@ -48,6 +54,7 @@ export default function Component() {
 	return (
 		<Flex
 			w='full'
+			maxW='container.xl'
 			h='auto'
 			py={32}
 			flexDirection='column'
@@ -63,37 +70,30 @@ export default function Component() {
 					bgGradient='linear(to-r, brand.300, brand.600)'
 					bgClip='text'
 				>
-					Simple transparent pricing
+					Simple, Transparent pricing
 				</Text>
-				<chakra.p
-					mb={6}
-					fontSize={['lg', 'xl']}
-					color={useColorModeValue('gray.600', 'gray.400')}
-				>
-					If you&apos;re not satisfied, contact us and we&apos;ll
-					refund you within the first 20 days.
-				</chakra.p>
 			</chakra.div>
 			<Flex
-				maxW='container.xl'
+				w='full'
 				mx='auto'
+				mb={8}
 				rounded='md'
 				shadow='xl'
 				textAlign='left'
 				direction={{ base: 'column', lg: 'row' }}
+				borderRadius='lg'
+				overflow='hidden'
 			>
 				<Stack spacing={8} p='45px' flex='0.7' bg={bottomBg}>
 					<Text fontSize='3xl' fontWeight='bold' lineHeight='tight'>
-						Lifetime Membership
+						Pro Membership
 					</Text>
 					<chakra.p
 						fontSize={['sm', 'md']}
 						color={useColorModeValue('gray.600', 'gray.400')}
 					>
-						One plan for any organization—from startups to Fortune
-						500s. We offer 50% off of for all students and
-						universities. Please get in touch with us and provide
-						proof of your status.
+						One plan for any organization—from solo makers to
+						startups.
 					</chakra.p>
 					<Flex align='center'>
 						<Text
@@ -107,13 +107,19 @@ export default function Component() {
 						</Text>
 						<Flex ml='15px' w='full' borderTopWidth='1px' h='3px' />
 					</Flex>
-					<SimpleGrid columns={[1, 2, 1, 2]} spacingY={4}>
-						<Feature>Unlimited Projects</Feature>
-						<Feature>Email Tracking and Analytics </Feature>
-						<Feature>Email APIs, SMTP Relay, and Webhooks</Feature>
-						<Feature>
-							1 Dedicated IP (Foundation 100k and up)
-						</Feature>
+					<SimpleGrid
+						columns={[1, 2, 1, 2]}
+						spacingX={4}
+						spacingY={4}
+					>
+						<Feature>Unlimited Changelogs</Feature>
+						<Feature>Unlimited Banners</Feature>
+						<Feature>Custom Domain</Feature>
+						<Feature>Team Management</Feature>
+						<Feature>No Herald branding</Feature>
+						<Feature>Scheduled Publishing</Feature>
+						<Feature>Twitter Integration (Coming Soon)</Feature>
+						<Feature>Slack Integration (Coming Soon)</Feature>
 					</SimpleGrid>
 				</Stack>
 				<Stack
@@ -124,25 +130,76 @@ export default function Component() {
 					bg={useColorModeValue('#F9FAFB', 'gray.900')}
 					borderRightRadius='md'
 				>
-					<Text fontSize='xl' fontWeight='semibold'>
-						Pay once, use anytime
-					</Text>
+					<FormControl
+						display='flex'
+						alignItems='center'
+						justifyContent='center'
+						mb={4}
+					>
+						<Switch
+							colorScheme='brand'
+							id='email-alerts'
+							mx={2}
+							onChange={(e) =>
+								setIsAnnualBilling(e.target.checked)
+							}
+						/>
+						<FormLabel
+							fontSize='sm'
+							htmlFor='email-alerts'
+							mb='0'
+							mr={0}
+						>
+							Save 20% with yearly billing
+						</FormLabel>
+					</FormControl>
 					<Flex
 						align='center'
 						fontSize='5xl'
 						fontWeight={['bold', 'extrabold']}
 						lineHeight='tight'
 					>
-						$500
-						<chakra.span
-							ml={2}
-							fontSize='2xl'
-							fontWeight='medium'
-							color={useColorModeValue('gray.500', 'gray.400')}
-						>
-							{' '}
-							USD
-						</chakra.span>
+						{isAnnualBilling ? (
+							<Text
+								mb={2}
+								fontSize='5xl'
+								fontWeight={['bold', 'extrabold']}
+								lineHeight='tight'
+							>
+								$120
+								<chakra.span
+									fontSize='2xl'
+									fontWeight='medium'
+									color={useColorModeValue(
+										'gray.600',
+										'gray.400'
+									)}
+								>
+									{' '}
+									/ year
+								</chakra.span>
+							</Text>
+						) : (
+							<Text
+								mb={2}
+								fontSize='5xl'
+								fontWeight={['bold', 'extrabold']}
+								lineHeight='tight'
+							>
+								$15
+								<chakra.span
+									fontSize='2xl'
+									fontWeight='medium'
+									color={useColorModeValue(
+										'gray.600',
+										'gray.400'
+									)}
+								>
+									{' '}
+									/ month
+								</chakra.span>
+							</Text>
+						)}
 					</Flex>
 					<Stack spacing={6} textAlign='center'>
 						<Text
@@ -152,10 +209,61 @@ export default function Component() {
 							Learn more about our membership
 						</Text>
 						<Button w='300px' colorScheme='brand' py={6}>
-							Purchase
+							Try for free (14 days)
 						</Button>
 					</Stack>
 				</Stack>
+			</Flex>
+			<Flex
+				w='full'
+				p={10}
+				mt={5}
+				rounded='md'
+				bg={useColorModeValue('#F9FAFB', 'gray.700')}
+				align='center'
+				direction={['column', 'row']}
+			>
+				<Stack flex='0.8' pr={10}>
+					<Badge
+						mb={1}
+						fontSize='xs'
+						letterSpacing='wide'
+						colorScheme='gray'
+						fontWeight='medium'
+						rounded='full'
+						px={4}
+						py={1}
+						w='fit-content'
+					>
+						Discounted
+					</Badge>
+					<Text textAlign='left'>
+						Free for student makers and open source projects. Please
+						get in touch with me and provide proof of your status.
+					</Text>
+				</Stack>
+				<Link
+					w={['full', 'auto']}
+					display='inline-flex'
+					alignItems='center'
+					justifyContent='center'
+					px={5}
+					py={3}
+					mt={[5, 0]}
+					border='solid transparent'
+					fontWeight='semibold'
+					rounded='md'
+					shadow='md'
+					h='fit-content'
+					color={useColorModeValue('brand.600', 'white')}
+					bg={useColorModeValue('white', 'gray.800')}
+					_hover={{
+						bg: useColorModeValue('brand.50', 'gray.900'),
+					}}
+					flex='0.2'
+				>
+					Contact Me
+				</Link>
 			</Flex>
 		</Flex>
 	);

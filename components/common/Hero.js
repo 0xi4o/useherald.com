@@ -1,18 +1,42 @@
-import NextLink from 'next/link';
+import { useState } from 'react';
 import {
 	chakra,
-	Box,
-	useColorModeValue,
-	Flex,
+	Alert,
+	AlertDescription,
 	Button,
-	HStack,
+	CloseButton,
+	Flex,
+	FormControl,
+	Input,
+	useColorModeValue,
 } from '@chakra-ui/react';
-import { AiFillGithub } from 'react-icons/ai';
+import { Formik } from 'formik';
 
 const Hero = () => {
+	const [loading, setLoading] = useState(false);
+	const [waitlistCount, setWaitlistCount] = useState(0);
+
+	async function updateWaitlist(email) {
+		const response = await fetch('/api/waitlist', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ email }),
+		});
+		const { data } = await response.json();
+		setWaitlistCount(data.number);
+	}
+
 	return (
-		<Flex maxW='container.xl' px={4} py={32} justifyContent='start'>
-			<Box w={{ lg: 10 / 12, xl: 8 / 12 }}>
+		<Flex maxW='container.xl' px={4} py={32}>
+			<Flex
+				w='4xl'
+				flexDirection='column'
+				alignItems='center'
+				textAlign='center'
+			>
 				<chakra.h1
 					mb={3}
 					fontSize={{ base: '3xl', md: '4xl' }}
@@ -20,7 +44,7 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					The easiest way to show updates and banners
+					The easiest way to show product updates
 				</chakra.h1>
 				<chakra.p
 					mb={5}
@@ -28,43 +52,97 @@ const Hero = () => {
 					fontSize={{ md: 'lg' }}
 					lineHeight='tall'
 				>
-					Herald is a updates-as-a-service application to announce
-					product updates, feature releases, and banners to increase
-					feature adoption, user satisfaction and grow revenue faster.
+					Herald is an updates-as-a-service to announce product
+					updates and releases to increase feature adoption and user
+					satisfaction.
 				</chakra.p>
-				<HStack spacing={4}>
-					<NextLink href='/docs' passHref={true}>
-						<Button
-							as='a'
-							w={{ base: 'full', sm: 'auto' }}
-							variant='solid'
-							colorScheme='brand'
-							size='lg'
-							mb={{ base: 2, sm: 0 }}
-							p={8}
-							fontSize='xl'
-							cursor='pointer'
+				<Formik
+					initialValues={{ email: '' }}
+					onSubmit={async (values) => {
+						setLoading(true);
+						await updateWaitlist(values.email);
+						setLoading(false);
+					}}
+				>
+					{(formik) => (
+						<chakra.form
+							w='md'
+							d='flex'
+							justifyContent='center'
+							onSubmit={formik.handleSubmit}
 						>
-							Get Started
-						</Button>
-					</NextLink>
-					<Button
-						as='a'
-						bg={useColorModeValue('gray.500', 'gray.600')}
-						w={{ base: 'full', sm: 'auto' }}
-						mb={{ base: 2, sm: 0 }}
-						p={8}
-						size='lg'
-						fontSize='xl'
-						leftIcon={<AiFillGithub />}
-						target='__blank'
-						cursor='pointer'
-						href='https://github.com/opencatalysts/herald'
+							<FormControl w='70%' textAlign='left'>
+								<Input
+									h={12}
+									variant={'solid'}
+									color={useColorModeValue(
+										'black.100',
+										'white.100'
+									)}
+									_placeholder={{
+										color: 'gray.400',
+									}}
+									border={0}
+									bg={useColorModeValue(
+										'blackAlpha.100',
+										'whiteAlpha.100'
+									)}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values.email}
+									name='email'
+									type='email'
+									required
+									placeholder={'Your Email'}
+									aria-label={'Your Email'}
+								/>
+							</FormControl>
+							<FormControl w='30%' ml={4}>
+								<Button
+									colorScheme='brand'
+									h={12}
+									w='100%'
+									type='submit'
+									name='join_waitlist'
+									id='join_waitlist'
+									isLoading={loading}
+								>
+									Join Waitlist
+								</Button>
+							</FormControl>
+						</chakra.form>
+					)}
+				</Formik>
+				<chakra.span
+					d='flex'
+					justifyContent='center'
+					fontSize='xs'
+					mt={2}
+					textAlign='center'
+				>
+					Get notified when we launch. No spam. Unsubscribe any time.
+				</chakra.span>
+				{waitlistCount ? (
+					<Alert
+						d='flex'
+						justifyContent='center'
+						maxW='container.sm'
+						borderRadius='lg'
+						mt={4}
+						position='relative'
+						status='success'
 					>
-						GitHub
-					</Button>
-				</HStack>
-			</Box>
+						<AlertDescription
+							mr={4}
+						>{`Thank you for joining the waitlist! You're currently at #${waitlistCount}`}</AlertDescription>
+						<CloseButton
+							onClick={() => setWaitlistCount(0)}
+							position='absolute'
+							right='1rem'
+						/>
+					</Alert>
+				) : null}
+			</Flex>
 		</Flex>
 	);
 };

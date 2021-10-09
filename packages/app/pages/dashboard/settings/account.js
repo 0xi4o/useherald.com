@@ -126,11 +126,12 @@ function Account() {
 					}}
 				>
 					{(formik) => (
-						<form onSubmit={formik.handleSubmit}>
+						<chakra.form onSubmit={formik.handleSubmit}>
 							<FormControl mb={8}>
 								<FormLabel>Company Name</FormLabel>
 								<Input
 									onChange={formik.handleChange}
+									name='company_name'
 									type='text'
 									w='full'
 									h={12}
@@ -185,6 +186,7 @@ function Account() {
 								<FormLabel>Company Website</FormLabel>
 								<Input
 									onChange={formik.handleChange}
+									name='website'
 									type='text'
 									w='full'
 									h={12}
@@ -304,7 +306,7 @@ function Account() {
 									{profileSaving ? 'Saving...' : 'Save'}
 								</Button>
 							</FormControl>
-						</form>
+						</chakra.form>
 					)}
 				</Formik>
 			</Skeleton>
