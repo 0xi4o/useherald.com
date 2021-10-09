@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { formatDistance } from "date-fns";
-import {useChangelogFeed} from "../lib/hooks";
-import { getColorForType } from "../lib/utils";
 import {htmlToText} from "html-to-text";
 import truncate from 'lodash.truncate';
+import { useLocalstorage } from "rooks";
+import {useChangelogFeed} from "../lib/hooks";
+import { getColorForType } from "../lib/utils";
 
 function ChangelogFeed(props) {
 	const { feed } = props;
@@ -48,6 +49,15 @@ function ChangelogFeed(props) {
 
 function Herald(props) {
 	const { feed, isLoading } = useChangelogFeed(props?.baseUrl, props?.userId);
+	const { value, set } = useLocalstorage('heraldLatestUpdate');
+	const [showBadge, setShowBadge] = useState(false);
+
+	useEffect(() => {
+		if (feed && feed[0].published_at !== value) {
+			set(feed[0].published_at);
+			setShowBadge(true);
+		}
+	}, [feed]);
 
 	return (
 		<Popover className='relative'>
@@ -57,14 +67,18 @@ function Herald(props) {
 						<Popover.Button
 							className={`${
 								open ? '' : 'text-opacity-90'
-							} text-white group bg-orange-700 p-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+							} text-gray-500 group bg-orange-700 p-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
 						>
 							{props.icon || props.text}
 						</Popover.Button>
-						<span className="flex absolute h-2 w-2 top-0 right-0">
-							<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-							<span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-						</span>
+						{
+							showBadge ?
+								<span className="flex absolute h-2 w-2 top-0 right-0">
+									<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+									<span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+								</span> :
+								null
+						}
 					</span>
 					<Transition
 						as={Fragment}
