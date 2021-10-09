@@ -1,11 +1,11 @@
 import { chakra } from '@chakra-ui/react';
 import {
 	Container,
-	CTA,
 	Feature,
 	Footer,
 	Header,
 	Hero,
+	Pricing,
 } from '../components/common/';
 
 const Index = () => (
@@ -22,7 +22,7 @@ const Index = () => (
 		>
 			<Hero />
 			<Feature />
-			<CTA />
+			<Pricing />
 		</chakra.div>
 		<Footer />
 	</Container>

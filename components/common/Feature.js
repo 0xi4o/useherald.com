@@ -54,7 +54,7 @@ const Feature = () => {
 	return (
 		<Flex
 			py={16}
-			w='auto'
+			w='full'
 			maxW='container.xl'
 			justifyContent='center'
 			alignItems='center'
