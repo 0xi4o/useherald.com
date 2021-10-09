@@ -66,16 +66,8 @@ export default function Component() {
 					bgGradient='linear(to-r, brand.300, brand.600)'
 					bgClip='text'
 				>
-					Simple transparent pricing
+					Simple, Transparent pricing
 				</Text>
-				<chakra.p
-					mb={6}
-					fontSize={['lg', 'xl']}
-					color={useColorModeValue('gray.600', 'gray.400')}
-				>
-					If you&apos;re not satisfied, contact us and we&apos;ll
-					refund you within the first 30 days.
-				</chakra.p>
 			</chakra.div>
 			<Flex
 				w='full'
@@ -96,8 +88,8 @@ export default function Component() {
 						fontSize={['sm', 'md']}
 						color={useColorModeValue('gray.600', 'gray.400')}
 					>
-						One plan for any organization—from startups to Fortune
-						500s.
+						One plan for any organization—from solo makers to
+						startups.
 					</chakra.p>
 					<Flex align='center'>
 						<Text
@@ -120,6 +112,8 @@ export default function Component() {
 						<Feature>Unlimited Banners</Feature>
 						<Feature>Custom Domain</Feature>
 						<Feature>Team Management</Feature>
+						<Feature>No Herald branding</Feature>
+						<Feature>Scheduled Publishing</Feature>
 						<Feature>Twitter Integration (Coming Soon)</Feature>
 						<Feature>Slack Integration (Coming Soon)</Feature>
 					</SimpleGrid>
