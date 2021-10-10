@@ -8,7 +8,7 @@ export default defineConfig({
 		lib: {
 			entry: path.resolve(__dirname, 'src/index.js'),
 			name: 'herald-widget',
-			fileName: (format) => `${format}/index.js`,
+			fileName: (format) => `index.${format}.js`,
 		},
 		rollupOptions: {
 			external: ['react'],
