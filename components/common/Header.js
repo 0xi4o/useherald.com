@@ -13,15 +13,9 @@ import {
 	VStack,
 	Button,
 	useColorMode,
-	Icon,
 } from '@chakra-ui/react';
 import { Herald } from '@useherald/react-widget';
-import {
-	AiFillGithub,
-	AiFillHome,
-	AiOutlineInbox,
-	AiOutlineMenu,
-} from 'react-icons/ai';
+import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaBell, FaMoon, FaSun } from 'react-icons/fa'; //
 import '@useherald/react-widget/dist/style.css';
@@ -134,20 +128,20 @@ export default function Header() {
 							>
 								<Link
 									aria-label='Go to Herald GitHub page'
-									href='https://github.com/opencatalysts/herald'
-									isExternal
+									href='#features'
 									p={2}
 								>
-									<Icon
-										as={AiFillGithub}
-										display='block'
-										size='md'
-										fontSize='lg'
-										transition='color 0.2s'
-										_hover={{ color: 'gray.600' }}
-									/>
+									Features
+								</Link>
+								<Link
+									aria-label='Go to Herald GitHub page'
+									href='#pricing'
+									p={2}
+								>
+									Pricing
 								</Link>
 								<IconButton
+									d='none'
 									size='md'
 									fontSize='lg'
 									aria-label={`Switch to ${text} mode`}
@@ -160,7 +154,7 @@ export default function Header() {
 								/>
 								<Herald
 									baseUrl='http://localhost:3001'
-									icon={<FaBell />}
+									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
 								<NextLink href='/app' passHref={true}>

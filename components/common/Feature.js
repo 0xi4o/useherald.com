@@ -53,6 +53,7 @@ const Feature = () => {
 
 	return (
 		<Flex
+			id='features'
 			py={16}
 			w='full'
 			maxW='container.xl'
