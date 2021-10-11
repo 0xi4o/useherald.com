@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NextImage from 'next/image';
 import {
 	chakra,
 	Alert,
@@ -30,12 +31,19 @@ const Hero = () => {
 	}
 
 	return (
-		<Flex maxW='container.xl' px={4} py={32}>
+		<Flex
+			flexDirection='column'
+			alignItems='center'
+			maxW='container.xl'
+			px={4}
+			py={32}
+		>
 			<Flex
 				w='4xl'
 				flexDirection='column'
 				alignItems='center'
 				textAlign='center'
+				mb={16}
 			>
 				<chakra.h1
 					mb={3}
@@ -142,6 +150,13 @@ const Hero = () => {
 						/>
 					</Alert>
 				) : null}
+			</Flex>
+			<Flex mt={8}>
+				<NextImage
+					src='/herald-hero-image.png'
+					width='1024'
+					height='600'
+				/>
 			</Flex>
 		</Flex>
 	);
