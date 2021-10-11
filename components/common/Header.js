@@ -13,18 +13,12 @@ import {
 	VStack,
 	Button,
 	useColorMode,
-	Icon,
 } from '@chakra-ui/react';
-// import { Herald } from "@useherald/react-widget";
-import {
-	AiFillGithub,
-	AiFillHome,
-	AiOutlineInbox,
-	AiOutlineMenu,
-} from 'react-icons/ai';
+import { Herald } from '@useherald/react-widget';
+import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { FaMoon, FaSun } from 'react-icons/fa'; // FaBell
-// import '@useherald/react-widget/dist/style.css';
+import { FaBell, FaMoon, FaSun } from 'react-icons/fa'; //
+import '@useherald/react-widget/dist/style.css';
 
 export default function Header() {
 	const { toggleColorMode: toggleMode } = useColorMode();
@@ -133,20 +127,21 @@ export default function Header() {
 								display={{ base: 'none', md: 'flex' }}
 							>
 								<Link
-									isExternal
 									aria-label='Go to Herald GitHub page'
-									href='https://github.com/opencatalysts/herald'
+									href='#features'
+									p={2}
 								>
-									<Icon
-										as={AiFillGithub}
-										display='block'
-										size='md'
-										fontSize='lg'
-										transition='color 0.2s'
-										_hover={{ color: 'gray.600' }}
-									/>
+									Features
+								</Link>
+								<Link
+									aria-label='Go to Herald GitHub page'
+									href='#pricing'
+									p={2}
+								>
+									Pricing
 								</Link>
 								<IconButton
+									d='none'
 									size='md'
 									fontSize='lg'
 									aria-label={`Switch to ${text} mode`}
@@ -157,11 +152,11 @@ export default function Header() {
 									transition='color 0.2s'
 									_hover={{ color: 'gray.600' }}
 								/>
-								{/*<Herald*/}
-								{/*	baseUrl='http://localhost:3001'*/}
-								{/*	icon={<FaBell />}*/}
-								{/*	userId='71900427-a160-4ed2-b13c-0af51c646878'*/}
-								{/*/>*/}
+								<Herald
+									baseUrl='http://localhost:3001'
+									icon={<FaBell size={20} />}
+									userId='71900427-a160-4ed2-b13c-0af51c646878'
+								/>
 								<NextLink href='/app' passHref={true}>
 									<Button
 										as='a'

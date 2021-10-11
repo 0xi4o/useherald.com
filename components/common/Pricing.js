@@ -53,6 +53,7 @@ export default function Component() {
 
 	return (
 		<Flex
+			id='pricing'
 			w='full'
 			maxW='container.xl'
 			h='auto'
@@ -215,6 +216,7 @@ export default function Component() {
 				</Stack>
 			</Flex>
 			<Flex
+				d='none'
 				w='full'
 				p={10}
 				mt={5}
