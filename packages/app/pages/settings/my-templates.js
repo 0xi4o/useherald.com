@@ -1,7 +1,7 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import SettingsLayout from '../../../components/layouts/Settings';
+import SettingsLayout from '../../components/layouts/Settings';
 
-function Widget() {
+function MyTemplates() {
 	return (
 		<SettingsLayout>
 			<Box
@@ -21,4 +21,4 @@ function Widget() {
 	);
 }
 
-export default Widget;
+export default MyTemplates;

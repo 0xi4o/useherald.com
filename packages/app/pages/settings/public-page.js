@@ -9,8 +9,8 @@ import {
 	useToast,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
-import SettingsLayout from '../../../components/layouts/Settings';
-import { supabase } from '../../../lib/supabaseClient';
+import SettingsLayout from '../../components/layouts/Settings';
+import { supabase } from '../../lib/supabaseClient';
 
 function PublicPage() {
 	const [user, setUser] = useState(null);

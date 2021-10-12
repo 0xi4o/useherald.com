@@ -12,9 +12,9 @@ import {
 	useToast,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
-import { supabase } from '../../../lib/supabaseClient';
-import { fetchUserProfile } from '../../../lib/utils';
-import SettingsLayout from '../../../components/layouts/Settings';
+import { supabase } from '../../lib/supabaseClient';
+import { fetchUserProfile } from '../../lib/utils';
+import SettingsLayout from '../../components/layouts/Settings';
 
 function Profile() {
 	const [user, setUser] = useState(null);
