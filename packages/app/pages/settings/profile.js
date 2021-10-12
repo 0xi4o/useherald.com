@@ -94,6 +94,9 @@ function Profile() {
 
 	return (
 		<SettingsLayout>
+			<chakra.h2 fontSize='2xl' mb={8}>
+				Profile Settings
+			</chakra.h2>
 			<Skeleton w='full' isLoaded={user}>
 				<Formik
 					initialValues={{

@@ -106,6 +106,9 @@ function Account() {
 
 	return (
 		<SettingsLayout>
+			<chakra.h2 fontSize='2xl' mb={8}>
+				Account Settings
+			</chakra.h2>
 			<Skeleton w='full' isLoaded={user}>
 				<Formik
 					initialValues={{
