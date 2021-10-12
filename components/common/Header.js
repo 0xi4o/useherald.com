@@ -18,7 +18,6 @@ import { Herald } from '@useherald/react-widget';
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaBell, FaMoon, FaSun } from 'react-icons/fa'; //
-import '@useherald/react-widget/dist/style.css';
 
 export default function Header() {
 	const { toggleColorMode: toggleMode } = useColorMode();
