@@ -39,8 +39,8 @@ const SettingsLayout = (props) => (
 						<NextLink href='/settings/widget'>Widget</NextLink>
 					</ListItem>
 					<ListItem px={4} py={2}>
-						<NextLink href='/settings/my-templates'>
-							My Templates
+						<NextLink href='/settings/template'>
+							Your Template
 						</NextLink>
 					</ListItem>
 				</List>
