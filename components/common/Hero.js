@@ -124,11 +124,11 @@ const Hero = () => {
 				<chakra.span
 					d='flex'
 					justifyContent='center'
-					fontSize='xs'
+					fontSize='md'
 					mt={2}
 					textAlign='center'
 				>
-					Get notified when we launch. No spam. Unsubscribe any time.
+					Get notified when we launch.
 				</chakra.span>
 				{waitlistCount ? (
 					<Alert
