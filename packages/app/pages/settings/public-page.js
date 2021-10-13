@@ -9,8 +9,8 @@ import {
 	useToast,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
-import SettingsLayout from '../../../components/layouts/Settings';
-import { supabase } from '../../../lib/supabaseClient';
+import SettingsLayout from '../../components/layouts/Settings';
+import { supabase } from '../../lib/supabaseClient';
 
 function PublicPage() {
 	const [user, setUser] = useState(null);
@@ -58,6 +58,9 @@ function PublicPage() {
 
 	return (
 		<SettingsLayout>
+			<chakra.h2 fontSize='2xl' mb={8}>
+				Public Changelog Page Settings
+			</chakra.h2>
 			<Skeleton w='full' isLoaded={user}>
 				<Formik
 					initialValues={{

@@ -12,9 +12,9 @@ import {
 	useToast,
 } from '@chakra-ui/react';
 import { Formik } from 'formik';
-import { supabase } from '../../../lib/supabaseClient';
-import { fetchUserProfile } from '../../../lib/utils';
-import SettingsLayout from '../../../components/layouts/Settings';
+import { supabase } from '../../lib/supabaseClient';
+import { fetchUserProfile } from '../../lib/utils';
+import SettingsLayout from '../../components/layouts/Settings';
 
 function Profile() {
 	const [user, setUser] = useState(null);
@@ -94,6 +94,9 @@ function Profile() {
 
 	return (
 		<SettingsLayout>
+			<chakra.h2 fontSize='2xl' mb={8}>
+				Profile Settings
+			</chakra.h2>
 			<Skeleton w='full' isLoaded={user}>
 				<Formik
 					initialValues={{
