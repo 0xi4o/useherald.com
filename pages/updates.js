@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { chakra, Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
-import { supabase } from '../packages/app/lib/supabaseClient';
+import { supabase } from '../lib/supabaseClient';
 import TimelineLayout from '../packages/app/components/layouts/Timeline';
 import { format, formatDistance } from 'date-fns';
 
