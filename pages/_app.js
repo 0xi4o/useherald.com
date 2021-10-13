@@ -13,7 +13,6 @@ import theme from '../theme';
 import Image from 'next/image';
 import React from 'react';
 import { AiFillGithub } from 'react-icons/ai';
-import '../packages/app/styles/global.css';
 import '@useherald/react-widget/dist/style.css';
 
 function MyApp({ Component, pageProps }) {
