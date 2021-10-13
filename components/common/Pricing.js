@@ -119,8 +119,6 @@ export default function Component() {
 						<Feature>Team Management</Feature>
 						<Feature>No Herald branding</Feature>
 						<Feature>Scheduled Publishing</Feature>
-						<Feature>Twitter Integration (Coming Soon)</Feature>
-						<Feature>Slack Integration (Coming Soon)</Feature>
 					</SimpleGrid>
 				</Stack>
 				<Stack
@@ -167,7 +165,7 @@ export default function Component() {
 								fontWeight={['bold', 'extrabold']}
 								lineHeight='tight'
 							>
-								$120
+								$150
 								<chakra.span
 									fontSize='2xl'
 									fontWeight='medium'
@@ -204,12 +202,23 @@ export default function Component() {
 					</Flex>
 					<Stack spacing={6} textAlign='center'>
 						<Text
+							d='none'
 							textDecor='underline'
 							color={useColorModeValue('gray.600', 'gray.400')}
 						>
 							Learn more about our membership
 						</Text>
-						<Button w='300px' colorScheme='brand' py={6}>
+						<Button
+							w='300px'
+							colorScheme='brand'
+							py={6}
+							onClick={() => {
+								window.scrollTo(0, 0);
+								alert(
+									"Thank you for your interest! We're not ready for users yet. Please sign up for updates and we'll notify you when we launch"
+								);
+							}}
+						>
 							Try for free (14 days)
 						</Button>
 					</Stack>
