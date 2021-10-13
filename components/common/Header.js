@@ -152,7 +152,7 @@ export default function Header() {
 									_hover={{ color: 'gray.600' }}
 								/>
 								<Herald
-									baseUrl='http://localhost:3001'
+									baseUrl='https://app.useherald.com'
 									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
