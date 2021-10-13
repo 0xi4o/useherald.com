@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	chakra,
 	Box,
@@ -13,9 +13,12 @@ import { EditorContent, useEditor } from '@tiptap/react';
 import Heading from '@tiptap/extension-heading';
 import Link from '@tiptap/extension-link';
 import StarterKit from '@tiptap/starter-kit';
+import { supabase } from '../../lib/supabaseClient';
+import { fetchUserProfile } from '../../lib/utils';
 
 function MyTemplate() {
 	const [templateContent, setTemplateContent] = useState('');
+	const [user, setUser] = useState(null);
 
 	const editor = useEditor({
 		templateContent,
@@ -36,23 +39,61 @@ function MyTemplate() {
 	});
 	const toast = useToast();
 
+	useEffect(() => {
+		async function fetchChangelogTemplate() {
+			const user = supabase.auth.user();
+			fetchUserProfile(user?.id)
+				.then((res) => {
+					setUser(res?.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+			const { data, error } = await supabase
+				.from('profiles')
+				.select('my_template')
+				.match({ id: user?.id })
+				.single();
+
+			if (data) {
+				setTemplateContent(data.my_template);
+				if (editor.isEmpty) {
+					editor.commands.setContent(data.my_template);
+				}
+			} else {
+				console.log(error);
+			}
+		}
+
+		if (editor) {
+			fetchChangelogTemplate().then(() => {});
+		}
+	}, [editor]);
+
 	async function saveChangelogTemplate() {
-		// Save the template to Supabase in user profile
-		toast({
-			title: 'Saved!',
-			status: 'success',
-			duration: 3000,
-			isClosable: true,
-			position: 'top-right',
-		});
+		const { data, error } = await supabase
+			.from('profiles')
+			.update({ my_template: templateContent })
+			.match({ id: user.id });
+
+		if (data) {
+			toast({
+				title: 'Saved!',
+				status: 'success',
+				duration: 3000,
+				isClosable: true,
+				position: 'top-right',
+			});
+		} else {
+			// throw error
+			console.log(error);
+		}
 	}
 
 	return (
 		<SettingsLayout>
 			<VStack w='full' alignItems='start' spacing={8}>
-				<chakra.h2 fontSize='2xl' mb={8}>
-					Your Changelog Template
-				</chakra.h2>
+				<chakra.h2 fontSize='2xl'>Your Changelog Template</chakra.h2>
 				<Box w='full' h='auto' minH='600px'>
 					<EditorToolbar editor={editor} />
 					<EditorContent editor={editor} />
