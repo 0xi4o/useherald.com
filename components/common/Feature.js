@@ -93,10 +93,9 @@ const Feature = () => {
 							textAlign={{ base: 'center', sm: 'left' }}
 							color={useColorModeValue('gray.600', 'gray.500')}
 						>
-							To show updates, releases, and bug fixes to your
-							users right on your website. You can also show
-							featured blog posts on your landing pages and inside
-							your application.
+							To keep your customers up-to-date on your product
+							and your company. Feature articles, events, releases
+							and more, inside your application and website.
 						</chakra.p>
 					</Box>
 					<GridItem colSpan={2}>
@@ -122,15 +121,15 @@ const Feature = () => {
 								title='Dedicated Feed'
 							>
 								Keep a record of all the changes made to your
-								application in a beautifully rendered timeline
-								view.
+								application in a beautifully rendered page.
 							</FeatureItem>
 							<FeatureItem
 								bg='#ff8906'
 								icon={MdDomainVerification}
 								title='Custom Domain'
 							>
-								Show the public changelog page on your domain.
+								Show your product updates and feature releases
+								in a public page on your domain.
 							</FeatureItem>
 							<FeatureItem
 								bg='#7f5af0'
@@ -146,17 +145,18 @@ const Feature = () => {
 								icon={HiTemplate}
 								title='Custom Templates'
 							>
-								Use the pre-made templates for your changelogs
-								or create your own to fit your needs.
+								Use the pre-made template for your changelogs
+								and banners or create your own to fit your
+								needs.
 							</FeatureItem>
 							<FeatureItem
 								bg='#078080'
 								icon={GiVerticalBanner}
-								title='Featured Posts'
+								title='In-app Banners'
 							>
-								Show featured blog posts on your landing pages
-								and application as banners. Fully customizable
-								to fit your website styles.
+								Show featured articles or updates on your
+								landing pages and application as banners. Fully
+								customizable.
 							</FeatureItem>
 						</Stack>
 					</GridItem>

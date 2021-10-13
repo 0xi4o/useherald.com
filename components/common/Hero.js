@@ -52,7 +52,7 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					The easiest way to show product updates
+					Easiest way to increase feature adoption
 				</chakra.h1>
 				<chakra.p
 					mb={5}
@@ -60,9 +60,8 @@ const Hero = () => {
 					fontSize={{ md: 'lg' }}
 					lineHeight='tall'
 				>
-					Herald is an updates-as-a-service to announce product
-					updates and releases to increase feature adoption and user
-					satisfaction.
+					Keep your customers up-to-date about your product and
+					company, right in your web app.
 				</chakra.p>
 				<Formik
 					initialValues={{ email: '' }}
