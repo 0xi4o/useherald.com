@@ -152,7 +152,7 @@ const Header = () => {
 										</MenuButton>
 										<MenuList>
 											<MenuItem>
-												<NextLink href='/dashboard/settings/profile'>
+												<NextLink href='/settings/profile'>
 													Settings
 												</NextLink>
 											</MenuItem>

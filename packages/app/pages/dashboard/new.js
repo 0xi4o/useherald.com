@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
@@ -16,6 +16,7 @@ import { FaChevronLeft } from 'react-icons/fa';
 import DefaultLayout from '../../components/layouts/Default';
 import ChangelogEditor from '../../components/admin/ChangelogEditor';
 import { publishChangelog, saveChangelog } from '../../lib/utils';
+import { supabase } from '../../lib/supabaseClient';
 
 function New() {
 	const router = useRouter();
@@ -40,6 +41,29 @@ function New() {
 		},
 	});
 	const toast = useToast();
+
+	useEffect(() => {
+		async function fetchChangelogTemplate() {
+			const user = supabase.auth.user();
+			const { data, error } = await supabase
+				.from('profiles')
+				.select('my_template')
+				.match({ id: user?.id })
+				.single();
+
+			if (data) {
+				if (editor.isEmpty) {
+					editor.commands.setContent(data.my_template);
+				}
+			} else {
+				console.log(error);
+			}
+		}
+
+		if (editor) {
+			fetchChangelogTemplate().then(() => {});
+		}
+	}, [editor]);
 
 	async function saveHandler() {
 		await saveChangelog(title, content, changelog, setChangelog);

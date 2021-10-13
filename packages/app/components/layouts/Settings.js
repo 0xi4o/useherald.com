@@ -25,23 +25,22 @@ const SettingsLayout = (props) => (
 			>
 				<List spacing={2}>
 					<ListItem px={4} py={2}>
-						<NextLink href='/dashboard/settings/profile'>
-							Profile
-						</NextLink>
+						<NextLink href='/settings/profile'>Profile</NextLink>
 					</ListItem>
 					<ListItem px={4} py={2}>
-						<NextLink href='/dashboard/settings/account'>
-							Account
-						</NextLink>
+						<NextLink href='/settings/account'>Account</NextLink>
 					</ListItem>
 					<ListItem px={4} py={2}>
-						<NextLink href='/dashboard/settings/public-page'>
+						<NextLink href='/settings/public-page'>
 							Public Page
 						</NextLink>
 					</ListItem>
 					<ListItem px={4} py={2}>
-						<NextLink href='/dashboard/settings/widget'>
-							Widget
+						<NextLink href='/settings/widget'>Widget</NextLink>
+					</ListItem>
+					<ListItem px={4} py={2}>
+						<NextLink href='/settings/template'>
+							Your Template
 						</NextLink>
 					</ListItem>
 				</List>
