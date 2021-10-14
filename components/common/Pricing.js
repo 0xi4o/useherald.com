@@ -15,6 +15,7 @@ import {
 	Switch,
 	useColorModeValue,
 } from '@chakra-ui/react';
+import { BiCheckCircle, BiX } from 'react-icons/bi';
 
 export default function Component() {
 	const [isAnnualBilling, setIsAnnualBilling] = useState(false);
@@ -25,23 +26,14 @@ export default function Component() {
 			<Flex align='center'>
 				<Flex shrink={0}>
 					<Icon
-						boxSize={5}
-						mt={1}
-						mr={2}
-						color={useColorModeValue('brand.500', 'brand.300')}
-						viewBox='0 0 20 20'
+						as={props.icon}
+						color={props.color}
 						fill='currentColor'
-					>
-						<path
-							fillRule='evenodd'
-							d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-							clipRule='evenodd'
-						/>
-					</Icon>
+						fontSize={24}
+					/>
 				</Flex>
-				<Box ml={4}>
+				<Box ml={2}>
 					<chakra.span
-						mt={2}
 						color={useColorModeValue('gray.500', 'gray.400')}
 					>
 						{props.children}
@@ -113,12 +105,42 @@ export default function Component() {
 						spacingX={4}
 						spacingY={4}
 					>
-						<Feature>Unlimited Changelogs</Feature>
-						<Feature>Unlimited Banners</Feature>
-						<Feature>Custom Domain</Feature>
-						<Feature>Team Management</Feature>
-						<Feature>No Herald branding</Feature>
-						<Feature>Scheduled Publishing</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Unlimited Changelogs
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Unlimited Banners
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Scheduled Publishing
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Custom Domain
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Team Management
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							No Herald branding
+						</Feature>
 					</SimpleGrid>
 				</Stack>
 				<Stack
@@ -165,7 +187,7 @@ export default function Component() {
 								fontWeight={['bold', 'extrabold']}
 								lineHeight='tight'
 							>
-								$150
+								$200
 								<chakra.span
 									fontSize='2xl'
 									fontWeight='medium'
@@ -185,7 +207,7 @@ export default function Component() {
 								fontWeight={['bold', 'extrabold']}
 								lineHeight='tight'
 							>
-								$15
+								$20
 								<chakra.span
 									fontSize='2xl'
 									fontWeight='medium'
@@ -219,7 +241,101 @@ export default function Component() {
 								);
 							}}
 						>
-							Try for free (14 days)
+							Start free trial
+						</Button>
+					</Stack>
+				</Stack>
+			</Flex>
+			<Flex
+				w='full'
+				mx='auto'
+				mb={8}
+				rounded='md'
+				textAlign='left'
+				direction={{ base: 'column', lg: 'row' }}
+				borderRadius='lg'
+				overflow='hidden'
+			>
+				<Stack spacing={8} p='45px' flex='0.7'>
+					<Text fontSize='3xl' fontWeight='bold' lineHeight='tight'>
+						Free
+					</Text>
+					<Flex align='center'>
+						<Text
+							fontFamily='body'
+							whiteSpace='nowrap'
+							fontWeight='semibold'
+							textTransform='uppercase'
+							color='brand.400'
+						>
+							What&apos;s included
+						</Text>
+						<Flex ml='15px' w='full' borderTopWidth='1px' h='3px' />
+					</Flex>
+					<SimpleGrid
+						columns={[1, 2, 1, 2]}
+						spacingX={4}
+						spacingY={4}
+					>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Unlimited Changelogs
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							3 Banners
+						</Feature>
+						<Feature
+							color={useColorModeValue('gray.500', 'gray.300')}
+							icon={BiX}
+						>
+							No Scheduling
+						</Feature>
+						<Feature
+							color={useColorModeValue('gray.500', 'gray.300')}
+							icon={BiX}
+						>
+							Only Subdomain
+						</Feature>
+						<Feature
+							color={useColorModeValue('gray.500', 'gray.300')}
+							icon={BiX}
+						>
+							No Team Management
+						</Feature>
+						<Feature
+							color={useColorModeValue('gray.500', 'gray.300')}
+							icon={BiX}
+						>
+							Herald branding
+						</Feature>
+					</SimpleGrid>
+				</Stack>
+				<Stack
+					p='45px'
+					flex='0.3'
+					justify='center'
+					align='center'
+					bg={useColorModeValue('#F9FAFB', 'gray.900')}
+					borderRightRadius='md'
+				>
+					<Stack spacing={6} textAlign='center'>
+						<Button
+							w='300px'
+							colorScheme='brand'
+							py={6}
+							onClick={() => {
+								window.scrollTo(0, 0);
+								alert(
+									"Thank you for your interest! We're not ready for users yet. Please sign up for updates and we'll notify you when we launch"
+								);
+							}}
+						>
+							Sign Up
 						</Button>
 					</Stack>
 				</Stack>
