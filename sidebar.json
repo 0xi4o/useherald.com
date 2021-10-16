@@ -8,29 +8,25 @@
             "children": []
         },
         {
+            "path": "pages/blog",
+            "name": "blog",
+            "children": [
+                {
+                    "path": "pages/blog/introducing-herald-blog.mdx",
+                    "name": "introducing-herald-blog.mdx",
+                    "meta": {
+                        "date": "16 October, 2021",
+                        "description": "Herald now has its own blog, where I will write about building Herald, feature releases, behind the scenes details, and more."
+                    },
+                    "title": "Introducing the Herald Blog",
+                    "url": "/blog/introducing-herald-blog"
+                }
+            ]
+        },
+        {
             "path": "pages/docs",
             "name": "docs",
             "children": [
-                {
-                    "path": "pages/docs/deployment",
-                    "name": "deployment",
-                    "children": [
-                        {
-                            "path": "pages/docs/deployment/netlify.mdx",
-                            "name": "netlify.mdx",
-                            "meta": {},
-                            "title": "Netlify",
-                            "url": "/docs/deployment/netlify"
-                        },
-                        {
-                            "path": "pages/docs/deployment/vercel.mdx",
-                            "name": "vercel.mdx",
-                            "meta": {},
-                            "title": "Vercel",
-                            "url": "/docs/deployment/vercel"
-                        }
-                    ]
-                },
                 {
                     "path": "pages/docs/getting-started",
                     "name": "getting-started",
@@ -48,13 +44,6 @@
                             "meta": {},
                             "title": "Introduction",
                             "url": "/docs/getting-started/introduction"
-                        },
-                        {
-                            "path": "pages/docs/getting-started/supabase.mdx",
-                            "name": "supabase.mdx",
-                            "meta": {},
-                            "title": "Supabase",
-                            "url": "/docs/getting-started/supabase"
                         }
                     ]
                 },
