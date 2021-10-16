@@ -91,8 +91,9 @@ const Footer = () => {
 						</chakra.div>
 					</Stack>
 					<Stack align={'flex-start'}>
-						<ListHeader>Resources</ListHeader>
+						<ListHeader>Links</ListHeader>
 						<Link href='/docs'>Docs</Link>
+						<Link href='/blog'>Blog</Link>
 					</Stack>
 					<Stack align={'flex-start'}>
 						<ListHeader>Community</ListHeader>
