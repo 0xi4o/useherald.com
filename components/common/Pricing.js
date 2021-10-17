@@ -15,7 +15,7 @@ import {
 	Switch,
 	useColorModeValue,
 } from '@chakra-ui/react';
-import { BiCheckCircle, BiX } from 'react-icons/bi';
+import { BiCheckCircle } from 'react-icons/bi';
 
 export default function Component() {
 	const [isAnnualBilling, setIsAnnualBilling] = useState(false);
@@ -57,7 +57,7 @@ export default function Component() {
 			<chakra.div maxW='container.xl' mb={4} textAlign='center'>
 				<Text
 					mb={2}
-					fontSize='5xl'
+					fontSize={{ base: '2xl', md: '3xl' }}
 					fontWeight='bold'
 					lineHeight='tight'
 					bgGradient='linear(to-r, brand.300, brand.600)'
@@ -242,100 +242,6 @@ export default function Component() {
 							}}
 						>
 							Start free trial
-						</Button>
-					</Stack>
-				</Stack>
-			</Flex>
-			<Flex
-				w='full'
-				mx='auto'
-				mb={8}
-				rounded='md'
-				textAlign='left'
-				direction={{ base: 'column', lg: 'row' }}
-				borderRadius='lg'
-				overflow='hidden'
-			>
-				<Stack spacing={8} p='45px' flex='0.7'>
-					<Text fontSize='3xl' fontWeight='bold' lineHeight='tight'>
-						Free
-					</Text>
-					<Flex align='center'>
-						<Text
-							fontFamily='body'
-							whiteSpace='nowrap'
-							fontWeight='semibold'
-							textTransform='uppercase'
-							color='brand.400'
-						>
-							What&apos;s included
-						</Text>
-						<Flex ml='15px' w='full' borderTopWidth='1px' h='3px' />
-					</Flex>
-					<SimpleGrid
-						columns={[1, 2, 1, 2]}
-						spacingX={4}
-						spacingY={4}
-					>
-						<Feature
-							color={useColorModeValue('brand.500', 'brand.300')}
-							icon={BiCheckCircle}
-						>
-							Unlimited Changelogs
-						</Feature>
-						<Feature
-							color={useColorModeValue('brand.500', 'brand.300')}
-							icon={BiCheckCircle}
-						>
-							3 Active Banners
-						</Feature>
-						<Feature
-							color={useColorModeValue('gray.500', 'gray.300')}
-							icon={BiX}
-						>
-							No Scheduling
-						</Feature>
-						<Feature
-							color={useColorModeValue('gray.500', 'gray.300')}
-							icon={BiX}
-						>
-							Only Subdomain
-						</Feature>
-						<Feature
-							color={useColorModeValue('gray.500', 'gray.300')}
-							icon={BiX}
-						>
-							No Team Management
-						</Feature>
-						<Feature
-							color={useColorModeValue('gray.500', 'gray.300')}
-							icon={BiX}
-						>
-							Herald branding
-						</Feature>
-					</SimpleGrid>
-				</Stack>
-				<Stack
-					p='45px'
-					flex='0.3'
-					justify='center'
-					align='center'
-					bg={useColorModeValue('#F9FAFB', 'gray.900')}
-					borderRightRadius='md'
-				>
-					<Stack spacing={6} textAlign='center'>
-						<Button
-							w='300px'
-							colorScheme='brand'
-							py={6}
-							onClick={() => {
-								window.scrollTo(0, 0);
-								alert(
-									"Thank you for your interest! We're not ready for users yet. Please sign up for updates and we'll notify you when we launch"
-								);
-							}}
-						>
-							Sign Up
 						</Button>
 					</Stack>
 				</Stack>

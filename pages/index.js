@@ -1,7 +1,7 @@
 import { chakra } from '@chakra-ui/react';
 import {
 	Container,
-	Feature,
+	Features,
 	Footer,
 	Header,
 	Hero,
@@ -21,7 +21,7 @@ const Index = () => (
 			flex='1 0 auto'
 		>
 			<Hero />
-			<Feature />
+			<Features />
 			<Pricing />
 		</chakra.div>
 		<Footer />

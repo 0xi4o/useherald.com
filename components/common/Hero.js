@@ -39,7 +39,7 @@ const Hero = () => {
 			py={32}
 		>
 			<Flex
-				w='4xl'
+				w='5xl'
 				flexDirection='column'
 				alignItems='center'
 				textAlign='center'
@@ -47,7 +47,7 @@ const Hero = () => {
 			>
 				<chakra.h1
 					mb={3}
-					fontSize={{ base: '3xl', md: '4xl' }}
+					fontSize={{ base: '4xl', md: '5xl' }}
 					fontWeight='bold'
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
@@ -57,7 +57,7 @@ const Hero = () => {
 				<chakra.p
 					mb={5}
 					color='gray.500'
-					fontSize={{ md: 'lg' }}
+					fontSize={{ base: 'lg', md: 'xl' }}
 					lineHeight='tall'
 				>
 					Keep your customers up-to-date about your product and

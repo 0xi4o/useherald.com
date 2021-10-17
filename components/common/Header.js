@@ -95,7 +95,7 @@ export default function Header() {
 						justifyContent='space-between'
 					>
 						<Flex align='flex-start'>
-							<Link href='/'>
+							<NextLink href='/'>
 								<HStack>
 									<Image
 										src='/logo.png'
@@ -114,7 +114,7 @@ export default function Header() {
 										Herald
 									</chakra.span>
 								</HStack>
-							</Link>
+							</NextLink>
 						</Flex>
 						<Flex
 							justify='flex-end'
@@ -126,14 +126,14 @@ export default function Header() {
 								display={{ base: 'none', md: 'flex' }}
 							>
 								<Link
-									aria-label='Go to Herald GitHub page'
+									aria-label='Go to Herald product section'
 									href='#features'
 									p={2}
 								>
-									Features
+									Product
 								</Link>
 								<Link
-									aria-label='Go to Herald GitHub page'
+									aria-label='Go to Herald pricing section'
 									href='#pricing'
 									p={2}
 								>
