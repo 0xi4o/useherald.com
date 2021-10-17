@@ -287,7 +287,7 @@ export default function Component() {
 							color={useColorModeValue('brand.500', 'brand.300')}
 							icon={BiCheckCircle}
 						>
-							3 Banners
+							3 Active Banners
 						</Feature>
 						<Feature
 							color={useColorModeValue('gray.500', 'gray.300')}
