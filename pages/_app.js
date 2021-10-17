@@ -20,7 +20,9 @@ function MyApp({ Component, pageProps }) {
 		return (
 			<ChakraProvider resetCSS theme={theme}>
 				<Head>
-					<title>Herald — Updates-as-a-service</title>
+					<title>
+						Herald — Updates-as-a-service for SaaS products
+					</title>
 				</Head>
 				<DokzProvider
 					docsRootPath='pages/docs'
@@ -93,7 +95,9 @@ function MyApp({ Component, pageProps }) {
 				}}
 			>
 				<Head>
-					<title>Herald - Open-source changelog-as-a-service</title>
+					<title>
+						Herald - Updates-as-a-service for SaaS products
+					</title>
 				</Head>
 				<Component {...pageProps} />
 			</ColorModeProvider>
