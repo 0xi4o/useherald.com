@@ -9,14 +9,19 @@ import {
 } from '@chakra-ui/react';
 import { ImEmbed2 } from 'react-icons/im';
 import { CgFeed } from 'react-icons/cg';
-import { MdDomainVerification } from 'react-icons/md';
+import { MdDomainVerification, MdMarkEmailRead } from 'react-icons/md'; // MdOutlineSettings
 import { HiColorSwatch, HiTemplate } from 'react-icons/hi';
 import { GiVerticalBanner } from 'react-icons/gi';
+import { FaMarkdown, FaMoon } from 'react-icons/fa'; // FaReact, FaUsers
 
 export default function Features() {
 	const Feature = (props) => {
 		return (
-			<Box>
+			<Flex
+				flexDirection='column'
+				alignItems='flex-start'
+				justifyContent='flex-start'
+			>
 				<Flex
 					alignItems='center'
 					justifyContent='center'
@@ -52,7 +57,7 @@ export default function Features() {
 				>
 					{props.children}
 				</chakra.dd>
-			</Box>
+			</Flex>
 		);
 	};
 
@@ -109,7 +114,7 @@ export default function Features() {
 				<SimpleGrid
 					alignItems='center'
 					columns={{ base: 1, lg: 3 }}
-					spacingY={{ base: 10, lg: 24 }}
+					spacingY={{ base: 10, lg: 16 }}
 					spacingX={{ base: 10, lg: 16 }}
 				>
 					<Feature
@@ -124,6 +129,15 @@ export default function Features() {
 					<Feature color='pink' title='Dedicated Feed' icon={CgFeed}>
 						Keep a record of all the changes made to your
 						application in a beautifully rendered page.
+					</Feature>
+
+					<Feature
+						color='blue'
+						title='In-app Banners'
+						icon={GiVerticalBanner}
+					>
+						Show featured articles or updates on your landing pages
+						and application as banners. Fully customizable.
 					</Feature>
 
 					<Feature
@@ -144,6 +158,7 @@ export default function Features() {
 						application because you can customize them to suit your
 						brand.
 					</Feature>
+
 					<Feature
 						color='purple'
 						title='Custom Templates'
@@ -152,14 +167,54 @@ export default function Features() {
 						Use the pre-made template for your changelogs and
 						banners or create your own to fit your needs.
 					</Feature>
+
+					{/*<Feature*/}
+					{/*	color='blue'*/}
+					{/*	title='React & HTML Widgets'*/}
+					{/*	icon={FaReact}*/}
+					{/*>*/}
+					{/*	React and HTML versions of the embeddable widgets with support for more frameworks coming soon.*/}
+					{/*</Feature>*/}
+
 					<Feature
-						color='blue'
-						title='In-app Banners'
-						icon={GiVerticalBanner}
+						color='red'
+						title='Markdown Support'
+						icon={FaMarkdown}
 					>
-						Show featured articles or updates on your landing pages
-						and application as banners. Fully customizable.
+						Write in a rich text editor with markdown shortcuts.
+						Format without taking your hands of the keyboard.
 					</Feature>
+
+					<Feature
+						color='orange'
+						title='Subscribe to Updates'
+						icon={MdMarkEmailRead}
+					>
+						Users can subscribe to your changelog, and we&apos;ll
+						take care of emailing them whenever you publish a new
+						update.
+					</Feature>
+
+					{/*<Feature*/}
+					{/*	color='pink'*/}
+					{/*	title='Bring your whole team'*/}
+					{/*	icon={FaUsers}*/}
+					{/*>*/}
+					{/*	Add team members to your workspace and let them manage changelogs, and banners.*/}
+					{/*</Feature>*/}
+
+					<Feature color='gray' title='Dark Mode' icon={FaMoon}>
+						Choose a color mode in your settings or let your users
+						choose themselves on your public pages.
+					</Feature>
+
+					{/*<Feature*/}
+					{/*	color='yellow'*/}
+					{/*	title='Integrations'*/}
+					{/*	icon={MdOutlineSettings}*/}
+					{/*>*/}
+					{/*	Integrate with Zapier, Slack, Twitter*/}
+					{/*</Feature>*/}
 				</SimpleGrid>
 			</Box>
 		</Flex>

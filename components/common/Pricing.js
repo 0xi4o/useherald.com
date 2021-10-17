@@ -121,6 +121,12 @@ export default function Component() {
 							color={useColorModeValue('brand.500', 'brand.300')}
 							icon={BiCheckCircle}
 						>
+							500 Subscribed Users
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
 							Scheduled Publishing
 						</Feature>
 						<Feature
@@ -133,13 +139,25 @@ export default function Component() {
 							color={useColorModeValue('brand.500', 'brand.300')}
 							icon={BiCheckCircle}
 						>
-							Team Management
+							Custom Branding
 						</Feature>
+						{/*<Feature*/}
+						{/*	color={useColorModeValue('brand.500', 'brand.300')}*/}
+						{/*	icon={BiCheckCircle}*/}
+						{/*>*/}
+						{/*	Team Management*/}
+						{/*</Feature>*/}
 						<Feature
 							color={useColorModeValue('brand.500', 'brand.300')}
 							icon={BiCheckCircle}
 						>
 							No Herald branding
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							and many more...
 						</Feature>
 					</SimpleGrid>
 				</Stack>
