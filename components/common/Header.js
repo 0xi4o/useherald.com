@@ -156,7 +156,10 @@ export default function Header() {
 									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
-								<NextLink href='/app' passHref={true}>
+								<Link
+									d='none'
+									href={`https://app.useherald.com/dashboard`}
+								>
 									<Button
 										as='a'
 										colorScheme='brand'
@@ -165,7 +168,7 @@ export default function Header() {
 									>
 										Sign In
 									</Button>
-								</NextLink>
+								</Link>
 							</HStack>
 							<IconButton
 								display={{ base: 'flex', md: 'none' }}
