@@ -65,6 +65,7 @@ function Herald(props) {
 				<>
 					<span className='relative inline-flex'>
 						<Popover.Button
+							aria-label='Changelog Button'
 							className={`${
 								open ? '' : 'text-opacity-90'
 							} text-gray-500 group bg-orange-700 p-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
