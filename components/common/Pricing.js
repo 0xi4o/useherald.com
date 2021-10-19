@@ -5,7 +5,6 @@ import {
 	Button,
 	Flex,
 	FormControl,
-	FormLabel,
 	Icon,
 	SimpleGrid,
 	Text,
@@ -174,15 +173,11 @@ export default function Component() {
 						justifyContent='center'
 						mb={4}
 					>
-						<FormLabel
-							fontSize='sm'
-							htmlFor='yearly-pricing'
-							mb='0'
-							mr={0}
-						>
+						<chakra.span fontSize='sm' mb='0' mr={0}>
 							Save 20% with yearly billing
-						</FormLabel>
+						</chakra.span>
 						<Switch
+							aria-label='Save 20% with yearly billing'
 							colorScheme='brand'
 							id='yearly-pricing'
 							mx={2}
