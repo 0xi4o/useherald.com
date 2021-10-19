@@ -21,8 +21,13 @@ function MyApp({ Component, pageProps }) {
 			<ChakraProvider resetCSS theme={theme}>
 				<Head>
 					<title>
-						Herald — Updates-as-a-service for SaaS products
+						Herald | Updates-as-a-service for SaaS products |
+						Changelog, Banners and Waitlist Management
 					</title>
+					<meta
+						name='description'
+						content='Herald is an updates-as-a-service application that manages changelogs, persuasion banners, and waiting list for SaaS products.'
+					/>
 				</Head>
 				<DokzProvider
 					docsRootPath='pages/docs'
