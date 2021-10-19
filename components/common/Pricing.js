@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import {
 	chakra,
-	Badge,
 	Box,
 	Button,
 	Flex,
 	FormControl,
 	FormLabel,
 	Icon,
-	Link,
 	SimpleGrid,
 	Text,
 	Stack,
@@ -16,6 +14,7 @@ import {
 	useColorModeValue,
 } from '@chakra-ui/react';
 import { BiCheckCircle } from 'react-icons/bi';
+import { FaGithub } from 'react-icons/fa';
 
 export default function Component() {
 	const [isAnnualBilling, setIsAnnualBilling] = useState(false);
@@ -141,17 +140,17 @@ export default function Component() {
 						>
 							Custom Branding
 						</Feature>
-						{/*<Feature*/}
-						{/*	color={useColorModeValue('brand.500', 'brand.300')}*/}
-						{/*	icon={BiCheckCircle}*/}
-						{/*>*/}
-						{/*	Team Management*/}
-						{/*</Feature>*/}
 						<Feature
 							color={useColorModeValue('brand.500', 'brand.300')}
 							icon={BiCheckCircle}
 						>
 							No Herald branding
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Priority Support
 						</Feature>
 						<Feature
 							color={useColorModeValue('brand.500', 'brand.300')}
@@ -265,56 +264,84 @@ export default function Component() {
 				</Stack>
 			</Flex>
 			<Flex
-				d='none'
 				w='full'
-				p={10}
-				mt={5}
-				rounded='md'
-				bg={useColorModeValue('#F9FAFB', 'gray.700')}
-				align='center'
-				direction={['column', 'row']}
+				mx='auto'
+				mb={8}
+				textAlign='left'
+				direction={{ base: 'column', lg: 'row' }}
+				borderRadius='lg'
+				overflow='hidden'
 			>
-				<Stack flex='0.8' pr={10}>
-					<Badge
-						mb={1}
-						fontSize='xs'
-						letterSpacing='wide'
-						colorScheme='gray'
-						fontWeight='medium'
-						rounded='full'
-						px={4}
-						py={1}
-						w='fit-content'
-					>
-						Discounted
-					</Badge>
-					<Text textAlign='left'>
-						Free for student makers and open source projects. Please
-						get in touch with me and provide proof of your status.
+				<Stack spacing={8} p='45px' flex='0.7'>
+					<Text fontSize='3xl' fontWeight='bold' lineHeight='tight'>
+						Self Hosted
 					</Text>
+					<chakra.p
+						fontSize={['sm', 'md']}
+						color={useColorModeValue('gray.600', 'gray.400')}
+					>
+						Herald is an open-source software and with a bit of work
+						you can self-host it anywhere you like.
+					</chakra.p>
+					<Flex align='center'>
+						<Text
+							fontFamily='body'
+							whiteSpace='nowrap'
+							fontWeight='semibold'
+							textTransform='uppercase'
+							color='brand.400'
+						>
+							What&apos;s included
+						</Text>
+						<Flex ml='15px' w='full' borderTopWidth='1px' h='3px' />
+					</Flex>
+					<SimpleGrid
+						columns={[1, 2, 1, 2]}
+						spacingX={4}
+						spacingY={4}
+					>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Host on your servers
+						</Feature>
+						<Feature
+							color={useColorModeValue('brand.500', 'brand.300')}
+							icon={BiCheckCircle}
+						>
+							Community Support
+						</Feature>
+					</SimpleGrid>
 				</Stack>
-				<Link
-					w={['full', 'auto']}
-					display='inline-flex'
-					alignItems='center'
-					justifyContent='center'
-					px={5}
-					py={3}
-					mt={[5, 0]}
-					border='solid transparent'
-					fontWeight='semibold'
-					rounded='md'
-					shadow='md'
-					h='fit-content'
-					color={useColorModeValue('brand.600', 'white')}
-					bg={useColorModeValue('white', 'gray.800')}
-					_hover={{
-						bg: useColorModeValue('brand.50', 'gray.900'),
-					}}
-					flex='0.2'
+				<Stack
+					p='45px'
+					flex='0.3'
+					justify='center'
+					align='center'
+					bg={useColorModeValue('#F9FAFB', 'gray.900')}
+					borderRightRadius='md'
 				>
-					Contact Me
-				</Link>
+					<Stack spacing={6} textAlign='center'>
+						<Button w='300px' py={6}>
+							<Icon as={FaGithub} mr={2} />
+							<Text>Github</Text>
+						</Button>
+						<Button
+							w='300px'
+							colorScheme='brand'
+							py={6}
+							onClick={() => {
+								window.scrollTo(0, 0);
+								alert(
+									"Thank you for your interest! We're not ready for users yet. Please sign up for updates and we'll notify you when we launch"
+								);
+							}}
+						>
+							Documentation
+						</Button>
+					</Stack>
+				</Stack>
 			</Flex>
 		</Flex>
 	);
