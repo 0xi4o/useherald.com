@@ -174,22 +174,22 @@ export default function Component() {
 						justifyContent='center'
 						mb={4}
 					>
-						<Switch
-							colorScheme='brand'
-							id='email-alerts'
-							mx={2}
-							onChange={(e) =>
-								setIsAnnualBilling(e.target.checked)
-							}
-						/>
 						<FormLabel
 							fontSize='sm'
-							htmlFor='email-alerts'
+							htmlFor='yearly-pricing'
 							mb='0'
 							mr={0}
 						>
 							Save 20% with yearly billing
 						</FormLabel>
+						<Switch
+							colorScheme='brand'
+							id='yearly-pricing'
+							mx={2}
+							onChange={(e) =>
+								setIsAnnualBilling(e.target.checked)
+							}
+						/>
 					</FormControl>
 					<Flex
 						align='center'
