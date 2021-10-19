@@ -56,7 +56,6 @@ const Hero = () => {
 				</chakra.h1>
 				<chakra.p
 					mb={5}
-					color='gray.500'
 					fontSize={{ base: 'lg', md: 'xl' }}
 					lineHeight='tall'
 				>
@@ -155,6 +154,7 @@ const Hero = () => {
 					src='/herald-hero-image.png'
 					width='1024'
 					height='600'
+					alt='Herald Product Image'
 				/>
 			</Flex>
 		</Flex>
