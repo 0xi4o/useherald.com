@@ -41,22 +41,24 @@ export default function Features() {
 				>
 					<Icon as={props.icon} color='white' w={8} h={8} />
 				</Flex>
-				<chakra.h3
-					mb={2}
-					fontSize='xl'
-					fontWeight='semibold'
-					lineHeight='shorter'
-					color={useColorModeValue('gray.900')}
-				>
-					{props.title}
-				</chakra.h3>
-				<chakra.dd
-					mt={2}
-					fontSize='lg'
-					color={useColorModeValue('gray.500', 'gray.400')}
-				>
-					{props.children}
-				</chakra.dd>
+				<chakra.dl>
+					<chakra.dt
+						mb={2}
+						fontSize='xl'
+						fontWeight='semibold'
+						lineHeight='shorter'
+						color={useColorModeValue('gray.900')}
+					>
+						{props.title}
+					</chakra.dt>
+					<chakra.dd
+						mt={2}
+						fontSize='lg'
+						color={useColorModeValue('gray.500', 'gray.400')}
+					>
+						{props.children}
+					</chakra.dd>
+				</chakra.dl>
 			</Flex>
 		);
 	};
