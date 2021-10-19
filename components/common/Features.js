@@ -95,7 +95,7 @@ export default function Features() {
 				<chakra.p
 					mb={6}
 					fontSize={{ base: 'lg', md: 'xl' }}
-					color={useColorModeValue('gray.600', 'gray.500')}
+					color={useColorModeValue('gray.800', 'gray.200')}
 				>
 					To keep your customers up-to-date on your product and your
 					company. Feature articles, events, releases and more, inside
