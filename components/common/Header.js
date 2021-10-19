@@ -156,19 +156,19 @@ export default function Header() {
 									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
-								<Link
-									d='none'
-									href={`https://app.useherald.com/dashboard`}
-								>
-									<Button
-										as='a'
-										colorScheme='brand'
-										variant='solid'
-										size='sm'
-									>
-										Sign In
-									</Button>
-								</Link>
+								{/*<Link*/}
+								{/*	d='none'*/}
+								{/*	href={`https://app.useherald.com/dashboard`}*/}
+								{/*>*/}
+								{/*	<Button*/}
+								{/*		as='a'*/}
+								{/*		colorScheme='brand'*/}
+								{/*		variant='solid'*/}
+								{/*		size='sm'*/}
+								{/*	>*/}
+								{/*		Sign In*/}
+								{/*	</Button>*/}
+								{/*</Link>*/}
 							</HStack>
 							<IconButton
 								display={{ base: 'flex', md: 'none' }}
