@@ -1,11 +1,16 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import { ColorModeScript } from '@chakra-ui/react';
+import React from 'react';
 
 export default class Document extends NextDocument {
 	render() {
 		return (
 			<Html lang='en'>
 				<Head>
+					<meta
+						name='description'
+						content='Herald is an updates-as-a-service application that manages changelogs, persuasion banners, and waiting list for SaaS products.'
+					/>
 					<link
 						rel='preconnect'
 						href='https://fonts.googleapis.com'
