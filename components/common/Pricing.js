@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NextLink from 'next/link';
 import {
 	chakra,
 	Box,
@@ -6,6 +7,7 @@ import {
 	Flex,
 	FormControl,
 	Icon,
+	Link,
 	SimpleGrid,
 	Text,
 	Stack,
@@ -318,23 +320,21 @@ export default function Component() {
 					borderRightRadius='md'
 				>
 					<Stack spacing={6} textAlign='center'>
-						<Button w='300px' py={6}>
-							<Icon as={FaGithub} mr={2} />
-							<Text>Github</Text>
-						</Button>
-						<Button
-							w='300px'
-							colorScheme='brand'
-							py={6}
-							onClick={() => {
-								window.scrollTo(0, 0);
-								alert(
-									"Thank you for your interest! We're not ready for users yet. Please sign up for updates and we'll notify you when we launch"
-								);
-							}}
+						<Link
+							d='flex'
+							alignItems='center'
+							justifyContent='center'
+							href='https://github.com/opencatalysts/herald_app'
+							isExternal={true}
 						>
-							Documentation
-						</Button>
+							<Icon as={FaGithub} mr={2} />
+							<Text>Source Code</Text>
+						</Link>
+						<NextLink href='/docs'>
+							<Button colorScheme='brand' py={6} w='300px'>
+								Documentation
+							</Button>
+						</NextLink>
 					</Stack>
 				</Stack>
 			</Flex>
