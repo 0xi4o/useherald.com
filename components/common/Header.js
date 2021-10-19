@@ -116,11 +116,7 @@ export default function Header() {
 								</HStack>
 							</NextLink>
 						</Flex>
-						<Flex
-							justify='flex-end'
-							align='center'
-							color='gray.400'
-						>
+						<Flex justify='flex-end' align='center'>
 							<HStack
 								spacing='5'
 								display={{ base: 'none', md: 'flex' }}
