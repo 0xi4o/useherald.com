@@ -12,6 +12,16 @@
             "name": "blog",
             "children": [
                 {
+                    "path": "pages/blog/effective-way-to-increase-customer-satisfaction.mdx",
+                    "name": "effective-way-to-increase-customer-satisfaction.mdx",
+                    "meta": {
+                        "date": "21 October, 2021",
+                        "description": "Keeping your customers in the loop is one of the most effective way to make them happy and grow your SaaS."
+                    },
+                    "title": "An effective way to increase user satisfaction",
+                    "url": "/blog/effective-way-to-increase-customer-satisfaction"
+                },
+                {
                     "path": "pages/blog/introducing-herald-blog.mdx",
                     "name": "introducing-herald-blog.mdx",
                     "meta": {
@@ -20,16 +30,6 @@
                     },
                     "title": "Introducing the Herald Blog",
                     "url": "/blog/introducing-herald-blog"
-                },
-                {
-                    "path": "pages/blog/what-is-updates-as-a-service.mdx",
-                    "name": "what-is-updates-as-a-service.mdx",
-                    "meta": {
-                        "date": "21 October, 2021",
-                        "description": "Keeping your customers in the loop is one of the most effective way to make them happy and grow your SaaS."
-                    },
-                    "title": "The most effective way to increase feature adoption and user satisfaction",
-                    "url": "/blog/what-is-updates-as-a-service"
                 }
             ]
         },
