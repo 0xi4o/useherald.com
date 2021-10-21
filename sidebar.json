@@ -20,6 +20,16 @@
                     },
                     "title": "Introducing the Herald Blog",
                     "url": "/blog/introducing-herald-blog"
+                },
+                {
+                    "path": "pages/blog/what-is-updates-as-a-service.mdx",
+                    "name": "what-is-updates-as-a-service.mdx",
+                    "meta": {
+                        "date": "21 October, 2021",
+                        "description": "Keeping your customers in the loop is one of the most effective way to make them happy and grow your SaaS."
+                    },
+                    "title": "The most effective way to increase feature adoption and user satisfaction",
+                    "url": "/blog/what-is-updates-as-a-service"
                 }
             ]
         },
