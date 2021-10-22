@@ -1,5 +1,6 @@
-import { ColorModeSwitch, DokzProvider, DokzBlogProvider } from 'dokz';
+import Script from 'next/script';
 import Link from 'next/link';
+import { ColorModeSwitch, DokzProvider, DokzBlogProvider } from 'dokz';
 import { useRouter } from 'next/router';
 import {
 	chakra,
@@ -21,9 +22,22 @@ function MyApp({ Component, pageProps }) {
 			<ChakraProvider resetCSS theme={theme}>
 				<Head>
 					<title>
-						Herald | Updates-as-a-service for SaaS products |
+						Herald Docs | Updates-as-a-service for SaaS products |
 						Changelog, Banners and Waitlist Management
 					</title>
+					<Script
+						strategy='lazyOnload'
+						src='https://www.googletagmanager.com/gtag/js?id=G-25B5VNS3BB'
+					/>
+					<Script id='google-analytics'>
+						{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								
+								gtag('config', 'G-25B5VNS3BB');
+							`}
+					</Script>
 				</Head>
 				<DokzProvider
 					docsRootPath='pages/docs'
@@ -61,7 +75,23 @@ function MyApp({ Component, pageProps }) {
 		return (
 			<ChakraProvider resetCSS theme={theme}>
 				<Head>
-					<title>Herald Blog</title>
+					<title>
+						Herald Blog | Updates-as-a-service for SaaS products |
+						Changelog, Banners and Waitlist Management
+					</title>
+					<Script
+						strategy='lazyOnload'
+						src='https://www.googletagmanager.com/gtag/js?id=G-25B5VNS3BB'
+					/>
+					<Script id='google-analytics'>
+						{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								
+								gtag('config', 'G-25B5VNS3BB');
+							`}
+					</Script>
 				</Head>
 				<DokzBlogProvider
 					blogRootPath='pages/blog'
@@ -97,8 +127,22 @@ function MyApp({ Component, pageProps }) {
 			>
 				<Head>
 					<title>
-						Herald - Updates-as-a-service for SaaS products
+						Herald | Updates-as-a-service for SaaS products |
+						Changelog, Banners and Waitlist Management
 					</title>
+					<Script
+						strategy='lazyOnload'
+						src='https://www.googletagmanager.com/gtag/js?id=G-25B5VNS3BB'
+					/>
+					<Script id='google-analytics'>
+						{`
+								window.dataLayer = window.dataLayer || [];
+								function gtag(){dataLayer.push(arguments);}
+								gtag('js', new Date());
+								
+								gtag('config', 'G-25B5VNS3BB');
+							`}
+					</Script>
 				</Head>
 				<Component {...pageProps} />
 			</ColorModeProvider>
