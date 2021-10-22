@@ -1,1 +1,3 @@
 /packages/widget/dist/**/*.js
+.netlify
+.next
