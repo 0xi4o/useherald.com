@@ -29,15 +29,21 @@ function MyApp({ Component, pageProps }) {
 						strategy='lazyOnload'
 						src='https://www.googletagmanager.com/gtag/js?id=G-25B5VNS3BB'
 					/>
-					<Script id='google-analytics'>
-						{`
+					<Script
+						id='google-analytics'
+						strategy='afterInteractive'
+						dangerouslySetInnerHTML={{
+							__html: `
 								window.dataLayer = window.dataLayer || [];
 								function gtag(){dataLayer.push(arguments);}
 								gtag('js', new Date());
 								
-								gtag('config', 'G-25B5VNS3BB');
-							`}
-					</Script>
+								gtag('config', 'G-25B5VNS3BB', {
+									page_path: window.location.pathname,
+								});
+							`,
+						}}
+					/>
 				</Head>
 				<DokzProvider
 					docsRootPath='pages/docs'
