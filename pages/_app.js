@@ -12,8 +12,8 @@ import {
 import Head from 'next/head';
 import Image from 'next/image';
 import theme from '../theme';
-import * as gtag from '../lib/gtag';
 import '@useherald/react-widget/dist/style.css';
+import { pageview } from '../lib/gtag';
 
 function MyApp({ Component, pageProps }) {
 	const { events, pathname } = useRouter();
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 	useEffect(() => {
 		if (window) {
 			const handleRouteChange = (url) => {
-				gtag.pageview(url);
+				pageview(url);
 			};
 			events.on('routeChangeComplete', handleRouteChange);
 			return () => {
