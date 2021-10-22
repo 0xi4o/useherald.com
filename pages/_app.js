@@ -19,13 +19,15 @@ function MyApp({ Component, pageProps }) {
 	const { events, pathname } = useRouter();
 
 	useEffect(() => {
-		const handleRouteChange = (url) => {
-			gtag.pageview(url);
-		};
-		events.on('routeChangeComplete', handleRouteChange);
-		return () => {
-			events.off('routeChangeComplete', handleRouteChange);
-		};
+		if (window) {
+			const handleRouteChange = (url) => {
+				gtag.pageview(url);
+			};
+			events.on('routeChangeComplete', handleRouteChange);
+			return () => {
+				events.off('routeChangeComplete', handleRouteChange);
+			};
+		}
 	}, [events]);
 
 	if (pathname.startsWith('/docs')) {
