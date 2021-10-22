@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import { ColorModeSwitch, DokzProvider, DokzBlogProvider } from 'dokz';
@@ -9,13 +10,23 @@ import {
 	HStack,
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import theme from '../theme';
 import Image from 'next/image';
-import React from 'react';
+import theme from '../theme';
+import * as gtag from '../lib/gtag';
 import '@useherald/react-widget/dist/style.css';
 
 function MyApp({ Component, pageProps }) {
-	const { pathname } = useRouter();
+	const { events, pathname } = useRouter();
+
+	useEffect(() => {
+		const handleRouteChange = (url) => {
+			gtag.pageview(url);
+		};
+		events.on('routeChangeComplete', handleRouteChange);
+		return () => {
+			events.off('routeChangeComplete', handleRouteChange);
+		};
+	}, [events]);
 
 	if (pathname.startsWith('/docs')) {
 		return (
