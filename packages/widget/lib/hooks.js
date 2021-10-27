@@ -12,3 +12,15 @@ export function useChangelogFeed(baseUrl, userId) {
 		isLoading: !error && !data,
 	};
 }
+
+export function useBanner(id, baseUrl, userId) {
+	const { data, error } = useSWR(
+		`${baseUrl}/api/banner?id=${id}&userId=${userId}`,
+		fetcher
+	);
+
+	return {
+		banner: data?.banner,
+		isLoading: !error && !data,
+	};
+}

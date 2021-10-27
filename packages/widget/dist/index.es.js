@@ -17,8 +17,521 @@ var __spreadValues = (a, b2) => {
   return a;
 };
 var __spreadProps = (a, b2) => __defProps(a, __getOwnPropDescs(b2));
-import React, { Fragment, isValidElement, cloneElement, createElement, forwardRef, useLayoutEffect, useEffect, useState, useCallback, useRef, useContext, createContext, useReducer, useMemo, useDebugValue } from "react";
+import React, { createContext, useContext, useState, createElement, useRef, useCallback, useDebugValue, useEffect, useLayoutEffect, Fragment, isValidElement, cloneElement, forwardRef, useReducer, useMemo } from "react";
 var index = "";
+var DefaultContext = {
+  color: void 0,
+  size: void 0,
+  className: void 0,
+  style: void 0,
+  attr: void 0
+};
+var IconContext = React.createContext && React.createContext(DefaultContext);
+var __assign$2 = function() {
+  __assign$2 = Object.assign || function(t) {
+    for (var s2, i = 1, n = arguments.length; i < n; i++) {
+      s2 = arguments[i];
+      for (var p2 in s2)
+        if (Object.prototype.hasOwnProperty.call(s2, p2))
+          t[p2] = s2[p2];
+    }
+    return t;
+  };
+  return __assign$2.apply(this, arguments);
+};
+var __rest = function(s2, e) {
+  var t = {};
+  for (var p2 in s2)
+    if (Object.prototype.hasOwnProperty.call(s2, p2) && e.indexOf(p2) < 0)
+      t[p2] = s2[p2];
+  if (s2 != null && typeof Object.getOwnPropertySymbols === "function")
+    for (var i = 0, p2 = Object.getOwnPropertySymbols(s2); i < p2.length; i++) {
+      if (e.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s2, p2[i]))
+        t[p2[i]] = s2[p2[i]];
+    }
+  return t;
+};
+function Tree2Element(tree) {
+  return tree && tree.map(function(node2, i) {
+    return React.createElement(node2.tag, __assign$2({
+      key: i
+    }, node2.attr), Tree2Element(node2.child));
+  });
+}
+function GenIcon(data) {
+  return function(props) {
+    return React.createElement(IconBase, __assign$2({
+      attr: __assign$2({}, data.attr)
+    }, props), Tree2Element(data.child));
+  };
+}
+function IconBase(props) {
+  var elem = function(conf) {
+    var attr = props.attr, size = props.size, title = props.title, svgProps = __rest(props, ["attr", "size", "title"]);
+    var computedSize = size || conf.size || "1em";
+    var className;
+    if (conf.className)
+      className = conf.className;
+    if (props.className)
+      className = (className ? className + " " : "") + props.className;
+    return React.createElement("svg", __assign$2({
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "0"
+    }, conf.attr, attr, svgProps, {
+      className,
+      style: __assign$2(__assign$2({
+        color: props.color || conf.color
+      }, conf.style), props.style),
+      height: computedSize,
+      width: computedSize,
+      xmlns: "http://www.w3.org/2000/svg"
+    }), title && React.createElement("title", null, title), props.children);
+  };
+  return IconContext !== void 0 ? React.createElement(IconContext.Consumer, null, function(conf) {
+    return elem(conf);
+  }) : elem(DefaultContext);
+}
+function HiOutlineArrowNarrowRight(props) {
+  return GenIcon({ "tag": "svg", "attr": { "fill": "none", "viewBox": "0 0 24 24", "stroke": "currentColor" }, "child": [{ "tag": "path", "attr": { "strokeLinecap": "round", "strokeLinejoin": "round", "strokeWidth": "2", "d": "M17 8l4 4m0 0l-4 4m4-4H3" } }] })(props);
+}
+var has = Object.prototype.hasOwnProperty;
+function dequal(foo, bar) {
+  var ctor, len;
+  if (foo === bar)
+    return true;
+  if (foo && bar && (ctor = foo.constructor) === bar.constructor) {
+    if (ctor === Date)
+      return foo.getTime() === bar.getTime();
+    if (ctor === RegExp)
+      return foo.toString() === bar.toString();
+    if (ctor === Array) {
+      if ((len = foo.length) === bar.length) {
+        while (len-- && dequal(foo[len], bar[len]))
+          ;
+      }
+      return len === -1;
+    }
+    if (!ctor || typeof foo === "object") {
+      len = 0;
+      for (ctor in foo) {
+        if (has.call(foo, ctor) && ++len && !has.call(bar, ctor))
+          return false;
+        if (!(ctor in bar) || !dequal(foo[ctor], bar[ctor]))
+          return false;
+      }
+      return Object.keys(bar).length === len;
+    }
+  }
+  return foo !== foo && bar !== bar;
+}
+function l(e, r, n, t) {
+  return new (n || (n = Promise))(function(i, u) {
+    function o(e2) {
+      try {
+        c(t.next(e2));
+      } catch (e3) {
+        u(e3);
+      }
+    }
+    function a(e2) {
+      try {
+        c(t.throw(e2));
+      } catch (e3) {
+        u(e3);
+      }
+    }
+    function c(e2) {
+      var r2;
+      e2.done ? i(e2.value) : (r2 = e2.value, r2 instanceof n ? r2 : new n(function(e3) {
+        e3(r2);
+      })).then(o, a);
+    }
+    c((t = t.apply(e, r || [])).next());
+  });
+}
+function s(e, r) {
+  var n, t, i, u, o = { label: 0, sent: function() {
+    if (1 & i[0])
+      throw i[1];
+    return i[1];
+  }, trys: [], ops: [] };
+  return u = { next: a(0), throw: a(1), return: a(2) }, typeof Symbol == "function" && (u[Symbol.iterator] = function() {
+    return this;
+  }), u;
+  function a(u2) {
+    return function(a2) {
+      return function(u3) {
+        if (n)
+          throw new TypeError("Generator is already executing.");
+        for (; o; )
+          try {
+            if (n = 1, t && (i = 2 & u3[0] ? t.return : u3[0] ? t.throw || ((i = t.return) && i.call(t), 0) : t.next) && !(i = i.call(t, u3[1])).done)
+              return i;
+            switch (t = 0, i && (u3 = [2 & u3[0], i.value]), u3[0]) {
+              case 0:
+              case 1:
+                i = u3;
+                break;
+              case 4:
+                return o.label++, { value: u3[1], done: false };
+              case 5:
+                o.label++, t = u3[1], u3 = [0];
+                continue;
+              case 7:
+                u3 = o.ops.pop(), o.trys.pop();
+                continue;
+              default:
+                if (!(i = o.trys, (i = i.length > 0 && i[i.length - 1]) || u3[0] !== 6 && u3[0] !== 2)) {
+                  o = 0;
+                  continue;
+                }
+                if (u3[0] === 3 && (!i || u3[1] > i[0] && u3[1] < i[3])) {
+                  o.label = u3[1];
+                  break;
+                }
+                if (u3[0] === 6 && o.label < i[1]) {
+                  o.label = i[1], i = u3;
+                  break;
+                }
+                if (i && o.label < i[2]) {
+                  o.label = i[2], o.ops.push(u3);
+                  break;
+                }
+                i[2] && o.ops.pop(), o.trys.pop();
+                continue;
+            }
+            u3 = r.call(e, o);
+          } catch (e2) {
+            u3 = [6, e2], t = 0;
+          } finally {
+            n = i = 0;
+          }
+        if (5 & u3[0])
+          throw u3[1];
+        return { value: u3[0] ? u3[1] : void 0, done: true };
+      }([u2, a2]);
+    };
+  }
+}
+var d = {}[0], v = function(e) {
+  return e === d;
+}, h = function(e) {
+  return typeof e == "function";
+}, g = function() {
+}, p = function(e, r) {
+  return Object.assign({}, e, r);
+}, y = true, b = typeof window != "undefined", w = typeof document != "undefined", m = b && window.addEventListener || g, O = w && document.addEventListener || g, V$1 = { isOnline: function() {
+  return y;
+}, isVisible: function() {
+  var e = w && document.visibilityState;
+  return !!v(e) || e !== "hidden";
+} }, k = { initFocus: function(e) {
+  O("visibilitychange", e), m("focus", e);
+}, initReconnect: function(e) {
+  m("online", function() {
+    y = true, e();
+  }), m("offline", function() {
+    y = false;
+  });
+} }, T = typeof window == "undefined" || "Deno" in window, R = T ? null : window.requestAnimationFrame, S = R ? function(e) {
+  return R(e);
+} : function(e) {
+  return setTimeout(e, 1);
+}, E = T ? useEffect : useLayoutEffect, I$1 = typeof navigator != "undefined" && navigator.connection, x = !T && I$1 && (["slow-2g", "2g"].includes(I$1.effectiveType) || I$1.saveData), P = new WeakMap(), F = 0;
+function M(e) {
+  if (h(e))
+    try {
+      e = e();
+    } catch (r2) {
+      e = "";
+    }
+  var r;
+  return Array.isArray(e) ? (r = e, e = function(e2) {
+    if (!e2.length)
+      return "";
+    for (var r2 = "arg", n = 0; n < e2.length; ++n) {
+      var t = e2[n], i = d;
+      t === null || typeof t != "object" && !h(t) ? i = JSON.stringify(t) : P.has(t) ? i = P.get(t) : (i = F, P.set(t, F++)), r2 += "$" + i;
+    }
+    return r2;
+  }(e)) : r = [e = String(e || "")], [e, r, e ? "$err$" + e : "", e ? "$req$" + e : ""];
+}
+var W = new WeakMap(), $ = function(e, r, n, t, i, u) {
+  u === void 0 && (u = false);
+  var o = W.get(e), a = o[0], c = o[1], f = a[r], l2 = c[r];
+  if (l2)
+    for (var s2 = 0; s2 < l2.length; ++s2)
+      l2[s2](n, t, i);
+  return u && f && f[0] ? f[0](2).then(function() {
+    return e.get(r);
+  }) : e.get(r);
+}, q = 0, C = function() {
+  return ++q;
+}, D = function(e, r, n, t) {
+  return t === void 0 && (t = true), l(void 0, void 0, void 0, function() {
+    var i, u, o, a, c, f, l2, g2, p2, y2, b2;
+    return s(this, function(s2) {
+      switch (s2.label) {
+        case 0:
+          if (i = M(r), u = i[0], o = i[2], !u)
+            return [2];
+          if (a = W.get(e), c = a[2], f = a[3], v(n))
+            return [2, $(e, u, e.get(u), e.get(o), d, t)];
+          if (p2 = c[u] = C(), f[u] = 0, h(n))
+            try {
+              n = n(e.get(u));
+            } catch (e2) {
+              n = d, g2 = e2;
+            }
+          if (!n || !h(n.then))
+            return [3, 5];
+          s2.label = 1;
+        case 1:
+          return s2.trys.push([1, 3, , 4]), [4, n];
+        case 2:
+          return l2 = s2.sent(), [3, 4];
+        case 3:
+          return y2 = s2.sent(), g2 = y2, [3, 4];
+        case 4:
+          if (p2 !== c[u]) {
+            if (g2)
+              throw g2;
+            return [2, l2];
+          }
+          return [3, 6];
+        case 5:
+          l2 = n, s2.label = 6;
+        case 6:
+          return v(l2) || e.set(u, l2), e.set(o, g2), f[u] = C(), [4, $(e, u, l2, g2, d, t)];
+        case 7:
+          if (b2 = s2.sent(), g2)
+            throw g2;
+          return [2, b2];
+      }
+    });
+  });
+};
+function L(e, r) {
+  for (var n in e)
+    e[n][0] && e[n][0](r);
+}
+function j(e, r) {
+  if (!W.has(e)) {
+    var n = p(k, r), t = {}, i = D.bind(d, e);
+    return W.set(e, [t, {}, {}, {}, {}, {}, i]), T || (n.initFocus(L.bind(d, t, 0)), n.initReconnect(L.bind(d, t, 1))), [e, i];
+  }
+}
+var A = j(new Map()), G = A[0], H = A[1], J = p({ onLoadingSlow: g, onSuccess: g, onError: g, onErrorRetry: function(e, r, n, t, i) {
+  if (V$1.isVisible()) {
+    var u = n.errorRetryCount, o = i.retryCount, a = ~~((Math.random() + 0.5) * (1 << (o < 8 ? o : 8))) * n.errorRetryInterval;
+    !v(u) && o > u || setTimeout(t, a, i);
+  }
+}, revalidateOnFocus: true, revalidateOnReconnect: true, revalidateIfStale: true, shouldRetryOnError: true, errorRetryInterval: x ? 1e4 : 5e3, focusThrottleInterval: 5e3, dedupingInterval: 2e3, loadingTimeout: x ? 5e3 : 3e3, compare: dequal, isPaused: function() {
+  return false;
+}, cache: G, mutate: H, fallback: {} }, V$1);
+function N(e, r) {
+  var n = p(e, r);
+  if (!r)
+    return n;
+  var t = e.use, i = e.fallback, u = r.use, o = r.fallback;
+  return t && u && (n.use = t.concat(u)), i && o && (n.fallback = p(i, o)), n;
+}
+var z = createContext({});
+function B(e) {
+  return h(e[1]) ? [e[0], e[1], e[2] || {}] : [e[0], null, (e[1] === null ? e[2] : e[1]) || {}];
+}
+var K, Q = function(e, r, n) {
+  var t = r[e] || (r[e] = []);
+  return t.push(n), function() {
+    var e2 = t.indexOf(n);
+    e2 >= 0 && (t[e2] = t[t.length - 1], t.pop());
+  };
+}, U = { dedupe: true };
+Object.defineProperty(function(e) {
+  var r = e.children, n = e.value, o = N(useContext(z), n), a = n && n.provider, c = useState(function() {
+    return a ? j(a(o.cache || G), n) : d;
+  })[0];
+  return c && (o.cache = c[0], o.mutate = c[1]), createElement(z.Provider, { value: o }, r);
+}, "default", { value: J });
+var Z = (K = function(e, r, n) {
+  var t = n.cache, u = n.compare, f = n.fallbackData, h2 = n.suspense, g2 = n.revalidateOnMount, y2 = n.refreshInterval, b2 = n.refreshWhenHidden, w2 = n.refreshWhenOffline, m2 = W.get(t), O2 = m2[0], V2 = m2[1], k2 = m2[2], R2 = m2[3], I2 = m2[4], x2 = m2[5], P2 = M(e), F2 = P2[0], q2 = P2[1], L2 = P2[2], j2 = P2[3], A2 = useRef(false), G2 = useRef(false), H2 = useRef(F2), J2 = useRef(n), N2 = function() {
+    return J2.current;
+  }, z2 = t.get(F2), B2 = v(f) ? n.fallback[F2] : f, K2 = v(z2) ? B2 : z2, X = t.get(L2);
+  if (h2 && (!F2 || !r))
+    throw new Error("useSWR requires either key or fetcher with suspense mode");
+  var Y = function() {
+    return v(g2) ? h2 ? !A2.current && !v(K2) : v(K2) || n.revalidateIfStale : g2;
+  }, Z2 = !(!F2 || !r) && (!!t.get(j2) || !A2.current && Y()), _ = function(e2, r2) {
+    var n2 = useState({})[1], t2 = useRef(e2), u2 = useRef({ data: false, error: false, isValidating: false }), c = useCallback(function(e3) {
+      var i = false, o = t2.current;
+      for (var a in e3) {
+        var c2 = a;
+        o[c2] !== e3[c2] && (o[c2] = e3[c2], u2.current[c2] && (i = true));
+      }
+      i && !r2.current && n2({});
+    }, []);
+    return E(function() {
+      t2.current = e2;
+    }), [t2, u2.current, c];
+  }({ data: K2, error: X, isValidating: Z2 }, G2), ee2 = _[0], re = _[1], ne2 = _[2], te = useCallback(function(e2) {
+    return l(void 0, void 0, void 0, function() {
+      var i, o, a, c, f2, l2, h3, g3, p2;
+      return s(this, function(s2) {
+        switch (s2.label) {
+          case 0:
+            if (!F2 || !r || G2.current || N2().isPaused())
+              return [2, false];
+            a = true, c = e2 || {}, f2 = !v(I2[F2]) && c.dedupe, l2 = function() {
+              return !G2.current && F2 === H2.current && A2.current;
+            }, h3 = function() {
+              delete I2[F2], delete x2[F2];
+            }, s2.label = 1;
+          case 1:
+            return s2.trys.push([1, 6, , 7]), t.set(j2, true), ne2({ isValidating: true }), f2 || $(t, F2, ee2.current.data, ee2.current.error, true), f2 ? (o = x2[F2], [4, I2[F2]]) : [3, 3];
+          case 2:
+            return i = s2.sent(), [3, 5];
+          case 3:
+            return n.loadingTimeout && !t.get(F2) && setTimeout(function() {
+              a && l2() && N2().onLoadingSlow(F2, n);
+            }, n.loadingTimeout), x2[F2] = o = C(), [4, I2[F2] = r.apply(r, q2)];
+          case 4:
+            i = s2.sent(), setTimeout(function() {
+              x2[F2] === o && h3();
+            }, n.dedupingInterval), l2() && N2().onSuccess(i, F2, n), s2.label = 5;
+          case 5:
+            return x2[F2] !== o ? [2, false] : (t.set(L2, d), t.set(j2, false), g3 = { isValidating: false }, !v(k2[F2]) && (o <= k2[F2] || o <= R2[F2] || R2[F2] === 0) ? (ne2(g3), [2, false]) : (v(ee2.current.error) || (g3.error = d), u(ee2.current.data, i) || (g3.data = i), u(t.get(F2), i) || t.set(F2, i), ne2(g3), f2 || $(t, F2, i, g3.error, false), [3, 7]));
+          case 6:
+            return p2 = s2.sent(), h3(), t.set(j2, false), N2().isPaused() ? (ne2({ isValidating: false }), [2, false]) : (t.set(L2, p2), ee2.current.error !== p2 && (ne2({ isValidating: false, error: p2 }), f2 || $(t, F2, d, p2, false)), l2() && (N2().onError(p2, F2, n), n.shouldRetryOnError && N2().onErrorRetry(p2, F2, n, te, { retryCount: (c.retryCount || 0) + 1, dedupe: true })), [3, 7]);
+          case 7:
+            return a = false, [2, true];
+        }
+      });
+    });
+  }, [F2]), ie = useCallback(function(e2, r2) {
+    return D(t, H2.current, e2, r2);
+  }, []);
+  if (E(function() {
+    J2.current = n;
+  }), E(function() {
+    if (F2) {
+      var e2 = A2.current, r2 = te.bind(d, U), n2 = function() {
+        return N2().isVisible() && N2().isOnline();
+      }, t2 = 0, i = Q(F2, V2, function(e3, r3, n3) {
+        ne2(p({ error: r3, isValidating: n3 }, u(e3, ee2.current.data) ? null : { data: e3 }));
+      }), o = Q(F2, O2, function(e3) {
+        if (e3 === 0) {
+          var i2 = Date.now();
+          N2().revalidateOnFocus && i2 > t2 && n2() && (t2 = i2 + N2().focusThrottleInterval, r2());
+        } else if (e3 === 1)
+          N2().revalidateOnReconnect && n2() && r2();
+        else if (e3 === 2)
+          return te();
+      });
+      return G2.current = false, H2.current = F2, e2 && ne2({ data: K2, error: X, isValidating: Z2 }), Y() && (v(K2) || T ? r2() : S(r2)), A2.current = true, function() {
+        G2.current = true, i(), o();
+      };
+    }
+  }, [F2, te]), E(function() {
+    var e2;
+    function r2() {
+      y2 && e2 !== -1 && (e2 = setTimeout(n2, y2));
+    }
+    function n2() {
+      ee2.current.error || !b2 && !N2().isVisible() || !w2 && !N2().isOnline() ? r2() : te(U).then(function() {
+        return r2();
+      });
+    }
+    return r2(), function() {
+      e2 && (clearTimeout(e2), e2 = -1);
+    };
+  }, [y2, b2, w2, te]), useDebugValue(K2), h2 && v(K2))
+    throw v(X) ? te(U) : X;
+  return { mutate: ie, get data() {
+    return re.data = true, K2;
+  }, get error() {
+    return re.error = true, X;
+  }, get isValidating() {
+    return re.isValidating = true, Z2;
+  } };
+}, function() {
+  for (var e = [], r = 0; r < arguments.length; r++)
+    e[r] = arguments[r];
+  var n = B(e), i = n[0], u = n[1], o = n[2], a = p(J, useContext(z)), c = N(a, o), f = K, l2 = c.use;
+  if (l2)
+    for (var s2 = l2.length; s2-- > 0; )
+      f = l2[s2](f);
+  return f(i, u || c.fetcher, c);
+});
+async function fetcher(url, opts = {}) {
+  const res = await fetch(url, opts);
+  if (!res.ok) {
+    throw new Error("Error completing request");
+  }
+  return await res.json();
+}
+function getColorForType(type) {
+  const typeColorMap = {
+    bug: "",
+    fix: "",
+    feature: "",
+    maintenance: "",
+    release: "",
+    tag: "#10B981",
+    update: ""
+  };
+  return typeColorMap[type.toLowerCase()];
+}
+function useChangelogFeed(baseUrl, userId) {
+  const { data, error } = Z(`${baseUrl}/api/feed?userId=${userId}`, fetcher);
+  return {
+    feed: data == null ? void 0 : data.feed,
+    isLoading: !error && !data
+  };
+}
+function useBanner(id2, baseUrl, userId) {
+  const { data, error } = Z(`${baseUrl}/api/banner?id=${id2}&userId=${userId}`, fetcher);
+  return {
+    banner: data == null ? void 0 : data.banner,
+    isLoading: !error && !data
+  };
+}
+function Banner(props) {
+  const { banner } = useBanner(props == null ? void 0 : props.id, props == null ? void 0 : props.baseUrl, props == null ? void 0 : props.userId);
+  let ctaElement = null;
+  if ((banner == null ? void 0 : banner.cta_type) === "link") {
+    ctaElement = /* @__PURE__ */ React.createElement("div", {
+      className: "flex items-center justify-center"
+    }, /* @__PURE__ */ React.createElement("a", {
+      href: banner == null ? void 0 : banner.cta,
+      className: "flex items-center justify-center text-white font-medium underline mr-2"
+    }, banner == null ? void 0 : banner.cta_text), /* @__PURE__ */ React.createElement(HiOutlineArrowNarrowRight, null));
+  } else if ((banner == null ? void 0 : banner.cta_type) === "button") {
+    ctaElement = /* @__PURE__ */ React.createElement("div", {
+      className: "",
+      style: { backgroundColor: `${banner == null ? void 0 : banner.cta_bg}` }
+    }, /* @__PURE__ */ React.createElement("a", {
+      href: banner == null ? void 0 : banner.cta,
+      className: "flex items-center justify-center text-white font-medium"
+    }, banner == null ? void 0 : banner.cta_text));
+  }
+  if (banner)
+    return /* @__PURE__ */ React.createElement("div", {
+      className: "flex items-center justify-between px-4 py-2 rounded-lg",
+      style: { backgroundColor: banner == null ? void 0 : banner.bg }
+    }, /* @__PURE__ */ React.createElement("div", {
+      className: "flex-1 flex items-center"
+    }, /* @__PURE__ */ React.createElement("p", {
+      className: "mr-2 font-medium text-white truncate"
+    }, banner == null ? void 0 : banner.title)), ctaElement, /* @__PURE__ */ React.createElement("div", {
+      className: ""
+    }, /* @__PURE__ */ React.createElement("button", {
+      type: "button",
+      className: "-mr-1 flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+    }, /* @__PURE__ */ React.createElement("span", {
+      className: "sr-only"
+    }, "Dismiss"))));
+}
 function _extends() {
   _extends = Object.assign || function(target2) {
     for (var i = 1; i < arguments.length; i++) {
@@ -11834,10 +12347,10 @@ function numberToLetterSequence$1(num2, baseChar = "a", base = 26) {
   const baseCode = baseChar.charCodeAt(0);
   return digits.reverse().map((n) => String.fromCharCode(baseCode + n)).join("");
 }
-const I$1 = ["I", "X", "C", "M"];
-const V$1 = ["V", "L", "D"];
+const I = ["I", "X", "C", "M"];
+const V = ["V", "L", "D"];
 function numberToRoman$1(num2) {
-  return [...num2 + ""].map((n) => +n).reverse().map((v2, i) => v2 % 5 < 4 ? (v2 < 5 ? "" : V$1[i]) + I$1[i].repeat(v2 % 5) : I$1[i] + (v2 < 5 ? V$1[i] : I$1[i + 1])).reverse().join("");
+  return [...num2 + ""].map((n) => +n).reverse().map((v2, i) => v2 % 5 < 4 ? (v2 < 5 ? "" : V[i]) + I[i].repeat(v2 % 5) : I[i] + (v2 < 5 ? V[i] : I[i + 1])).reverse().join("");
 }
 function trimCharacter$2(str, char) {
   let start = 0;
@@ -13153,400 +13666,6 @@ function useLocalstorage(key, defaultValue) {
   });
   return handler;
 }
-var has = Object.prototype.hasOwnProperty;
-function dequal(foo, bar) {
-  var ctor, len;
-  if (foo === bar)
-    return true;
-  if (foo && bar && (ctor = foo.constructor) === bar.constructor) {
-    if (ctor === Date)
-      return foo.getTime() === bar.getTime();
-    if (ctor === RegExp)
-      return foo.toString() === bar.toString();
-    if (ctor === Array) {
-      if ((len = foo.length) === bar.length) {
-        while (len-- && dequal(foo[len], bar[len]))
-          ;
-      }
-      return len === -1;
-    }
-    if (!ctor || typeof foo === "object") {
-      len = 0;
-      for (ctor in foo) {
-        if (has.call(foo, ctor) && ++len && !has.call(bar, ctor))
-          return false;
-        if (!(ctor in bar) || !dequal(foo[ctor], bar[ctor]))
-          return false;
-      }
-      return Object.keys(bar).length === len;
-    }
-  }
-  return foo !== foo && bar !== bar;
-}
-function l(e, r, n, t) {
-  return new (n || (n = Promise))(function(i, u) {
-    function o(e2) {
-      try {
-        c(t.next(e2));
-      } catch (e3) {
-        u(e3);
-      }
-    }
-    function a(e2) {
-      try {
-        c(t.throw(e2));
-      } catch (e3) {
-        u(e3);
-      }
-    }
-    function c(e2) {
-      var r2;
-      e2.done ? i(e2.value) : (r2 = e2.value, r2 instanceof n ? r2 : new n(function(e3) {
-        e3(r2);
-      })).then(o, a);
-    }
-    c((t = t.apply(e, r || [])).next());
-  });
-}
-function s(e, r) {
-  var n, t, i, u, o = { label: 0, sent: function() {
-    if (1 & i[0])
-      throw i[1];
-    return i[1];
-  }, trys: [], ops: [] };
-  return u = { next: a(0), throw: a(1), return: a(2) }, typeof Symbol == "function" && (u[Symbol.iterator] = function() {
-    return this;
-  }), u;
-  function a(u2) {
-    return function(a2) {
-      return function(u3) {
-        if (n)
-          throw new TypeError("Generator is already executing.");
-        for (; o; )
-          try {
-            if (n = 1, t && (i = 2 & u3[0] ? t.return : u3[0] ? t.throw || ((i = t.return) && i.call(t), 0) : t.next) && !(i = i.call(t, u3[1])).done)
-              return i;
-            switch (t = 0, i && (u3 = [2 & u3[0], i.value]), u3[0]) {
-              case 0:
-              case 1:
-                i = u3;
-                break;
-              case 4:
-                return o.label++, { value: u3[1], done: false };
-              case 5:
-                o.label++, t = u3[1], u3 = [0];
-                continue;
-              case 7:
-                u3 = o.ops.pop(), o.trys.pop();
-                continue;
-              default:
-                if (!(i = o.trys, (i = i.length > 0 && i[i.length - 1]) || u3[0] !== 6 && u3[0] !== 2)) {
-                  o = 0;
-                  continue;
-                }
-                if (u3[0] === 3 && (!i || u3[1] > i[0] && u3[1] < i[3])) {
-                  o.label = u3[1];
-                  break;
-                }
-                if (u3[0] === 6 && o.label < i[1]) {
-                  o.label = i[1], i = u3;
-                  break;
-                }
-                if (i && o.label < i[2]) {
-                  o.label = i[2], o.ops.push(u3);
-                  break;
-                }
-                i[2] && o.ops.pop(), o.trys.pop();
-                continue;
-            }
-            u3 = r.call(e, o);
-          } catch (e2) {
-            u3 = [6, e2], t = 0;
-          } finally {
-            n = i = 0;
-          }
-        if (5 & u3[0])
-          throw u3[1];
-        return { value: u3[0] ? u3[1] : void 0, done: true };
-      }([u2, a2]);
-    };
-  }
-}
-var d = {}[0], v = function(e) {
-  return e === d;
-}, h = function(e) {
-  return typeof e == "function";
-}, g = function() {
-}, p = function(e, r) {
-  return Object.assign({}, e, r);
-}, y = true, b = typeof window != "undefined", w = typeof document != "undefined", m = b && window.addEventListener || g, O = w && document.addEventListener || g, V = { isOnline: function() {
-  return y;
-}, isVisible: function() {
-  var e = w && document.visibilityState;
-  return !!v(e) || e !== "hidden";
-} }, k = { initFocus: function(e) {
-  O("visibilitychange", e), m("focus", e);
-}, initReconnect: function(e) {
-  m("online", function() {
-    y = true, e();
-  }), m("offline", function() {
-    y = false;
-  });
-} }, T = typeof window == "undefined" || "Deno" in window, R = T ? null : window.requestAnimationFrame, S = R ? function(e) {
-  return R(e);
-} : function(e) {
-  return setTimeout(e, 1);
-}, E = T ? useEffect : useLayoutEffect, I = typeof navigator != "undefined" && navigator.connection, x = !T && I && (["slow-2g", "2g"].includes(I.effectiveType) || I.saveData), P = new WeakMap(), F = 0;
-function M(e) {
-  if (h(e))
-    try {
-      e = e();
-    } catch (r2) {
-      e = "";
-    }
-  var r;
-  return Array.isArray(e) ? (r = e, e = function(e2) {
-    if (!e2.length)
-      return "";
-    for (var r2 = "arg", n = 0; n < e2.length; ++n) {
-      var t = e2[n], i = d;
-      t === null || typeof t != "object" && !h(t) ? i = JSON.stringify(t) : P.has(t) ? i = P.get(t) : (i = F, P.set(t, F++)), r2 += "$" + i;
-    }
-    return r2;
-  }(e)) : r = [e = String(e || "")], [e, r, e ? "$err$" + e : "", e ? "$req$" + e : ""];
-}
-var W = new WeakMap(), $ = function(e, r, n, t, i, u) {
-  u === void 0 && (u = false);
-  var o = W.get(e), a = o[0], c = o[1], f = a[r], l2 = c[r];
-  if (l2)
-    for (var s2 = 0; s2 < l2.length; ++s2)
-      l2[s2](n, t, i);
-  return u && f && f[0] ? f[0](2).then(function() {
-    return e.get(r);
-  }) : e.get(r);
-}, q = 0, C = function() {
-  return ++q;
-}, D = function(e, r, n, t) {
-  return t === void 0 && (t = true), l(void 0, void 0, void 0, function() {
-    var i, u, o, a, c, f, l2, g2, p2, y2, b2;
-    return s(this, function(s2) {
-      switch (s2.label) {
-        case 0:
-          if (i = M(r), u = i[0], o = i[2], !u)
-            return [2];
-          if (a = W.get(e), c = a[2], f = a[3], v(n))
-            return [2, $(e, u, e.get(u), e.get(o), d, t)];
-          if (p2 = c[u] = C(), f[u] = 0, h(n))
-            try {
-              n = n(e.get(u));
-            } catch (e2) {
-              n = d, g2 = e2;
-            }
-          if (!n || !h(n.then))
-            return [3, 5];
-          s2.label = 1;
-        case 1:
-          return s2.trys.push([1, 3, , 4]), [4, n];
-        case 2:
-          return l2 = s2.sent(), [3, 4];
-        case 3:
-          return y2 = s2.sent(), g2 = y2, [3, 4];
-        case 4:
-          if (p2 !== c[u]) {
-            if (g2)
-              throw g2;
-            return [2, l2];
-          }
-          return [3, 6];
-        case 5:
-          l2 = n, s2.label = 6;
-        case 6:
-          return v(l2) || e.set(u, l2), e.set(o, g2), f[u] = C(), [4, $(e, u, l2, g2, d, t)];
-        case 7:
-          if (b2 = s2.sent(), g2)
-            throw g2;
-          return [2, b2];
-      }
-    });
-  });
-};
-function L(e, r) {
-  for (var n in e)
-    e[n][0] && e[n][0](r);
-}
-function j(e, r) {
-  if (!W.has(e)) {
-    var n = p(k, r), t = {}, i = D.bind(d, e);
-    return W.set(e, [t, {}, {}, {}, {}, {}, i]), T || (n.initFocus(L.bind(d, t, 0)), n.initReconnect(L.bind(d, t, 1))), [e, i];
-  }
-}
-var A = j(new Map()), G = A[0], H = A[1], J = p({ onLoadingSlow: g, onSuccess: g, onError: g, onErrorRetry: function(e, r, n, t, i) {
-  if (V.isVisible()) {
-    var u = n.errorRetryCount, o = i.retryCount, a = ~~((Math.random() + 0.5) * (1 << (o < 8 ? o : 8))) * n.errorRetryInterval;
-    !v(u) && o > u || setTimeout(t, a, i);
-  }
-}, revalidateOnFocus: true, revalidateOnReconnect: true, revalidateIfStale: true, shouldRetryOnError: true, errorRetryInterval: x ? 1e4 : 5e3, focusThrottleInterval: 5e3, dedupingInterval: 2e3, loadingTimeout: x ? 5e3 : 3e3, compare: dequal, isPaused: function() {
-  return false;
-}, cache: G, mutate: H, fallback: {} }, V);
-function N(e, r) {
-  var n = p(e, r);
-  if (!r)
-    return n;
-  var t = e.use, i = e.fallback, u = r.use, o = r.fallback;
-  return t && u && (n.use = t.concat(u)), i && o && (n.fallback = p(i, o)), n;
-}
-var z = createContext({});
-function B(e) {
-  return h(e[1]) ? [e[0], e[1], e[2] || {}] : [e[0], null, (e[1] === null ? e[2] : e[1]) || {}];
-}
-var K, Q = function(e, r, n) {
-  var t = r[e] || (r[e] = []);
-  return t.push(n), function() {
-    var e2 = t.indexOf(n);
-    e2 >= 0 && (t[e2] = t[t.length - 1], t.pop());
-  };
-}, U = { dedupe: true };
-Object.defineProperty(function(e) {
-  var r = e.children, n = e.value, o = N(useContext(z), n), a = n && n.provider, c = useState(function() {
-    return a ? j(a(o.cache || G), n) : d;
-  })[0];
-  return c && (o.cache = c[0], o.mutate = c[1]), createElement(z.Provider, { value: o }, r);
-}, "default", { value: J });
-var Z = (K = function(e, r, n) {
-  var t = n.cache, u = n.compare, f = n.fallbackData, h2 = n.suspense, g2 = n.revalidateOnMount, y2 = n.refreshInterval, b2 = n.refreshWhenHidden, w2 = n.refreshWhenOffline, m2 = W.get(t), O2 = m2[0], V2 = m2[1], k2 = m2[2], R2 = m2[3], I2 = m2[4], x2 = m2[5], P2 = M(e), F2 = P2[0], q2 = P2[1], L2 = P2[2], j2 = P2[3], A2 = useRef(false), G2 = useRef(false), H2 = useRef(F2), J2 = useRef(n), N2 = function() {
-    return J2.current;
-  }, z2 = t.get(F2), B2 = v(f) ? n.fallback[F2] : f, K2 = v(z2) ? B2 : z2, X = t.get(L2);
-  if (h2 && (!F2 || !r))
-    throw new Error("useSWR requires either key or fetcher with suspense mode");
-  var Y = function() {
-    return v(g2) ? h2 ? !A2.current && !v(K2) : v(K2) || n.revalidateIfStale : g2;
-  }, Z2 = !(!F2 || !r) && (!!t.get(j2) || !A2.current && Y()), _ = function(e2, r2) {
-    var n2 = useState({})[1], t2 = useRef(e2), u2 = useRef({ data: false, error: false, isValidating: false }), c = useCallback(function(e3) {
-      var i = false, o = t2.current;
-      for (var a in e3) {
-        var c2 = a;
-        o[c2] !== e3[c2] && (o[c2] = e3[c2], u2.current[c2] && (i = true));
-      }
-      i && !r2.current && n2({});
-    }, []);
-    return E(function() {
-      t2.current = e2;
-    }), [t2, u2.current, c];
-  }({ data: K2, error: X, isValidating: Z2 }, G2), ee2 = _[0], re = _[1], ne2 = _[2], te = useCallback(function(e2) {
-    return l(void 0, void 0, void 0, function() {
-      var i, o, a, c, f2, l2, h3, g3, p2;
-      return s(this, function(s2) {
-        switch (s2.label) {
-          case 0:
-            if (!F2 || !r || G2.current || N2().isPaused())
-              return [2, false];
-            a = true, c = e2 || {}, f2 = !v(I2[F2]) && c.dedupe, l2 = function() {
-              return !G2.current && F2 === H2.current && A2.current;
-            }, h3 = function() {
-              delete I2[F2], delete x2[F2];
-            }, s2.label = 1;
-          case 1:
-            return s2.trys.push([1, 6, , 7]), t.set(j2, true), ne2({ isValidating: true }), f2 || $(t, F2, ee2.current.data, ee2.current.error, true), f2 ? (o = x2[F2], [4, I2[F2]]) : [3, 3];
-          case 2:
-            return i = s2.sent(), [3, 5];
-          case 3:
-            return n.loadingTimeout && !t.get(F2) && setTimeout(function() {
-              a && l2() && N2().onLoadingSlow(F2, n);
-            }, n.loadingTimeout), x2[F2] = o = C(), [4, I2[F2] = r.apply(r, q2)];
-          case 4:
-            i = s2.sent(), setTimeout(function() {
-              x2[F2] === o && h3();
-            }, n.dedupingInterval), l2() && N2().onSuccess(i, F2, n), s2.label = 5;
-          case 5:
-            return x2[F2] !== o ? [2, false] : (t.set(L2, d), t.set(j2, false), g3 = { isValidating: false }, !v(k2[F2]) && (o <= k2[F2] || o <= R2[F2] || R2[F2] === 0) ? (ne2(g3), [2, false]) : (v(ee2.current.error) || (g3.error = d), u(ee2.current.data, i) || (g3.data = i), u(t.get(F2), i) || t.set(F2, i), ne2(g3), f2 || $(t, F2, i, g3.error, false), [3, 7]));
-          case 6:
-            return p2 = s2.sent(), h3(), t.set(j2, false), N2().isPaused() ? (ne2({ isValidating: false }), [2, false]) : (t.set(L2, p2), ee2.current.error !== p2 && (ne2({ isValidating: false, error: p2 }), f2 || $(t, F2, d, p2, false)), l2() && (N2().onError(p2, F2, n), n.shouldRetryOnError && N2().onErrorRetry(p2, F2, n, te, { retryCount: (c.retryCount || 0) + 1, dedupe: true })), [3, 7]);
-          case 7:
-            return a = false, [2, true];
-        }
-      });
-    });
-  }, [F2]), ie = useCallback(function(e2, r2) {
-    return D(t, H2.current, e2, r2);
-  }, []);
-  if (E(function() {
-    J2.current = n;
-  }), E(function() {
-    if (F2) {
-      var e2 = A2.current, r2 = te.bind(d, U), n2 = function() {
-        return N2().isVisible() && N2().isOnline();
-      }, t2 = 0, i = Q(F2, V2, function(e3, r3, n3) {
-        ne2(p({ error: r3, isValidating: n3 }, u(e3, ee2.current.data) ? null : { data: e3 }));
-      }), o = Q(F2, O2, function(e3) {
-        if (e3 === 0) {
-          var i2 = Date.now();
-          N2().revalidateOnFocus && i2 > t2 && n2() && (t2 = i2 + N2().focusThrottleInterval, r2());
-        } else if (e3 === 1)
-          N2().revalidateOnReconnect && n2() && r2();
-        else if (e3 === 2)
-          return te();
-      });
-      return G2.current = false, H2.current = F2, e2 && ne2({ data: K2, error: X, isValidating: Z2 }), Y() && (v(K2) || T ? r2() : S(r2)), A2.current = true, function() {
-        G2.current = true, i(), o();
-      };
-    }
-  }, [F2, te]), E(function() {
-    var e2;
-    function r2() {
-      y2 && e2 !== -1 && (e2 = setTimeout(n2, y2));
-    }
-    function n2() {
-      ee2.current.error || !b2 && !N2().isVisible() || !w2 && !N2().isOnline() ? r2() : te(U).then(function() {
-        return r2();
-      });
-    }
-    return r2(), function() {
-      e2 && (clearTimeout(e2), e2 = -1);
-    };
-  }, [y2, b2, w2, te]), useDebugValue(K2), h2 && v(K2))
-    throw v(X) ? te(U) : X;
-  return { mutate: ie, get data() {
-    return re.data = true, K2;
-  }, get error() {
-    return re.error = true, X;
-  }, get isValidating() {
-    return re.isValidating = true, Z2;
-  } };
-}, function() {
-  for (var e = [], r = 0; r < arguments.length; r++)
-    e[r] = arguments[r];
-  var n = B(e), i = n[0], u = n[1], o = n[2], a = p(J, useContext(z)), c = N(a, o), f = K, l2 = c.use;
-  if (l2)
-    for (var s2 = l2.length; s2-- > 0; )
-      f = l2[s2](f);
-  return f(i, u || c.fetcher, c);
-});
-async function fetcher(url, opts = {}) {
-  const res = await fetch(url, opts);
-  if (!res.ok) {
-    throw new Error("Error completing request");
-  }
-  return await res.json();
-}
-function getColorForType(type) {
-  const typeColorMap = {
-    bug: "",
-    fix: "",
-    feature: "",
-    maintenance: "",
-    release: "",
-    tag: "#10B981",
-    update: ""
-  };
-  return typeColorMap[type.toLowerCase()];
-}
-function useChangelogFeed(baseUrl, userId) {
-  const { data, error } = Z(`${baseUrl}/api/feed?userId=${userId}`, fetcher);
-  return {
-    feed: data == null ? void 0 : data.feed,
-    isLoading: !error && !data
-  };
-}
 function ChangelogFeed(props) {
   const { feed } = props;
   return /* @__PURE__ */ React.createElement("div", {
@@ -13565,7 +13684,9 @@ function ChangelogFeed(props) {
       className: "w-4/6 h-auto overflow-ellipsis overflow-hidden text-md font-medium text-gray-900"
     }, truncate(item.title, { length: 40 })), /* @__PURE__ */ React.createElement("span", {
       className: "w-auto h-auto inline-flex items-center justify-center px-2 py-1 rounded-full text-white text-xs",
-      style: { backgroundColor: getColorForType("Tag") }
+      style: {
+        backgroundColor: getColorForType("Tag")
+      }
     }, item.type || "Tag")), /* @__PURE__ */ React.createElement("p", {
       className: "text-xs text-gray-500"
     }, formatDistance(new Date(item.published_at), new Date(), { addSuffix: true })), /* @__PURE__ */ React.createElement("p", {
@@ -13573,7 +13694,7 @@ function ChangelogFeed(props) {
     }, truncate(contentText, { length: 80 })));
   }) : /* @__PURE__ */ React.createElement("span", null, "Error!"));
 }
-function Herald(props) {
+function Changelog(props) {
   const { feed, isLoading } = useChangelogFeed(props == null ? void 0 : props.baseUrl, props == null ? void 0 : props.userId);
   const { value, set: set2 } = useLocalstorage("heraldLatestUpdate");
   const [showBadge, setShowBadge] = useState(false);
@@ -13611,7 +13732,9 @@ function Herald(props) {
   }, isLoading && !feed ? /* @__PURE__ */ React.createElement("div", {
     className: "relative w-full h-32 p-4 bg-white flex items-center justify-center"
   }, /* @__PURE__ */ React.createElement("div", {
-    style: { borderTopColor: "transparent" },
+    style: {
+      borderTopColor: "transparent"
+    },
     className: "w-8 h-8 border-2 border-green-500 border-solid rounded-full animate-spin"
   })) : /* @__PURE__ */ React.createElement(ChangelogFeed, {
     baseUrl: props.baseUrl,
@@ -13623,4 +13746,4 @@ function Herald(props) {
     className: "text-xs flow-root px-2 py-2 text-center transition duration-150 ease-in-out rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
   }, "Powered by Herald")))))));
 }
-export { Herald };
+export { Banner, Changelog };

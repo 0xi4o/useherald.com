@@ -1,6 +1,6 @@
 {
 	"name": "@useherald/react-widget",
-	"version": "0.5.2",
+	"version": "0.5.3",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -15,6 +15,7 @@
 		"date-fns": "^2.24.0",
 		"html-to-text": "^8.0.0",
 		"lodash.truncate": "^4.4.2",
+		"react-icons": "^4.3.1",
 		"rooks": "^5.7.1",
 		"swr": "^1.0.1"
 	},

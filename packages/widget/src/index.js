@@ -1,4 +1,5 @@
 import './index.css';
-import Herald from './Herald';
+import Banner from './Banner';
+import Changelog from './Changelog';
 
-export { Herald };
+export { Banner, Changelog };
