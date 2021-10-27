@@ -14,7 +14,7 @@ import {
 	Button,
 	useColorMode,
 } from '@chakra-ui/react';
-import { Herald } from '@useherald/react-widget';
+import { Changelog } from '@useherald/react-widget';
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from 'react-icons/ai';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { FaBell, FaMoon, FaSun } from 'react-icons/fa'; //
@@ -147,11 +147,19 @@ export default function Header() {
 									transition='color 0.2s'
 									_hover={{ color: 'gray.600' }}
 								/>
-								<Herald
+								<Changelog
 									baseUrl='https://app.useherald.com'
 									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
+								<Button
+									as='a'
+									colorScheme='brand'
+									variant='solid'
+									size='md'
+								>
+									Join Waitlist
+								</Button>
 								{/*<Link*/}
 								{/*	d='none'*/}
 								{/*	href={`https://app.useherald.com/dashboard`}*/}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import NextImage from 'next/image';
 import {
 	chakra,
@@ -11,6 +11,7 @@ import {
 	Input,
 	useColorModeValue,
 } from '@chakra-ui/react';
+// import { Banner } from "@useherald/react-widget";
 import { Formik } from 'formik';
 
 const Hero = () => {
@@ -39,12 +40,17 @@ const Hero = () => {
 			py={32}
 		>
 			<Flex
-				w='5xl'
+				w='6xl'
 				flexDirection='column'
 				alignItems='center'
 				textAlign='center'
 				mb={16}
 			>
+				{/*<Banner*/}
+				{/*	baseUrl='http://localhost:3001'*/}
+				{/*	id='027a2e04-07ed-4920-b074-a55ab214c89f'*/}
+				{/*	userId='71900427-a160-4ed2-b13c-0af51c646878'*/}
+				{/*/>*/}
 				<chakra.h1
 					mb={3}
 					fontSize={{ base: '4xl', md: '5xl' }}
@@ -52,15 +58,15 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					Easiest way to increase feature adoption
+					Reduce churn by increasing feature adoption
 				</chakra.h1>
 				<chakra.p
 					mb={5}
 					fontSize={{ base: 'lg', md: 'xl' }}
 					lineHeight='tall'
 				>
-					Keep your customers up-to-date about your product and
-					company, right in your web app.
+					Create a changelog page, public roadmap, and waitlist forms
+					in minutes and embed them in your site.
 				</chakra.p>
 				<Formik
 					initialValues={{ email: '' }}

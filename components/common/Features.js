@@ -90,17 +90,13 @@ export default function Features() {
 					lineHeight='shorter'
 					letterSpacing='tight'
 				>
-					Everything you need
+					All in one solution to manage product updates
 				</chakra.h2>
 				<chakra.p
 					mb={6}
 					fontSize={{ base: 'lg', md: 'xl' }}
 					color={useColorModeValue('gray.800', 'gray.200')}
-				>
-					To keep your customers up-to-date on your product and your
-					company. Feature articles, events, releases and more, inside
-					your application and website.
-				</chakra.p>
+				></chakra.p>
 			</Box>
 			<Box
 				shadow='xl'
