@@ -58,7 +58,8 @@ const Hero = () => {
 					lineHeight='tall'
 					color={useColorModeValue('gray.900', 'white')}
 				>
-					Reduce churn by increasing feature adoption
+					Reduce churn with better feature adoption and user
+					engagement
 				</chakra.h1>
 				<chakra.p
 					mb={5}

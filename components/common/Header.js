@@ -123,7 +123,7 @@ export default function Header() {
 							>
 								<Link
 									aria-label='Go to Herald product section'
-									href='#features'
+									href='#product'
 									p={2}
 								>
 									Product
@@ -136,7 +136,6 @@ export default function Header() {
 									Pricing
 								</Link>
 								<IconButton
-									d='none'
 									size='md'
 									fontSize='lg'
 									aria-label={`Switch to ${text} mode`}
