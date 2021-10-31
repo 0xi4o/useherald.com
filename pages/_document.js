@@ -9,7 +9,7 @@ export default class Document extends NextDocument {
 				<Head>
 					<meta
 						name='description'
-						content='Herald is an updates-as-a-service application that manages changelogs, persuasion banners, and waiting list for SaaS products.'
+						content='All-in-one solution to announce product updates and get feedback with in-app widgets, banners, changelog and roadmap.'
 					/>
 					<link
 						rel='preconnect'

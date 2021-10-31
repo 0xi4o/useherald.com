@@ -55,8 +55,8 @@ function MyApp({ Component, pageProps }) {
 				<ChakraProvider resetCSS theme={theme}>
 					<Head>
 						<title>
-							Herald Docs | Updates-as-a-service for SaaS products
-							| Changelog, Banners and Waitlist Management
+							Herald Docs | All-in-one solution to announce
+							product updates and get feedback.
 						</title>
 					</Head>
 					<DokzProvider
@@ -120,8 +120,8 @@ function MyApp({ Component, pageProps }) {
 				<ChakraProvider resetCSS theme={theme}>
 					<Head>
 						<title>
-							Herald Blog | Updates-as-a-service for SaaS products
-							| Changelog, Banners and Waitlist Management
+							Herald Blog | All-in-one solution to announce
+							product updates and get feedback
 						</title>
 					</Head>
 					<DokzBlogProvider
@@ -182,8 +182,8 @@ function MyApp({ Component, pageProps }) {
 				>
 					<Head>
 						<title>
-							Herald | Updates-as-a-service for SaaS products |
-							Changelog, Banners and Waitlist Management
+							Herald: All-in-one solution to announce product
+							updates and get feedback.
 						</title>
 					</Head>
 					<Component {...pageProps} />

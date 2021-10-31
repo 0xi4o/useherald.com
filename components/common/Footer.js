@@ -2,6 +2,7 @@ import Image from 'next/image';
 import {
 	chakra,
 	Container,
+	Flex,
 	Link,
 	SimpleGrid,
 	Stack,
@@ -61,37 +62,55 @@ const Footer = () => {
 			>
 				<SimpleGrid
 					w='full'
-					templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr 2fr' }}
+					templateColumns={{ sm: '1fr 1fr', md: '3fr 2fr 2fr 2fr' }}
 					spacing={8}
 				>
 					<Stack
-						direction={'row'}
+						direction={'column'}
 						justify={'flex-start'}
 						align={'flex-start'}
+						pr={8}
 					>
-						<chakra.div
-							d='flex'
-							alignItems='center'
-							justifyContent='start'
-						>
+						<Flex alignItems='center' justifyContent='start'>
 							<Image
 								src='/logo.png'
 								width={40}
 								height={40}
 								alt='Herald Logo'
 							/>
-							<chakra.span
-								fontSize='xl'
+							<Text
+								fontSize='2xl'
 								fontWeight='bold'
 								color={useColorModeValue('gray.900', 'white')}
 								ml={2}
 							>
 								Herald
-							</chakra.span>
-						</chakra.div>
+							</Text>
+						</Flex>
+						<Text fontSize='lg' lineHeight='taller'>
+							All-in-one solution to announce product updates and
+							get feedback.
+						</Text>
+					</Stack>
+					<Stack d='none' align={'flex-start'}>
+						<ListHeader>Product</ListHeader>
+						<Link href='/features'>Features</Link>
+						<Link href='/pricing'>Pricing</Link>
+						<Link
+							href='https://meta.useherald.com/changelog'
+							isExternal={true}
+						>
+							Our Changelog
+						</Link>
+						<Link
+							href='https://meta.useherald.com/roadmap'
+							isExternal={true}
+						>
+							Our Roadmap
+						</Link>
 					</Stack>
 					<Stack align={'flex-start'}>
-						<ListHeader>Links</ListHeader>
+						<ListHeader>Resources</ListHeader>
 						<Link href='/docs'>Docs</Link>
 						<Link href='/blog'>Blog</Link>
 					</Stack>
@@ -100,9 +119,9 @@ const Footer = () => {
 						<Link
 							target='_blank'
 							rel='noopener noreferrer'
-							href='https://github.com/opencatalysts/herald/projects/1#column-15286418'
+							href='https://github.com/opencatalysts/herald/'
 						>
-							Feature Requests
+							Source Code
 						</Link>
 						<Link
 							target='_blank'
