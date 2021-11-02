@@ -1,12 +1,18 @@
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { NextStrictCSP } from 'next-strict-csp';
 import { ColorModeScript } from '@chakra-ui/react';
 import React from 'react';
+
+const HeadCSP = process.env.NODE_ENV === 'production' ? NextStrictCSP : Head;
 
 export default class Document extends NextDocument {
 	render() {
 		return (
 			<Html lang='en'>
-				<Head>
+				<HeadCSP>
+					{process.env.NODE_ENV === 'production' && (
+						<meta httpEquiv='Content-Security-Policy' />
+					)}
 					<meta
 						name='description'
 						content='All-in-one solution to announce product updates and get feedback with in-app widgets, banners, changelog and roadmap.'
@@ -49,7 +55,7 @@ export default class Document extends NextDocument {
 					/>
 					<meta name='msapplication-TileColor' content='#2b5797' />
 					<meta name='theme-color' content='#ffffff' />
-				</Head>
+				</HeadCSP>
 				<body>
 					{/* Make Color mode to persists when you refresh the page. */}
 					<ColorModeScript />
