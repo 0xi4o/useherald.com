@@ -170,7 +170,7 @@ export default function Component() {
 					borderRightRadius='md'
 				>
 					<FormControl
-						display='flex'
+						display='none'
 						alignItems='center'
 						justifyContent='center'
 						mb={4}
@@ -189,51 +189,65 @@ export default function Component() {
 						/>
 					</FormControl>
 					<Flex
+						flexDirection='column'
 						align='center'
+						justifyContent='center'
 						fontSize='5xl'
 						fontWeight={['bold', 'extrabold']}
 						lineHeight='tight'
 					>
+						<Text
+							mb={2}
+							fontSize='2xl'
+							fontWeight='medium'
+							lineHeight='tight'
+						>
+							Free during Early Access
+						</Text>
 						{isAnnualBilling ? (
-							<Text
-								mb={2}
-								fontSize='5xl'
-								fontWeight={['bold', 'extrabold']}
-								lineHeight='tight'
-							>
-								$200
-								<chakra.span
-									fontSize='2xl'
-									fontWeight='medium'
-									color={useColorModeValue(
-										'gray.600',
-										'gray.400'
-									)}
+							<s>
+								<Text
+									mb={2}
+									fontSize='5xl'
+									fontWeight={['bold', 'extrabold']}
+									lineHeight='tight'
 								>
-									{' '}
-									/ year
-								</chakra.span>
-							</Text>
+									$200
+									<chakra.span
+										fontSize='2xl'
+										fontWeight='medium'
+										color={useColorModeValue(
+											'gray.600',
+											'gray.400'
+										)}
+									>
+										{' '}
+										/ year
+									</chakra.span>
+								</Text>
+							</s>
 						) : (
-							<Text
-								mb={2}
-								fontSize='5xl'
-								fontWeight={['bold', 'extrabold']}
-								lineHeight='tight'
-							>
-								$20
-								<chakra.span
-									fontSize='2xl'
-									fontWeight='medium'
-									color={useColorModeValue(
-										'gray.600',
-										'gray.400'
-									)}
+							<s>
+								<Text
+									mb={2}
+									fontSize='5xl'
+									fontWeight={['bold', 'extrabold']}
+									lineHeight='tight'
 								>
-									{' '}
-									/ month
-								</chakra.span>
-							</Text>
+									$20
+									<chakra.span
+										fontSize='2xl'
+										fontWeight='medium'
+										color={useColorModeValue(
+											'gray.600',
+											'gray.400'
+										)}
+									>
+										{' '}
+										/ month
+									</chakra.span>
+								</Text>
+							</s>
 						)}
 					</Flex>
 					<Stack spacing={6} textAlign='center'>
@@ -255,7 +269,7 @@ export default function Component() {
 								);
 							}}
 						>
-							Start free trial
+							Get Started for Free
 						</Button>
 					</Stack>
 				</Stack>

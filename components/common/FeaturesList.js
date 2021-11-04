@@ -2,17 +2,16 @@ import React from 'react';
 import {
 	chakra,
 	Box,
-	SimpleGrid,
 	Flex,
+	Grid,
 	useColorModeValue,
 	Icon,
 } from '@chakra-ui/react';
 import { ImEmbed2 } from 'react-icons/im';
-import { CgFeed } from 'react-icons/cg';
 import { MdDomainVerification, MdMarkEmailRead } from 'react-icons/md'; // MdOutlineSettings
-import { HiColorSwatch, HiTemplate } from 'react-icons/hi';
+import { HiColorSwatch } from 'react-icons/hi';
 import { GiVerticalBanner } from 'react-icons/gi';
-import { FaMarkdown, FaMoon } from 'react-icons/fa'; // FaReact, FaUsers
+import { FaMarkdown } from 'react-icons/fa'; // FaReact, FaUsers
 
 export default function FeaturesList() {
 	const Feature = (props) => {
@@ -21,6 +20,12 @@ export default function FeaturesList() {
 				flexDirection='column'
 				alignItems='flex-start'
 				justifyContent='flex-start'
+				shadow='xl'
+				rounded='lg'
+				bg={useColorModeValue('white', 'gray.800')}
+				p={8}
+				w='full'
+				h='full'
 			>
 				<Flex
 					alignItems='center'
@@ -90,30 +95,28 @@ export default function FeaturesList() {
 					lineHeight='shorter'
 					letterSpacing='tight'
 				>
-					All in one solution to manage product updates
+					Seamless addition to your web applications
 				</chakra.h2>
 				<chakra.p
 					mb={6}
 					fontSize={{ base: 'lg', md: 'xl' }}
 					color={useColorModeValue('gray.800', 'gray.200')}
-				></chakra.p>
+				>
+					Herald is framework-agnostic and works with your tech stack.
+				</chakra.p>
 			</Box>
 			<Box
-				shadow='xl'
-				bg={useColorModeValue('white', 'gray.800')}
 				px={12}
 				py={20}
 				mx='auto'
-				borderRadius='lg'
 				d='flex'
 				flexDirection='column'
 				alignItems='center'
 			>
-				<SimpleGrid
+				<Grid
 					alignItems='center'
-					columns={{ base: 1, lg: 3 }}
-					spacingY={{ base: 10, lg: 16 }}
-					spacingX={{ base: 10, lg: 16 }}
+					templateColumns='repeat(2, 1fr)'
+					gap={16}
 				>
 					<Feature
 						color='red'
@@ -124,18 +127,13 @@ export default function FeaturesList() {
 						using a lightweight embeddable widget.
 					</Feature>
 
-					<Feature color='pink' title='Dedicated Feed' icon={CgFeed}>
-						Keep a record of all the changes made to your
-						application in a beautifully rendered page.
-					</Feature>
-
 					<Feature
 						color='blue'
 						title='In-app Banners'
 						icon={GiVerticalBanner}
 					>
-						Show featured articles or updates on your landing pages
-						and application as banners. Fully customizable.
+						Boost content and updates on your landing pages and
+						application as banners. Fully customizable.
 					</Feature>
 
 					<Feature
@@ -143,8 +141,7 @@ export default function FeaturesList() {
 						title='Custom Domain'
 						icon={MdDomainVerification}
 					>
-						Show your product updates and feature releases in a
-						public page on your domain.
+						Show your changelog and roadmap on your domain.
 					</Feature>
 
 					<Feature
@@ -152,19 +149,18 @@ export default function FeaturesList() {
 						title='Custom Branding'
 						icon={HiColorSwatch}
 					>
-						The widget and feed won&apos;t seem out of place in your
-						application because you can customize them to suit your
-						brand.
+						Herald components won&apos;t seem out of place in your
+						application. Customize them to suit your brand.
 					</Feature>
 
-					<Feature
-						color='purple'
-						title='Custom Templates'
-						icon={HiTemplate}
-					>
-						Use the pre-made template for your changelogs and
-						banners or create your own to fit your needs.
-					</Feature>
+					{/*<Feature*/}
+					{/*	color='purple'*/}
+					{/*	title='Custom Templates'*/}
+					{/*	icon={HiTemplate}*/}
+					{/*>*/}
+					{/*	Use the pre-made template for your changelogs and*/}
+					{/*	banners or create your own to fit your needs.*/}
+					{/*</Feature>*/}
 
 					{/*<Feature*/}
 					{/*	color='blue'*/}
@@ -188,9 +184,8 @@ export default function FeaturesList() {
 						title='Subscribe to Updates'
 						icon={MdMarkEmailRead}
 					>
-						Users can subscribe to your changelog, and we&apos;ll
-						take care of emailing them whenever you publish a new
-						update.
+						Users can subscribe to your updates, and we&apos;ll take
+						care of emailing them.
 					</Feature>
 
 					{/*<Feature*/}
@@ -201,11 +196,6 @@ export default function FeaturesList() {
 					{/*	Add team members to your workspace and let them manage changelogs, and banners.*/}
 					{/*</Feature>*/}
 
-					<Feature color='gray' title='Dark Mode' icon={FaMoon}>
-						Choose a color mode in your settings or let your users
-						choose themselves on your public pages.
-					</Feature>
-
 					{/*<Feature*/}
 					{/*	color='yellow'*/}
 					{/*	title='Integrations'*/}
@@ -213,7 +203,7 @@ export default function FeaturesList() {
 					{/*>*/}
 					{/*	Integrate with Zapier, Slack, Twitter*/}
 					{/*</Feature>*/}
-				</SimpleGrid>
+				</Grid>
 			</Box>
 		</Flex>
 	);

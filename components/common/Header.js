@@ -125,6 +125,8 @@ export default function Header() {
 									aria-label='Go to Herald product section'
 									href='#product'
 									p={2}
+									textDecoration='none'
+									_hover={{ textDecoration: 'none' }}
 								>
 									Product
 								</Link>
@@ -132,6 +134,8 @@ export default function Header() {
 									aria-label='Go to Herald pricing section'
 									href='#pricing'
 									p={2}
+									textDecoration='none'
+									_hover={{ textDecoration: 'none' }}
 								>
 									Pricing
 								</Link>
@@ -151,27 +155,17 @@ export default function Header() {
 									icon={<FaBell size={20} />}
 									userId='71900427-a160-4ed2-b13c-0af51c646878'
 								/>
-								<Button
-									as='a'
-									colorScheme='brand'
-									variant='solid'
-									size='md'
+								<Link
+									isExternal={true}
+									aria-label='Sign In to Herald'
+									href='https://app.useherald.com/dashboard'
+									textDecoration='none'
+									_hover={{ textDecoration: 'none' }}
 								>
-									Join Waitlist
-								</Button>
-								{/*<Link*/}
-								{/*	d='none'*/}
-								{/*	href={`https://app.useherald.com/dashboard`}*/}
-								{/*>*/}
-								{/*	<Button*/}
-								{/*		as='a'*/}
-								{/*		colorScheme='brand'*/}
-								{/*		variant='solid'*/}
-								{/*		size='sm'*/}
-								{/*	>*/}
-								{/*		Sign In*/}
-								{/*	</Button>*/}
-								{/*</Link>*/}
+									<Button colorScheme='brand' size='md'>
+										Sign In
+									</Button>
+								</Link>
 							</HStack>
 							<IconButton
 								display={{ base: 'flex', md: 'none' }}
